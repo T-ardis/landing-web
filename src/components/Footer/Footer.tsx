@@ -5,7 +5,7 @@ export default function Footer() {
     <footer className={styles.footer}>
       <div className={styles.inner}>
         <span className={styles.brand}>TARDIS</span>
-        <span className={styles.copy}>© 2025 TARDIS. All rights reserved.</span>
+        <span className={styles.copy}>© 2026 TARDIS. All rights reserved.</span>
         <a href="mailto:tardis.ai.com@gmail.com" className={styles.email}>tardis.ai.com@gmail.com</a>
       </div>
     </footer>
