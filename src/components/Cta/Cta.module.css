@@ -1,0 +1,117 @@
+.section {
+  padding-block: var(--section-py);
+  background: var(--bg-void);
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+
+.section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 70% 50% at 50% 100%, rgba(200, 169, 126, 0.07) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.inner {
+  max-width: var(--max-w-narrow);
+  margin-inline: auto;
+  padding-inline: var(--container-px);
+  position: relative;
+  z-index: 1;
+}
+
+.eyebrow {
+  display: block;
+  font-size: var(--text-xs);
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 1rem;
+}
+
+.headline {
+  font-family: var(--font-display, 'Space Grotesk', sans-serif);
+  font-size: var(--text-4xl);
+  font-weight: 700;
+  line-height: 1.0;
+  letter-spacing: -0.03em;
+  margin-bottom: 1.5rem;
+}
+
+.headline em {
+  color: var(--accent);
+  font-style: normal;
+}
+
+.sub {
+  font-size: var(--text-lg);
+  color: var(--text-secondary);
+  margin-bottom: 3rem;
+  max-width: 44ch;
+  margin-inline: auto;
+}
+
+.form {
+  display: flex;
+  gap: 0.75rem;
+  max-width: 480px;
+  margin-inline: auto;
+  margin-bottom: 1rem;
+}
+
+.input {
+  flex: 1;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-visible);
+  color: var(--text-primary);
+  font-size: var(--text-sm);
+  padding: 1rem 1.5rem;
+  outline: none;
+  transition: border-color 0.2s;
+  font-family: inherit;
+}
+
+.input::placeholder { color: var(--text-secondary); }
+.input:focus { border-color: var(--accent); }
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 1rem 2rem;
+  font-family: var(--font-display, 'Space Grotesk', sans-serif);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: var(--accent);
+  color: #0a0a0a;
+  transition: background 0.22s ease, transform 0.22s ease;
+  white-space: nowrap;
+}
+
+.btn:hover:not(:disabled) {
+  background: var(--accent-hover);
+  transform: translateY(-2px);
+}
+
+.btn:disabled { opacity: 0.7; cursor: not-allowed; }
+
+.note {
+  font-size: var(--text-xs);
+  color: var(--text-secondary);
+  letter-spacing: 0.08em;
+}
+
+.success {
+  font-family: var(--font-display, 'Space Grotesk', sans-serif);
+  font-size: var(--text-xl);
+  font-weight: 600;
+  color: var(--accent);
+}
+
+@media (max-width: 480px) {
+  .form { flex-direction: column; }
+}
