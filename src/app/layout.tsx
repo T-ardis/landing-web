@@ -16,10 +16,92 @@ const inter = Inter({
   display: 'swap',
 });
 
+const SITE_URL = 'https://www.tardis-ai.com';
+
 export const metadata: Metadata = {
-  title: 'TARDIS — Scan it. Style it. Own it.',
+  metadataBase: new URL(SITE_URL),
+
+  title: {
+    default: 'TARDIS — Scan it. Style it. Own it.',
+    template: '%s | TARDIS',
+  },
   description:
-    'LiDAR scanning meets AI design meets one-click multi-brand checkout. Build your dream home with TARDIS.',
+    'TARDIS uses iPhone LiDAR to map your room in 60 seconds, drops AI-selected furniture photorealistically, and checks out across IKEA, Wayfair, CB2 and more — one cart, one tap.',
+  keywords: [
+    'home renovation app',
+    'AI interior design',
+    'LiDAR room scanner',
+    'AR furniture placement',
+    'virtual room designer',
+    'interior design app',
+    'furniture shopping app',
+    'room planner app',
+    'IKEA alternative',
+    'home decor app',
+    'AI home design',
+    '3D room scanner iPhone',
+  ],
+  authors: [
+    { name: 'Illia Lisovskyi' },
+    { name: 'Yevhenii Riabokin' },
+  ],
+  creator: 'TARDIS',
+  publisher: 'TARDIS',
+  applicationName: 'TARDIS',
+  category: 'technology',
+
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    url: SITE_URL,
+    siteName: 'TARDIS',
+    title: 'TARDIS — Scan it. Style it. Own it.',
+    description:
+      'LiDAR scan your room → AI places furniture photorealistically → one-click checkout across IKEA, Wayfair, CB2 and more. Home design, reimagined.',
+    images: [
+      {
+        url: '/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'TARDIS — AI-powered home design app',
+      },
+    ],
+  },
+
+  twitter: {
+    card: 'summary_large_image',
+    title: 'TARDIS — Scan it. Style it. Own it.',
+    description:
+      'LiDAR scan → AI furniture placement → one-tap multi-brand checkout. Home design, finally solved.',
+    images: ['/og-image.png'],
+    creator: '@tardisapp',
+  },
+
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+
+  alternates: {
+    canonical: SITE_URL,
+  },
+
+  icons: {
+    icon: '/favicon.ico',
+    shortcut: '/favicon.ico',
+    apple: '/apple-touch-icon.png',
+  },
+
+  verification: {
+    // google: 'your-google-verification-token', // add after Search Console setup
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
