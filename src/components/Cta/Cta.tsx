@@ -12,7 +12,7 @@ export default function Cta() {
     e.preventDefault();
     setLoading(true);
     try {
-      const res = await fetch('https://formspree.io/f/YOUR_FORM_ID', {
+      const res = await fetch('https://formspree.io/f/xojklzyz', {
         method: 'POST',
         body: new FormData(e.currentTarget),
         headers: { Accept: 'application/json' },

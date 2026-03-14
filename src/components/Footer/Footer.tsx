@@ -6,7 +6,7 @@ export default function Footer() {
       <div className={styles.inner}>
         <span className={styles.brand}>TARDIS</span>
         <span className={styles.copy}>© 2025 TARDIS. All rights reserved.</span>
-        <a href="mailto:hello@tardis.app" className={styles.email}>hello@tardis.app</a>
+        <a href="mailto:tardis.ai.com@gmail.com" className={styles.email}>tardis.ai.com@gmail.com</a>
       </div>
     </footer>
   );

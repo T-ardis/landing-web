@@ -5,19 +5,22 @@ import styles from './Problem.module.css';
 
 const quotes = [
   {
-    text: 'House renovations are making me depressed. I am doing everything by myself. Every step forward, five steps back.',
-    source: 'r/HomeImprovement',
-    upvotes: '4.2k upvotes',
-  },
-  {
     text: 'Got scammed by a designer. After paying upfront, he charged an extra $2,500 just to release the files.',
     source: 'r/InteriorDesign',
     upvotes: '2.8k upvotes',
+    href: 'https://www.reddit.com/r/InteriorDesign/comments/1akbhqr/got_scammed_by_a_designer/',
   },
   {
     text: 'Does this kitchen layout make sense? I\'ve been staring at it for three weeks and I genuinely can\'t tell anymore.',
-    source: 'r/malelivingspace',
+    source: 'r/kitchens',
     upvotes: '1.9k upvotes',
+    href: 'https://www.reddit.com/r/kitchens/comments/1rioli0/does_this_kitchen_layout_make_sense/',
+  },
+  {
+    text: 'House renovations are making me depressed. I am doing everything by myself. Every step forward, five steps back.',
+    source: 'r/DIYUK',
+    upvotes: '4.2k upvotes',
+    href: 'https://www.reddit.com/r/DIYUK/comments/1ciqed2/house_renovations_are_making_me_depressed/',
   },
 ];
 
@@ -130,7 +133,12 @@ export default function Problem() {
               <blockquote key={i} className={styles.card} data-index={i}>
                 <p className={styles.cardText}>&ldquo;{q.text}&rdquo;</p>
                 <div className={styles.cardMeta}>
-                  <span className={styles.cardSource}>{q.source}</span>
+                  <a
+                    href={q.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={styles.cardSource}
+                  >{q.source}</a>
                   <span className={styles.cardUpvotes}>{q.upvotes}</span>
                 </div>
               </blockquote>

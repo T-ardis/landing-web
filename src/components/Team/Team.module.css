@@ -101,11 +101,35 @@
   margin-bottom: 1.5rem;
 }
 
+.cardFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
 .tags {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
 }
+
+.linkedinLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: var(--text-xs);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color 0.2s;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.linkedinLink:hover { color: var(--accent); }
 
 .tag {
   font-size: 0.65rem;
