@@ -167,7 +167,12 @@
 }
 
 @media (max-width: 768px) {
-  .inner  { grid-template-columns: 1fr; gap: 3rem; }
-  .bgWord { font-size: clamp(5rem, 18vw, 10rem); }
-  .wrapper { min-height: 500vh; }
+  .wrapper { min-height: 0; height: auto; padding-block: var(--section-py); }
+  .sticky  { position: static; height: auto; overflow: visible; }
+  .inner   { grid-template-columns: 1fr; gap: 2rem; }
+  .left    { padding-top: 0; }
+  .right   { padding-top: 0; }
+  .card    { opacity: 1 !important; clip-path: none !important; transform: none !important; }
+  .bgWord  { display: none; }
+  .noteWrap { padding-block: calc(var(--section-py) / 2); }
 }

@@ -117,5 +117,20 @@
   margin-top: 0.5rem;
 }
 
-@media (max-width: 1024px) { .grid { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 480px)  { .grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 1024px) {
+  .grid { grid-template-columns: repeat(2, 1fr); }
+  .header { margin-bottom: 3rem; }
+}
+
+@media (max-width: 768px) {
+  .bgLayer { display: none; }
+  .card    { padding: 2rem 1.5rem; opacity: 1 !important; clip-path: none !important; }
+}
+
+@media (max-width: 480px) {
+  .grid    { grid-template-columns: 1fr 1fr; }
+  .card    { padding: 1.5rem 1rem; }
+  .num     { font-size: clamp(2rem, 10vw, 3rem); }
+  .prefix,
+  .suffix  { font-size: clamp(1.25rem, 5vw, 2rem); }
+}

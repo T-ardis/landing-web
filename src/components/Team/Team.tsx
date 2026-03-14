@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
+import ScrambleText from '@/components/ScrambleText/ScrambleText';
 import styles from './Team.module.css';
 
 const members = [
@@ -78,7 +79,7 @@ export default function Team() {
   return (
     <section id="team" ref={sectionRef} className={styles.section}>
       <div className={styles.inner}>
-        <span className={styles.eyebrow}>The Team</span>
+        <ScrambleText text="The Team" className={styles.eyebrow} />
         <h2 className={styles.headline} aria-label="Operators, not just builders.">
           {['Operators,'].map((w, i) => (
             <span key={i} className={styles.wordWrap}>

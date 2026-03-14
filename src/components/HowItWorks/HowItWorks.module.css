@@ -71,10 +71,10 @@
   gap: 1.5rem;
 }
 
-/* Each step starts invisible — GSAP reveals them one-by-one, they stay */
+/* Each step starts invisible — GSAP reveals via scaleY + opacity */
 .step {
   opacity: 0;
-  clip-path: inset(0 0 100% 0);
+  transform-origin: top center;
   border: 1px solid var(--border-subtle);
   background: var(--bg-surface);
   padding: 2rem 2.25rem;
@@ -140,11 +140,22 @@
   max-width: 52ch;
 }
 
-/* ── Mobile: plain vertical, no pin ── */
+/* ── Mobile: plain vertical scroll with fade-in per step ── */
 @media (max-width: 768px) {
-  .wrapper { height: auto; }
-  .sticky  { height: auto; position: relative; }
-  .inner   { grid-template-columns: 1fr; gap: 2.5rem; }
-  .step    { opacity: 1 !important; clip-path: none !important; transform: none !important; }
-  .sub     { display: none; }
+  .wrapper  { height: auto; padding-block: var(--section-py); }
+  .sticky   { height: auto; position: static; overflow: hidden; align-items: flex-start; }
+  .inner    { grid-template-columns: 1fr; gap: 2rem; padding-block: 0; }
+  .left     { padding-top: 0; }
+  .stepsCol { gap: 1rem; }
+  .sub      { display: none; }
+
+  /* Steps start hidden, IntersectionObserver adds .stepVisible */
+  .step {
+    opacity: 0;
+    transition: opacity 0.55s ease;
+  }
+
+  .stepVisible {
+    opacity: 1;
+  }
 }

@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
+import ScrambleText from '@/components/ScrambleText/ScrambleText';
 import styles from './Roadmap.module.css';
 
 const phases = [
@@ -85,7 +86,7 @@ export default function Roadmap() {
       <span className={styles.bgPhase} aria-hidden="true">04</span>
 
       <div className={styles.inner}>
-        <span className={styles.eyebrow}>Roadmap</span>
+        <ScrambleText text="Roadmap" className={styles.eyebrow} />
         <h2 className={styles.headline} aria-label="From proof to platform.">
           {['From', 'proof'].map((w, i) => (
             <span key={i} className={styles.wordWrap}>

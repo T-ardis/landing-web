@@ -1,12 +1,15 @@
 'use client';
 
 import { useRef, useState } from 'react';
+import ScrambleText from '@/components/ScrambleText/ScrambleText';
+import useRevealOnScroll from '@/hooks/useRevealOnScroll';
 import styles from './Cta.module.css';
 
 export default function Cta() {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading]     = useState(false);
-  const inputRef = useRef<HTMLInputElement>(null);
+  const inputRef  = useRef<HTMLInputElement>(null);
+  const innerRef  = useRevealOnScroll<HTMLDivElement>({ y: 50, duration: 0.9, stagger: 0.12 });
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -25,8 +28,8 @@ export default function Cta() {
 
   return (
     <section id="cta" className={styles.section}>
-      <div className={styles.inner}>
-        <span className={styles.eyebrow}>Early Access</span>
+      <div ref={innerRef} className={styles.inner}>
+        <ScrambleText text="Early Access" className={styles.eyebrow} />
         <h2 className={styles.headline}>
           Build your<br /><em>dream home.</em>
         </h2>

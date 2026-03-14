@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
+import ScrambleText from '@/components/ScrambleText/ScrambleText';
 import styles from './HowItWorks.module.css';
 
 const steps = [
@@ -16,6 +17,7 @@ const steps = [
         <circle cx="24" cy="24" r="4" fill="currentColor" stroke="none"/>
       </svg>
     ),
+    bg: 'var(--bg-dark)',
   },
   {
     num: '02',
@@ -30,6 +32,7 @@ const steps = [
         <path d="M24 24l6 6" strokeDasharray="2 2"/>
       </svg>
     ),
+    bg: '#101008',
   },
   {
     num: '03',
@@ -44,6 +47,7 @@ const steps = [
         <path d="M12 20h24M12 26h20"/>
       </svg>
     ),
+    bg: '#080d0d',
   },
 ];
 
@@ -52,55 +56,99 @@ export default function HowItWorks() {
   const stickyRef  = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    const wrapper = wrapperRef.current;
+    const sticky  = stickyRef.current;
+    if (!wrapper || !sticky) return;
+
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const isMobile = window.innerWidth <= 768;
+
+    // ── MOBILE: IntersectionObserver fade-in per step ──
+    if (isMobile) {
+      const stepEls = wrapper.querySelectorAll<HTMLElement>(`.${styles.step}`);
+
+      if (prefersReduced) {
+        stepEls.forEach(el => el.classList.add(styles.stepVisible));
+        return;
+      }
+
+      const io = new IntersectionObserver(
+        entries => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add(styles.stepVisible);
+              io.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.15 },
+      );
+
+      stepEls.forEach(el => io.observe(el));
+      return () => io.disconnect();
+    }
+
+    // ── DESKTOP: Paradigm-style scrubbed unfold ──
+    if (prefersReduced) {
+      wrapper.querySelectorAll<HTMLElement>(`.${styles.step}`)
+        .forEach(el => { el.style.opacity = '1'; el.style.transform = 'none'; el.style.clipPath = 'none'; });
+      return;
+    }
+
+    let cleanup: (() => void) | undefined;
+
     const init = async () => {
       const { gsap } = await import('gsap');
       const { ScrollTrigger } = await import('gsap/ScrollTrigger');
       gsap.registerPlugin(ScrollTrigger);
 
-      const wrapper = wrapperRef.current;
-      const sticky  = stickyRef.current;
-      if (!wrapper || !sticky) return;
+      // Total scroll travel inside the pinned section
+      const scrollDistance = wrapper.offsetHeight - window.innerHeight;
+      // Each step reveal occupies 28% of the scroll travel
+      const revealSpan = scrollDistance * 0.28;
 
-      const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-      if (prefersReduced) {
-        wrapper.querySelectorAll<HTMLElement>(`.${styles.step}`)
-          .forEach(el => { el.style.opacity = '1'; el.style.transform = 'none'; el.style.clipPath = 'none'; });
-        return () => {};
-      }
-
-      // Each step reveals at 0%, 33%, 66% of the scroll distance
       const stepEls = wrapper.querySelectorAll<HTMLElement>(`.${styles.step}`);
 
-      stepEls.forEach((step, i) => {
-        // start: when wrapper top + i/3 of scroll distance hits the top of viewport
-        const startOffset = `${Math.round((i / steps.length) * 100)}%`;
+      // Set initial state — scaleY collapse from top
+      gsap.set(stepEls, { scaleY: 0, opacity: 0, transformOrigin: 'top center' });
 
-        gsap.fromTo(step,
-          { y: 50, opacity: 0, clipPath: 'inset(0 0 100% 0)' },
-          {
-            y: 0,
-            opacity: 1,
-            clipPath: 'inset(0 0 0% 0)',
-            duration: 0.8,
-            ease: 'power2.out',
-            scrollTrigger: {
-              trigger: wrapper,
-              start: `top+=${startOffset} top`,
-              // once: never reverses — step stays visible forever
-              toggleActions: 'play none none none',
-            },
+      stepEls.forEach((step, i) => {
+        const startPx = Math.round((i / steps.length) * scrollDistance);
+        const endPx   = startPx + revealSpan;
+
+        // Scrubbed scaleY unfold — tied directly to scroll (Paradigm style)
+        gsap.to(step, {
+          scaleY:  1,
+          opacity: 1,
+          ease: 'power2.inOut',
+          scrollTrigger: {
+            trigger: wrapper,
+            start: `top+=${startPx} top`,
+            end:   `top+=${endPx} top`,
+            scrub: 0.5,
           },
-        );
+        });
+
+        // Background colour shift at each step (like Paradigm)
+        gsap.to(sticky, {
+          backgroundColor: steps[i].bg,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: wrapper,
+            start: `top+=${startPx} top`,
+            end:   `top+=${startPx + revealSpan * 0.5} top`,
+            scrub: true,
+          },
+        });
       });
 
-      // Headline wipe
+      // Headline word wipe
       gsap.from(wrapper.querySelectorAll(`.${styles.wordInner}`), {
         y: '105%', duration: 0.85, ease: 'power3.out', stagger: 0.07,
         scrollTrigger: { trigger: wrapper, start: 'top 80%' },
       });
 
-      // Pin the sticky div while steps accumulate
+      // Pin sticky while steps unfold
       ScrollTrigger.create({
         trigger: wrapper,
         start: 'top top',
@@ -108,22 +156,22 @@ export default function HowItWorks() {
         pin: sticky,
         pinSpacing: false,
       });
+
+      return () => ScrollTrigger.getAll().forEach(t => t.kill());
     };
 
-    let cleanup: (() => void) | undefined;
     init().then(fn => { cleanup = fn; });
     return () => cleanup?.();
   }, []);
 
   return (
-    // Wrapper is tall — gives scroll distance for 3 step reveals
     <div ref={wrapperRef} id="how-it-works" className={styles.wrapper}>
       <div ref={stickyRef} className={styles.sticky}>
         <div className={styles.inner}>
 
           {/* Left: headline stays pinned */}
           <div className={styles.left}>
-            <span className={styles.eyebrow}>The Solution</span>
+            <ScrambleText text="The Solution" className={styles.eyebrow} />
             <h2 className={styles.headline}>
               {['Three', 'steps.'].map((w, i) => (
                 <span key={i} className={styles.wordWrap}>
@@ -140,9 +188,9 @@ export default function HowItWorks() {
             <p className={styles.sub}>Scroll to reveal each step</p>
           </div>
 
-          {/* Right: steps stack up */}
+          {/* Right: steps unfold on scroll */}
           <div className={styles.stepsCol}>
-            {steps.map((step, i) => (
+            {steps.map((step) => (
               <div key={step.num} className={styles.step}>
                 <div className={styles.stepHead}>
                   <span className={styles.stepNum}>{step.num}</span>

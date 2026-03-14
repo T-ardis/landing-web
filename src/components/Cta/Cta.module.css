@@ -22,6 +22,9 @@
   z-index: 1;
 }
 
+/* Children start invisible — useRevealOnScroll stagger-reveals them */
+.inner > * { opacity: 0; }
+
 .eyebrow {
   display: block;
   font-size: var(--text-xs);

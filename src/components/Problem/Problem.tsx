@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
+import ScrambleText from '@/components/ScrambleText/ScrambleText';
 import styles from './Problem.module.css';
 
 const quotes = [
@@ -39,8 +40,10 @@ export default function Problem() {
       if (!wrapper || !sticky) return;
 
       const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      if (prefersReduced) {
-        gsap.set([`.${styles.headline}`, `.${styles.card}`, `.${styles.note}`], { opacity: 1, y: 0, clipPath: 'inset(0 0 0% 0)' });
+      const isMobile = window.innerWidth <= 768;
+
+      if (prefersReduced || isMobile) {
+        // On mobile, CSS handles card visibility (clip-path: none !important)
         return;
       }
 
@@ -114,7 +117,7 @@ export default function Problem() {
           <span className={styles.bgWord} aria-hidden="true">BROKEN</span>
 
           <div className={styles.left}>
-            <span className={styles.eyebrow}>The Problem</span>
+            <ScrambleText text="The Problem" className={styles.eyebrow} />
             <h2 className={styles.headline} aria-label="Home renovation is broken.">
               {['Home', 'renovation', 'is'].map((w, i) => (
                 <span key={i} className={styles.wordWrap}>

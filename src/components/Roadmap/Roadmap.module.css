@@ -145,9 +145,15 @@
 }
 
 @media (max-width: 768px) {
-  .phases { grid-template-columns: repeat(2,1fr); }
-  .track  { display: none; }
+  .phases   { grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+  .track    { display: none; }
+  .headline { margin-bottom: 3rem; }
+  .bgPhase  { display: none; }
+  .phaseDesc { max-width: 100%; }
+  .phase    { opacity: 1 !important; transform: none !important; }
 }
+
 @media (max-width: 480px) {
-  .phases { grid-template-columns: 1fr; }
+  .phases { grid-template-columns: 1fr; gap: 1.5rem; }
+  .phase  { opacity: 1 !important; transform: none !important; }
 }

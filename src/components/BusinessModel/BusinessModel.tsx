@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
+import ScrambleText from '@/components/ScrambleText/ScrambleText';
 import styles from './BusinessModel.module.css';
 
 const streams = [
@@ -57,7 +58,7 @@ export default function BusinessModel() {
   return (
     <section id="business-model" ref={sectionRef} className={styles.section}>
       <div className={styles.inner}>
-        <span className={styles.eyebrow}>Business Model</span>
+        <ScrambleText text="Business Model" className={styles.eyebrow} />
         <h2 className={styles.headline} aria-label="Four streams. One platform.">
           {['Four', 'streams.'].map((w, i) => (
             <span key={i} className={styles.wordWrap}>

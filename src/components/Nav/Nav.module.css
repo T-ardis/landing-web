@@ -1,22 +1,29 @@
+/* ── Fixed bar ── */
 .nav {
   position: fixed;
   top: 0; left: 0; right: 0;
-  z-index: 200;
+  z-index: 300;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1.5rem var(--container-px);
-  border-bottom: 1px solid transparent;
-  transition: background 0.4s ease, backdrop-filter 0.4s ease, border-color 0.4s ease;
+  padding: 1.25rem var(--container-px);
+  transition:
+    background      0.4s ease,
+    backdrop-filter 0.4s ease,
+    padding         0.3s ease,
+    transform       0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .scrolled {
   background: rgba(8, 8, 8, 0.88);
-  backdrop-filter: blur(16px) saturate(1.4);
-  -webkit-backdrop-filter: blur(16px) saturate(1.4);
-  border-bottom-color: var(--border-subtle);
+  backdrop-filter: blur(18px) saturate(1.4);
+  -webkit-backdrop-filter: blur(18px) saturate(1.4);
+  padding-block: 0.85rem;
 }
 
+.hidden { transform: translateY(-100%); }
+
+/* ── Logo ── */
 .logo {
   font-family: var(--font-display, 'Space Grotesk', sans-serif);
   font-size: var(--text-sm);
@@ -24,20 +31,195 @@
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--text-primary);
+  cursor: default;
+  position: relative;
+  z-index: 310;
 }
 
-.cta {
+/* ── Right group ── */
+.right {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  position: relative;
+  z-index: 310;
+}
+
+/* ── CTA button (always visible) ── */
+.ctaBtn {
+  font-family: var(--font-display, 'Space Grotesk', sans-serif);
   font-size: var(--text-xs);
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--accent);
   border: 1px solid rgba(200, 169, 126, 0.35);
-  padding: 0.5rem 1.5rem;
-  transition: background 0.2s, border-color 0.2s;
+  padding: 0.5rem 1.25rem;
+  transition: background 0.22s, border-color 0.22s;
+  white-space: nowrap;
 }
 
-.cta:hover {
+.ctaBtn:hover {
   background: var(--accent-dim);
   border-color: var(--accent);
+}
+
+/* ── Menu button — Toby pill ── */
+.menuBtn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-radius: 14px;
+  background: linear-gradient(176deg, #252523 2.88%, #1a1a18 50.02%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 4px 16px 4px 4px;
+  cursor: pointer;
+  transition: border-radius 0.22s ease, border-color 0.22s ease;
+}
+
+.menuBtn:hover {
+  border-radius: 10px;
+  border-color: rgba(200, 169, 126, 0.25);
+}
+
+.menuBtnActive {
+  border-color: rgba(200, 169, 126, 0.35);
+}
+
+.menuBtnIcon {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  background: rgba(240, 237, 232, 0.92);
+  color: #0a0a0a;
+  transition: border-radius 0.22s ease, background 0.22s ease;
+  flex-shrink: 0;
+}
+
+.menuBtn:hover .menuBtnIcon { border-radius: 6px; }
+.menuBtnActive .menuBtnIcon { background: var(--accent); }
+
+.menuBtnText {
+  color: var(--text-primary);
+  font-family: var(--font-display, 'Space Grotesk', sans-serif);
+  font-size: var(--text-xs);
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  min-width: 3.2ch;
+}
+
+/* ── Full-screen overlay ── */
+.overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 0;
+  height: 0;
+  background: var(--bg-void);
+  z-index: 250;
+  border-bottom-left-radius: 1200px;
+  overflow: hidden;
+  transition:
+    width  0.55s cubic-bezier(0.76, 0, 0.24, 1),
+    height 0.55s cubic-bezier(0.76, 0, 0.24, 1),
+    border-bottom-left-radius 0.55s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+.overlayOpen {
+  width: 100vw;
+  height: 100dvh;
+  border-bottom-left-radius: 0;
+}
+
+/* Fallback for browsers without dvh */
+@supports not (height: 100dvh) {
+  .overlayOpen { height: 100vh; }
+}
+
+.overlayInner {
+  width: 100vw;
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-end;
+  padding: clamp(5rem, 12vh, 9rem) var(--container-px) clamp(2.5rem, 6vh, 4rem);
+  gap: 2.5rem;
+}
+
+@supports not (height: 100dvh) {
+  .overlayInner { height: 100vh; }
+}
+
+/* ── Nav links ── */
+.overlayNav {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.2rem;
+}
+
+.overlayLink {
+  display: block;
+  font-family: var(--font-display, 'Space Grotesk', sans-serif);
+  font-size: clamp(2rem, 7vw, 6.5rem);
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: -0.04em;
+  color: var(--text-primary);
+  text-decoration: none;
+  text-align: right;
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.3s ease, transform 0.3s ease, color 0.2s;
+}
+
+.overlayOpen .overlayLink {
+  opacity: 1;
+  transform: none;
+}
+
+.overlayLink:hover { color: var(--accent); }
+
+/* ── CTA link ── */
+.overlayCta {
+  display: inline-block;
+  font-family: var(--font-display, 'Space Grotesk', sans-serif);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  border: 1px solid rgba(200, 169, 126, 0.4);
+  padding: 0.75rem 2rem;
+  text-decoration: none;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.3s ease, transform 0.3s ease, background 0.22s, border-color 0.22s;
+}
+
+.overlayOpen .overlayCta {
+  opacity: 1;
+  transform: none;
+}
+
+.overlayCta:hover {
+  background: var(--accent-dim);
+  border-color: var(--accent);
+}
+
+/* ── Mobile ── */
+@media (max-width: 640px) {
+  .menuBtnText { display: none; }
+  .menuBtn { padding: 4px; border-radius: 10px; gap: 0; }
+  .menuBtn:hover { border-radius: 7px; }
+
+  .ctaBtn { font-size: 0.6rem; padding: 0.45rem 0.9rem; letter-spacing: 0.08em; }
+
+  .overlayLink { font-size: clamp(1.75rem, 9vw, 3rem); }
+  .overlayNav  { gap: 0.4rem; }
 }

@@ -86,9 +86,19 @@
 }
 
 @media (max-width: 1024px) {
-  .grid { grid-template-columns: 1fr 1fr; }
+  .grid     { grid-template-columns: 1fr 1fr; }
+  .headline { margin-bottom: 2.5rem; }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 768px) {
+  .card { opacity: 1 !important; clip-path: none !important; }
+}
+
+@media (max-width: 640px) {
+  .grid { grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+  .card { padding: 1.5rem; }
+}
+
+@media (max-width: 400px) {
   .grid { grid-template-columns: 1fr; }
 }

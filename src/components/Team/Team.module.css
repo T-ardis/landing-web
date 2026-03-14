@@ -143,4 +143,12 @@
 
 .card:hover .tag { border-color: rgba(200,169,126,0.3); color: var(--accent); }
 
-@media (max-width: 640px) { .grid { grid-template-columns: 1fr; } }
+@media (max-width: 768px) {
+  .card { opacity: 1 !important; transform: none !important; }
+}
+
+@media (max-width: 640px) {
+  .grid        { grid-template-columns: 1fr; }
+  .card        { padding: 2rem; }
+  .cardFooter  { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
+}

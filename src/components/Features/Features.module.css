@@ -32,33 +32,25 @@
 .wordInner { display: inline-block; transform: translateY(105%); }
 
 .tableWrap {
-  position: relative;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
+  /* subtle scroll hint on mobile */
+  scrollbar-width: none;
 }
-
-/* Column highlight behind TARDIS column */
-.colHighlight {
-  position: absolute;
-  top: 0;
-  left: calc(1 / 5 * 100%); /* 2nd of 5 columns */
-  width: calc(1 / 5 * 100%);
-  height: 100%;
-  background: var(--accent-dim);
-  border-left:  1px solid rgba(200,169,126,0.18);
-  border-right: 1px solid rgba(200,169,126,0.18);
-  pointer-events: none;
-  z-index: 0;
-  opacity: 0;
-}
+.tableWrap::-webkit-scrollbar { display: none; }
 
 .table {
-  position: relative;
-  z-index: 1;
   width: 100%;
-  min-width: 600px;
+  min-width: 580px;
   border-collapse: collapse;
 }
+
+/* Column widths — explicit so highlight matches exactly */
+.table colgroup col:nth-child(1) { width: 26%; }
+.table colgroup col:nth-child(2) { width: 22%; }
+.table colgroup col:nth-child(3) { width: 18%; }
+.table colgroup col:nth-child(4) { width: 17%; }
+.table colgroup col:nth-child(5) { width: 17%; }
 
 .table thead tr th {
   font-family: var(--font-display, 'Space Grotesk', sans-serif);
@@ -72,19 +64,42 @@
   color: var(--text-secondary);
 }
 
-.thTardis { color: var(--accent) !important; }
+/* TARDIS column highlight — applied directly to cells, no overlay div */
+.thTardis {
+  color: var(--accent) !important;
+  background: var(--accent-dim);
+  border-left:  1px solid rgba(200,169,126,0.18);
+  border-right: 1px solid rgba(200,169,126,0.18);
+}
 
-.table tbody .row { border-bottom: 1px solid var(--border-subtle); clip-path: inset(0 100% 0 0); opacity: 0; }
-.table tbody .row td { padding: 1rem 1.5rem; font-size: var(--text-sm); color: var(--text-secondary); vertical-align: middle; }
+.table tbody .row {
+  border-bottom: 1px solid var(--border-subtle);
+  clip-path: inset(0 100% 0 0);
+  opacity: 0;
+}
+.table tbody .row td {
+  padding: 1rem 1.5rem;
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  vertical-align: middle;
+}
 
 .featureLabel { color: var(--text-primary) !important; font-weight: 500; }
-.colTardis    { color: var(--text-primary) !important; }
-.check        { color: var(--accent); font-weight: 700; }
-.cross        { color: var(--text-muted) !important; }
-.partial      { font-style: italic; font-size: var(--text-xs) !important; }
+
+.colTardis {
+  color: var(--text-primary) !important;
+  background: var(--accent-dim);
+  border-left:  1px solid rgba(200,169,126,0.18);
+  border-right: 1px solid rgba(200,169,126,0.18);
+}
+
+.check   { color: var(--accent); font-weight: 700; }
+.cross   { color: var(--text-muted) !important; }
+.partial { font-style: italic; font-size: var(--text-xs) !important; }
 
 @media (max-width: 768px) {
+  /* Hide Houzz + Wayfair on mobile — keep Feature, TARDIS, IKEA */
   .table thead th:nth-child(n+4),
   .table tbody td:nth-child(n+4) { display: none; }
-  .colHighlight { left: 50%; width: 50%; }
+  .table { min-width: 0; width: 100%; }
 }

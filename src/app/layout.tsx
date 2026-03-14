@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Space_Grotesk, Inter } from 'next/font/google';
+import SmoothScroll from '@/components/SmoothScroll/SmoothScroll';
 import './globals.css';
 
 const spaceGrotesk = Space_Grotesk({
@@ -108,6 +109,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${spaceGrotesk.variable} ${inter.variable}`}>
       <body style={{ fontFamily: 'var(--font-body, Inter, sans-serif)' }}>
+        <SmoothScroll />
         {children}
       </body>
     </html>

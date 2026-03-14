@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
+import ScrambleText from '@/components/ScrambleText/ScrambleText';
 import styles from './Features.module.css';
 
 const rows = [
@@ -49,14 +50,6 @@ export default function Features() {
           );
         });
 
-        // TARDIS column glow-in
-        gsap.fromTo(`.${styles.colHighlight}`,
-          { opacity: 0 },
-          {
-            opacity: 1, duration: 1.2, ease: 'power2.out',
-            scrollTrigger: { trigger: `.${styles.tableWrap}`, start: 'top 75%' },
-          },
-        );
       }, section);
 
       return () => ctx.revert();
@@ -69,7 +62,7 @@ export default function Features() {
   return (
     <section id="features" ref={sectionRef} className={styles.section}>
       <div className={styles.inner}>
-        <span className={styles.eyebrow}>Why TARDIS</span>
+        <ScrambleText text="Why TARDIS" className={styles.eyebrow} />
         <h2 className={styles.headline} aria-label="Built different. By design.">
           {['Built', 'different.'].map((w, i) => (
             <span key={i} className={styles.wordWrap}>
@@ -85,10 +78,11 @@ export default function Features() {
         </h2>
 
         <div className={styles.tableWrap}>
-          {/* TARDIS column highlight overlay */}
-          <div className={styles.colHighlight} aria-hidden="true" />
 
           <table className={styles.table}>
+            <colgroup>
+              <col /><col /><col /><col /><col />
+            </colgroup>
             <thead>
               <tr>
                 <th>Feature</th>

@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
+import ScrambleText from '@/components/ScrambleText/ScrambleText';
 import styles from './Market.module.css';
 
 const stats = [
@@ -117,7 +118,7 @@ export default function Market() {
 
       <div className={styles.inner}>
         <div className={styles.header}>
-          <span className={styles.eyebrow}>The Opportunity</span>
+          <ScrambleText text="The Opportunity" className={styles.eyebrow} />
           <h2 className={styles.headline} aria-label="A market already in motion.">
             {['A', 'market', 'already'].map((w, i) => (
               <span key={i} className={styles.wordWrap}>
