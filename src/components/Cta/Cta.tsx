@@ -15,10 +15,11 @@ export default function Cta() {
     e.preventDefault();
     setLoading(true);
     try {
-      const res = await fetch('https://formspree.io/f/xojklzyz', {
+      const email = inputRef.current?.value ?? '';
+      const res = await fetch('/api/waitlist', {
         method: 'POST',
-        body: new FormData(e.currentTarget),
-        headers: { Accept: 'application/json' },
+        body: JSON.stringify({ email }),
+        headers: { 'Content-Type': 'application/json' },
       });
       if (res.ok) setSubmitted(true);
     } finally {
