@@ -12,9 +12,11 @@ export default function Hero() {
     let cleanupFn: (() => void) | undefined;
 
     const init = async () => {
-      const THREE = await import('three');
-      const { gsap } = await import('gsap');
-      const { ScrollTrigger } = await import('gsap/ScrollTrigger');
+      const [THREE, { gsap }, { ScrollTrigger }] = await Promise.all([
+        import('three'),
+        import('gsap'),
+        import('gsap/ScrollTrigger'),
+      ]);
       gsap.registerPlugin(ScrollTrigger);
 
       const canvas  = canvasRef.current;
@@ -304,21 +306,6 @@ export default function Hero() {
         },
       });
 
-      // ─── Hero text entrance ─────────────────────────────────
-      if (!prefersReduced) {
-        const tl = gsap.timeline({ delay: 0.2 });
-        tl.to(`.${styles.lineInner}`,  { y: '0%', duration: 1.1, ease: 'power3.out', stagger: 0.14 })
-          .to(`.${styles.eyebrow}`,    { opacity: 1, duration: 0.8, ease: 'power2.out' }, '-=0.6')
-          .to(`.${styles.sub}`,        { opacity: 1, duration: 0.8, ease: 'power2.out' }, '-=0.6')
-          .to(`.${styles.ctaGroup}`,   { opacity: 1, duration: 0.7, ease: 'power2.out' }, '-=0.5')
-          .to(`.${styles.scrollHint}`, { opacity: 1, duration: 0.6, ease: 'power2.out' }, '-=0.4');
-      } else {
-        gsap.set([
-          `.${styles.lineInner}`, `.${styles.eyebrow}`, `.${styles.sub}`,
-          `.${styles.ctaGroup}`,  `.${styles.scrollHint}`,
-        ], { opacity: 1, y: '0%' });
-      }
-
       cleanupFn = () => {
         cancelAnimationFrame(animFrameId);
         st.kill();
@@ -330,7 +317,11 @@ export default function Hero() {
       };
     };
 
-    init();
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(() => init(), { timeout: 2000 });
+    } else {
+      setTimeout(init, 200);
+    }
     return () => { cleanupFn?.(); };
   }, []);
 
