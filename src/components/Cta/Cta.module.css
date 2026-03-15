@@ -108,11 +108,47 @@
   letter-spacing: 0.08em;
 }
 
-.success {
-  font-family: var(--font-display, 'Space Grotesk', sans-serif);
-  font-size: var(--text-xl);
-  font-weight: 600;
+.errorNote {
+  font-size: var(--text-xs);
+  color: #e07070;
+  letter-spacing: 0.08em;
+}
+
+.successState {
+  animation: successReveal 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.checkWrap {
   color: var(--accent);
+  animation: checkPop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) 0.1s both;
+}
+
+.successTitle {
+  font-family: var(--font-display, 'Space Grotesk', sans-serif);
+  font-size: var(--text-2xl);
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.successSub {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+@keyframes successReveal {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes checkPop {
+  from { opacity: 0; transform: scale(0.5); }
+  to   { opacity: 1; transform: scale(1); }
 }
 
 @media (max-width: 480px) {
