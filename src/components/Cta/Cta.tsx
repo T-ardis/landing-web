@@ -1,16 +1,42 @@
 'use client';
 
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import ScrambleText from '@/components/ScrambleText/ScrambleText';
 import useRevealOnScroll from '@/hooks/useRevealOnScroll';
 import styles from './Cta.module.css';
+
+interface UtmParams {
+  utm_source: string;
+  utm_medium: string;
+  utm_campaign: string;
+  utm_term: string;
+  utm_content: string;
+  referrer: string;
+}
+
+function getUtmParams(): UtmParams {
+  const p = new URLSearchParams(window.location.search);
+  return {
+    utm_source:   p.get('utm_source')   ?? '',
+    utm_medium:   p.get('utm_medium')   ?? '',
+    utm_campaign: p.get('utm_campaign') ?? '',
+    utm_term:     p.get('utm_term')     ?? '',
+    utm_content:  p.get('utm_content')  ?? '',
+    referrer:     document.referrer     ?? '',
+  };
+}
 
 export default function Cta() {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading]     = useState(false);
   const [error, setError]         = useState(false);
   const inputRef  = useRef<HTMLInputElement>(null);
+  const utmRef    = useRef<UtmParams | null>(null);
   const innerRef  = useRevealOnScroll<HTMLDivElement>({ y: 50, duration: 0.9, stagger: 0.12 });
+
+  useEffect(() => {
+    utmRef.current = getUtmParams();
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -20,7 +46,7 @@ export default function Cta() {
       const email = inputRef.current?.value ?? '';
       const res = await fetch('/api/waitlist', {
         method: 'POST',
-        body: JSON.stringify({ email }),
+        body: JSON.stringify({ email, ...utmRef.current }),
         headers: { 'Content-Type': 'application/json' },
       });
       if (res.ok) setSubmitted(true);
