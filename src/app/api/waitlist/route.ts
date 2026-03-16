@@ -34,6 +34,12 @@ export async function POST(req: NextRequest) {
     }
   }
 
+  // Fallback for truly direct / unknown traffic
+  if (!utm_source) {
+    utm_source = 'direct';
+    utm_medium = 'unknown';
+  }
+
   if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
     return NextResponse.json({ error: 'Invalid email' }, { status: 400 });
   }
