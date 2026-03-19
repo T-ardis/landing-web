@@ -26,10 +26,13 @@ function getUtmParams(): UtmParams {
   };
 }
 
+const APP_URL = process.env.NEXT_PUBLIC_APP_URL || 'https://app.tardis-ai.com';
+
 export default function Cta() {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading]     = useState(false);
   const [error, setError]         = useState(false);
+  const emailRef  = useRef('');
   const inputRef  = useRef<HTMLInputElement>(null);
   const utmRef    = useRef<UtmParams | null>(null);
   const innerRef  = useRevealOnScroll<HTMLDivElement>({ y: 50, duration: 0.9, stagger: 0.12 });
@@ -44,12 +47,19 @@ export default function Cta() {
     setError(false);
     try {
       const email = inputRef.current?.value ?? '';
+      emailRef.current = email;
       const res = await fetch('/api/waitlist', {
         method: 'POST',
         body: JSON.stringify({ email, ...utmRef.current }),
         headers: { 'Content-Type': 'application/json' },
       });
-      if (res.ok) setSubmitted(true);
+      if (res.ok) {
+        setSubmitted(true);
+        // Redirect to app after a short delay
+        setTimeout(() => {
+          window.location.href = `${APP_URL}?email=${encodeURIComponent(email)}`;
+        }, 2000);
+      }
       else setError(true);
     } catch {
       setError(true);
@@ -77,8 +87,8 @@ export default function Cta() {
                 <path d="M8.5 14.5l4 4 7-8" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </div>
-            <p className={styles.successTitle}>You&apos;re on the list.</p>
-            <p className={styles.successSub}>We&apos;ll reach out when early access opens.</p>
+            <p className={styles.successTitle}>You&apos;re on the list!</p>
+            <p className={styles.successSub}>Redirecting you to the app...</p>
           </div>
         ) : (
           <>
