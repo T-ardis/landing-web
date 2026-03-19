@@ -111,7 +111,7 @@ export default function Roadmap() {
               <div key={i} className={`${styles.phase} ${p.active ? styles.phaseActive : ''}`}>
                 <div className={styles.dot} />
                 <span className={styles.phaseNum}>Phase {p.num}</span>
-                <h4 className={styles.phaseTitle}>{p.title}</h4>
+                <h3 className={styles.phaseTitle}>{p.title}</h3>
                 <p className={styles.phaseDesc}>{p.desc}</p>
                 {p.active && <span className={styles.status}>In Progress</span>}
               </div>

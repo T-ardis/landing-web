@@ -11,6 +11,7 @@ const LINKS = [
   { label: 'Market',        href: '#market' },
   { label: 'Team',          href: '#team' },
   { label: 'Roadmap',       href: '#roadmap' },
+  { label: 'Blog',          href: '/blog' },
 ];
 
 export default function Nav() {
@@ -38,6 +39,10 @@ export default function Nav() {
   }, [isOpen]);
 
   const handleLinkClick = (href: string) => (e: React.MouseEvent) => {
+    if (!href.startsWith('#')) {
+      setIsOpen(false);
+      return; // let the browser navigate normally
+    }
     e.preventDefault();
     setIsOpen(false);
     setTimeout(() => {

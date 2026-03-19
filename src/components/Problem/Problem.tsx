@@ -109,7 +109,7 @@ export default function Problem() {
   }, []);
 
   return (
-    <div ref={wrapperRef} className={styles.wrapper} id="problem">
+    <section ref={wrapperRef} className={styles.wrapper} id="problem">
       <div ref={stickyRef} className={styles.sticky}>
         <div className={styles.inner}>
 
@@ -160,6 +160,6 @@ export default function Problem() {
           </p>
         </div>
       </div>
-    </div>
+    </section>
   );
 }

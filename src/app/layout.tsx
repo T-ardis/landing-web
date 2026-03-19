@@ -61,7 +61,7 @@ export const metadata: Metadata = {
       'LiDAR scan your room → AI places furniture photorealistically → one-click checkout across IKEA, Wayfair, CB2 and more. Home design, reimagined.',
     images: [
       {
-        url: '/og-image.png',
+        url: '/opengraph-image',
         width: 1200,
         height: 630,
         alt: 'TARDIS — AI-powered home design app',
@@ -74,7 +74,7 @@ export const metadata: Metadata = {
     title: 'TARDIS — Scan it. Style it. Own it.',
     description:
       'LiDAR scan → AI furniture placement → one-tap multi-brand checkout. Home design, finally solved.',
-    images: ['/og-image.png'],
+    images: ['/opengraph-image'],
     creator: '@tardisapp',
   },
 
@@ -100,9 +100,7 @@ export const metadata: Metadata = {
     apple: '/apple-touch-icon.png',
   },
 
-  verification: {
-    // google: 'your-google-verification-token', // add after Search Console setup
-  },
+  verification: {},
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
