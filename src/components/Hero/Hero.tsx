@@ -340,7 +340,7 @@ export default function Hero() {
         </h1>
         <p className={styles.sub}>LiDAR scanning. AI-powered design. One-tap multi-brand checkout.</p>
         <div className={styles.ctaGroup}>
-          <a href="#cta" className={styles.btnPrimary}>Build Your Dream Home</a>
+          <a href={process.env.NEXT_PUBLIC_APP_URL || '/try'} className={styles.btnPrimary}>Try It Free</a>
           <a href="#how-it-works" className={styles.btnGhost}>How it works</a>
         </div>
       </div>

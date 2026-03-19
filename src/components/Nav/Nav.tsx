@@ -4,6 +4,8 @@ import { useEffect, useRef, useState } from 'react';
 import useScrambleHover from '@/hooks/useScrambleHover';
 import styles from './Nav.module.css';
 
+const APP_URL = process.env.NEXT_PUBLIC_APP_URL || '/try';
+
 const LINKS = [
   { label: 'The Problem',   href: '#problem' },
   { label: 'The Solution',  href: '#how-it-works' },
@@ -62,6 +64,9 @@ export default function Nav() {
         <span ref={logoRef} className={styles.logo}>TARDIS</span>
 
         <div className={styles.right}>
+          <a href={APP_URL} className={styles.tryBtn}>
+            Try It Free
+          </a>
           <a href="#cta" className={styles.ctaBtn} onClick={handleLinkClick('#cta')}>
             Get Early Access
           </a>
