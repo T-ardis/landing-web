@@ -41,6 +41,12 @@ export const metadata: Metadata = {
     'home decor app',
     'AI home design',
     '3D room scanner iPhone',
+    'best room scanner app iPhone',
+    'try furniture before you buy',
+    'virtual furniture placement',
+    'AI room design app',
+    'see furniture in my room',
+    'room scanning app LiDAR',
   ],
   authors: [
     { name: 'Illia Lisovskyi' },

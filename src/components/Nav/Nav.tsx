@@ -1,19 +1,20 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import { usePathname, useRouter } from 'next/navigation';
+import Link from 'next/link';
 import useScrambleHover from '@/hooks/useScrambleHover';
 import styles from './Nav.module.css';
 
 const APP_URL = process.env.NEXT_PUBLIC_APP_URL || '/try';
 
-const LINKS = [
-  { label: 'The Problem',   href: '#problem' },
-  { label: 'The Solution',  href: '#how-it-works' },
-  { label: 'Features',      href: '#features' },
-  { label: 'Market',        href: '#market' },
-  { label: 'Team',          href: '#team' },
-  { label: 'Roadmap',       href: '#roadmap' },
-  { label: 'Blog',          href: '/blog' },
+const SECTION_LINKS = [
+  { label: 'The Problem',   hash: '#problem' },
+  { label: 'The Solution',  hash: '#how-it-works' },
+  { label: 'Features',      hash: '#features' },
+  { label: 'Market',        hash: '#market' },
+  { label: 'Team',          hash: '#team' },
+  { label: 'Roadmap',       hash: '#roadmap' },
 ];
 
 export default function Nav() {
@@ -22,6 +23,10 @@ export default function Nav() {
   const [isHidden,   setIsHidden]   = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const lastScrollY = useRef(0);
+  const pathname = usePathname();
+  const router = useRouter();
+  const isHome = pathname === '/';
+  const isBlog = pathname.startsWith('/blog');
 
   useEffect(() => {
     const onScroll = () => {
@@ -40,16 +45,28 @@ export default function Nav() {
     return () => { document.body.style.overflow = ''; };
   }, [isOpen]);
 
-  const handleLinkClick = (href: string) => (e: React.MouseEvent) => {
-    if (!href.startsWith('#')) {
-      setIsOpen(false);
-      return; // let the browser navigate normally
-    }
+  const handleSectionClick = (hash: string) => (e: React.MouseEvent) => {
     e.preventDefault();
     setIsOpen(false);
-    setTimeout(() => {
-      document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
-    }, 400);
+    if (isHome) {
+      setTimeout(() => {
+        document.querySelector(hash)?.scrollIntoView({ behavior: 'smooth' });
+      }, 400);
+    } else {
+      router.push(`/${hash}`);
+    }
+  };
+
+  const handleCtaClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    setIsOpen(false);
+    if (isHome) {
+      setTimeout(() => {
+        document.querySelector('#cta')?.scrollIntoView({ behavior: 'smooth' });
+      }, 400);
+    } else {
+      router.push('/#cta');
+    }
   };
 
   return (
@@ -61,13 +78,22 @@ export default function Nav() {
           isHidden   ? styles.hidden   : '',
         ].join(' ')}
       >
-        <span ref={logoRef} className={styles.logo}>TARDIS</span>
+        <Link href="/" className={styles.logo}>
+          <span ref={logoRef}>TARDIS</span>
+        </Link>
 
         <div className={styles.right}>
+          <Link
+            href="/blog"
+            className={`${styles.blogLink} ${isBlog ? styles.blogLinkActive : ''}`}
+          >
+            Blog
+          </Link>
+
           <a href={APP_URL} className={styles.tryBtn}>
             Try It Free
           </a>
-          <a href="#cta" className={styles.ctaBtn} onClick={handleLinkClick('#cta')}>
+          <a href="#cta" className={styles.ctaBtn} onClick={handleCtaClick}>
             Get Early Access
           </a>
 
@@ -85,29 +111,49 @@ export default function Nav() {
         </div>
       </nav>
 
-      {/* Full-screen overlay — expands from top-right like Toby */}
+      {/* Full-screen overlay — expands from top-right */}
       <div className={`${styles.overlay} ${isOpen ? styles.overlayOpen : ''}`} aria-hidden={!isOpen}>
         <div className={styles.overlayInner}>
           <nav className={styles.overlayNav}>
-            {LINKS.map(({ label, href }, i) => (
-              <a
-                key={href}
-                href={href}
+            {!isHome && (
+              <Link
+                href="/"
                 className={styles.overlayLink}
-                style={{ transitionDelay: isOpen ? `${0.08 + i * 0.055}s` : '0s' }}
-                onClick={handleLinkClick(href)}
+                style={{ transitionDelay: isOpen ? '0.08s' : '0s' }}
+                onClick={() => setIsOpen(false)}
+                tabIndex={isOpen ? 0 : -1}
+              >
+                Home
+              </Link>
+            )}
+            {SECTION_LINKS.map(({ label, hash }, i) => (
+              <a
+                key={hash}
+                href={isHome ? hash : `/${hash}`}
+                className={styles.overlayLink}
+                style={{ transitionDelay: isOpen ? `${0.08 + (isHome ? i : i + 1) * 0.055}s` : '0s' }}
+                onClick={handleSectionClick(hash)}
                 tabIndex={isOpen ? 0 : -1}
               >
                 {label}
               </a>
             ))}
+            <Link
+              href="/blog"
+              className={`${styles.overlayLink} ${isBlog ? styles.overlayLinkActive : ''}`}
+              style={{ transitionDelay: isOpen ? `${0.08 + (isHome ? SECTION_LINKS.length : SECTION_LINKS.length + 1) * 0.055}s` : '0s' }}
+              onClick={() => setIsOpen(false)}
+              tabIndex={isOpen ? 0 : -1}
+            >
+              Blog
+            </Link>
           </nav>
 
           <a
-            href="#cta"
+            href={isHome ? '#cta' : '/#cta'}
             className={styles.overlayCta}
-            style={{ transitionDelay: isOpen ? '0.45s' : '0s' }}
-            onClick={handleLinkClick('#cta')}
+            style={{ transitionDelay: isOpen ? '0.5s' : '0s' }}
+            onClick={handleCtaClick}
             tabIndex={isOpen ? 0 : -1}
           >
             Get Early Access →

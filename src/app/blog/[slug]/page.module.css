@@ -154,6 +154,118 @@
   opacity: 0.7;
 }
 
+/* FAQ Section */
+
+.faqSection {
+  margin-top: 3.5rem;
+  padding-top: 2.5rem;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.faqHeading {
+  font-family: var(--font-display, 'Space Grotesk', sans-serif);
+  font-size: var(--text-xl);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+  margin-bottom: 1.5rem;
+}
+
+.faqList {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.faqItem {
+  padding: 1.25rem 1.5rem;
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  transition: border-color 0.2s;
+}
+
+.faqItem:hover {
+  border-color: rgba(200, 169, 126, 0.3);
+}
+
+.faqQuestion {
+  font-family: var(--font-display, 'Space Grotesk', sans-serif);
+  font-size: var(--text-base);
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.faqAnswer {
+  font-size: var(--text-sm);
+  color: rgba(240, 237, 232, 0.8);
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* Related Posts */
+
+.relatedSection {
+  margin-top: 3.5rem;
+  padding-top: 2.5rem;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.relatedHeading {
+  font-family: var(--font-display, 'Space Grotesk', sans-serif);
+  font-size: var(--text-lg);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--text-primary);
+  margin-bottom: 1.25rem;
+}
+
+.relatedGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.relatedCard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.25rem 0;
+  border-top: 1px solid var(--border-subtle);
+  text-decoration: none;
+  color: inherit;
+  transition: opacity 0.2s;
+}
+
+.relatedCard:last-child {
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.relatedCard:hover {
+  opacity: 0.8;
+}
+
+.relatedCard:hover .relatedTitle {
+  color: var(--accent);
+}
+
+.relatedTitle {
+  font-family: var(--font-display, 'Space Grotesk', sans-serif);
+  font-size: var(--text-base);
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.3;
+  transition: color 0.2s;
+}
+
+.relatedMeta {
+  font-size: var(--text-xs);
+  color: var(--text-secondary);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
 /* Footer */
 
 .articleFooter {
@@ -169,5 +281,13 @@
 
   .headline {
     font-size: var(--text-xl);
+  }
+
+  .faqItem {
+    padding: 1rem 1.25rem;
+  }
+
+  .relatedMeta {
+    display: none;
   }
 }

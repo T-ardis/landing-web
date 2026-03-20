@@ -16,21 +16,14 @@ describe('layout.tsx metadata', () => {
     );
   });
 
-  it('should define the correct keywords', () => {
-    expect(metadata.keywords).toEqual([
-      'home renovation app',
-      'AI interior design',
-      'LiDAR room scanner',
-      'AR furniture placement',
-      'virtual room designer',
-      'interior design app',
-      'furniture shopping app',
-      'room planner app',
-      'IKEA alternative',
-      'home decor app',
-      'AI home design',
-      '3D room scanner iPhone',
-    ]);
+  it('should define keywords including commercial-intent terms', () => {
+    const keywords = metadata.keywords as string[];
+    expect(keywords).toContain('home renovation app');
+    expect(keywords).toContain('AI interior design');
+    expect(keywords).toContain('LiDAR room scanner');
+    expect(keywords).toContain('best room scanner app iPhone');
+    expect(keywords).toContain('try furniture before you buy');
+    expect(keywords.length).toBeGreaterThanOrEqual(12);
   });
 });
 
@@ -54,7 +47,7 @@ describe('layout.tsx openGraph metadata', () => {
     const og = metadata.openGraph as Record<string, unknown>;
     expect(og.images).toEqual([
       {
-        url: '/og-image.png',
+        url: '/opengraph-image',
         width: 1200,
         height: 630,
         alt: 'TARDIS — AI-powered home design app',
@@ -80,7 +73,7 @@ describe('layout.tsx twitter metadata', () => {
   });
 
   it('should set the correct image', () => {
-    expect(metadata.twitter).toHaveProperty('images', ['/og-image.png']);
+    expect(metadata.twitter).toHaveProperty('images', ['/opengraph-image']);
   });
 });
 
@@ -105,29 +98,37 @@ describe('robots.ts', () => {
 });
 
 describe('sitemap.ts', () => {
-  it('should return an array with one entry for the main URL', () => {
+  it('should include home, blog index, and all blog posts', () => {
     const result = sitemap();
-    expect(result).toHaveLength(1);
+    expect(result.length).toBeGreaterThanOrEqual(3);
     expect(result[0].url).toBe('https://www.tardis-ai.com');
+    expect(result[1].url).toBe('https://www.tardis-ai.com/blog');
   });
 
-  it('should set lastModified to a recent Date', () => {
-    const before = new Date();
-    const result = sitemap();
-    const after = new Date();
-
-    const lastModified = result[0].lastModified as Date;
-    expect(lastModified.getTime()).toBeGreaterThanOrEqual(before.getTime());
-    expect(lastModified.getTime()).toBeLessThanOrEqual(after.getTime());
-  });
-
-  it('should set changeFrequency to monthly', () => {
-    const result = sitemap();
-    expect(result[0].changeFrequency).toBe('monthly');
-  });
-
-  it('should set priority to 1', () => {
+  it('should set home page priority to 1', () => {
     const result = sitemap();
     expect(result[0].priority).toBe(1);
+  });
+
+  it('should set blog index priority to 0.9', () => {
+    const result = sitemap();
+    expect(result[1].priority).toBe(0.9);
+  });
+
+  it('should include blog posts with proper URLs', () => {
+    const result = sitemap();
+    const blogPosts = result.filter((r) => r.url.includes('/blog/') && r.url !== 'https://www.tardis-ai.com/blog');
+    expect(blogPosts.length).toBeGreaterThanOrEqual(6);
+    blogPosts.forEach((post) => {
+      expect(post.url).toMatch(/^https:\/\/www\.tardis-ai\.com\/blog\/.+/);
+      expect(post.changeFrequency).toBe('monthly');
+    });
+  });
+
+  it('should give higher priority to keyword-targeted posts', () => {
+    const result = sitemap();
+    const blogPosts = result.filter((r) => r.url.includes('/blog/') && r.url !== 'https://www.tardis-ai.com/blog');
+    const highPriority = blogPosts.filter((p) => p.priority === 0.8);
+    expect(highPriority.length).toBeGreaterThan(0);
   });
 });

@@ -6,7 +6,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     url: `https://www.tardis-ai.com/blog/${p.slug}`,
     lastModified: new Date(p.date),
     changeFrequency: 'monthly' as const,
-    priority: 0.7,
+    priority: p.keyword ? 0.8 : 0.7,
   }));
 
   return [
@@ -20,7 +20,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: 'https://www.tardis-ai.com/blog',
       lastModified: new Date(),
       changeFrequency: 'weekly',
-      priority: 0.8,
+      priority: 0.9,
     },
     ...posts,
   ];

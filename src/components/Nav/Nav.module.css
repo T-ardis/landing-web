@@ -31,9 +31,15 @@
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--text-primary);
-  cursor: default;
+  text-decoration: none;
+  cursor: pointer;
   position: relative;
   z-index: 310;
+  transition: color 0.2s;
+}
+
+.logo:hover {
+  color: var(--accent);
 }
 
 /* ── Right group ── */
@@ -43,6 +49,27 @@
   gap: 0.75rem;
   position: relative;
   z-index: 310;
+}
+
+/* ── Blog link (visible in nav bar) ── */
+.blogLink {
+  font-family: var(--font-display, 'Space Grotesk', sans-serif);
+  font-size: var(--text-xs);
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  text-decoration: none;
+  padding: 0.5rem 0.5rem;
+  transition: color 0.2s;
+}
+
+.blogLink:hover {
+  color: var(--text-primary);
+}
+
+.blogLinkActive {
+  color: var(--accent);
 }
 
 /* ── Try It button ── */
@@ -202,6 +229,7 @@
 }
 
 .overlayLink:hover { color: var(--accent); }
+.overlayLinkActive { color: var(--accent); }
 
 /* ── CTA link ── */
 .overlayCta {
@@ -236,6 +264,7 @@
   .menuBtn { padding: 4px; border-radius: 10px; gap: 0; }
   .menuBtn:hover { border-radius: 7px; }
 
+  .blogLink { font-size: 0.6rem; padding: 0.35rem 0.25rem; }
   .tryBtn { font-size: 0.6rem; padding: 0.45rem 0.9rem; letter-spacing: 0.08em; }
   .ctaBtn { display: none; }
 
