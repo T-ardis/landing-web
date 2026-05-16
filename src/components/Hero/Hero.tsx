@@ -330,15 +330,18 @@ export default function Hero() {
       <canvas ref={canvasRef} className={styles.canvas} aria-hidden="true" />
 
       <div className={styles.content}>
-        <p className={styles.eyebrow}>Home Renovation. Reimagined.</p>
-        <h1 className={styles.headline} aria-label="Scan it. Style it. Own it.">
+        <p className={styles.eyebrow}>AR Furniture Visualizer for iPhone</p>
+        <h1 className={styles.headline} aria-label="TARDIS — the AR furniture visualizer that lets you scan your room, style it, and own it.">
           <span className={styles.line}><span className={styles.lineInner}>Scan it.</span></span>
           <span className={styles.line}><span className={styles.lineInner}>Style it.</span></span>
           <span className={`${styles.line} ${styles.lineAccent}`}>
             <span className={styles.lineInner}>Own it.</span>
           </span>
         </h1>
-        <p className={styles.sub}>LiDAR scanning. AI-powered design. One-tap multi-brand checkout.</p>
+        <p className={styles.sub}>
+          See how furniture looks in your room with photorealistic AR. LiDAR-precise.
+          One cart across IKEA, Wayfair &amp; CB2.
+        </p>
         <div className={styles.ctaGroup}>
           <a href={process.env.NEXT_PUBLIC_APP_URL || '/try'} className={styles.btnPrimary}>Try It Free</a>
           <a href="#how-it-works" className={styles.btnGhost}>How it works</a>

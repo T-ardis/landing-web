@@ -5,11 +5,12 @@ import ScrambleText from '@/components/ScrambleText/ScrambleText';
 import styles from './Features.module.css';
 
 const rows = [
-  { feature: 'LiDAR 3D Scanning',    tardis: 'Full room capture',   ikea: 'Single-item AR',    houzz: '—',               wayfair: '—' },
-  { feature: 'Multi-brand Commerce', tardis: 'Neutral platform',    ikea: 'IKEA only',         houzz: 'Referral links',  wayfair: 'Wayfair only' },
-  { feature: 'AI-powered Design',    tardis: 'Real-time AI styling',ikea: '—',                 houzz: 'Basic matching',  wayfair: 'Limited' },
-  { feature: 'Unified Checkout',     tardis: 'One cart, all brands',ikea: 'IKEA only',         houzz: '—',               wayfair: 'Wayfair only' },
-  { feature: 'Photorealistic Preview',tardis: 'In your actual room',ikea: 'AR placement',      houzz: 'Room visualizer', wayfair: '—' },
+  { feature: 'AR Furniture Visualizer',  tardis: 'Photoreal, in your room',  ikea: 'AR placement only',  houzz: 'Room visualizer',  wayfair: 'Tardis (Wayfair only)' },
+  { feature: 'LiDAR 3D Room Scanning',   tardis: 'Full room capture',        ikea: 'Single-item AR',     houzz: '—',                wayfair: '—' },
+  { feature: 'Multi-brand Furniture',    tardis: 'IKEA + Wayfair + CB2 + more', ikea: 'IKEA only',       houzz: 'Referral links',   wayfair: 'Wayfair only' },
+  { feature: 'AI-powered Design',        tardis: 'Real-time AI styling',     ikea: '—',                  houzz: 'Basic matching',   wayfair: 'Limited' },
+  { feature: 'Unified Checkout',         tardis: 'One cart, all brands',     ikea: 'IKEA only',          houzz: '—',                wayfair: 'Wayfair only' },
+  { feature: 'Augmented Reality Try-on', tardis: 'Walk-around, true scale',  ikea: 'Front-on only',      houzz: '—',                wayfair: 'Limited' },
 ];
 
 export default function Features() {
@@ -76,6 +77,11 @@ export default function Features() {
             </span>
           ))}
         </h2>
+
+        <p className={styles.sub}>
+          The AR furniture visualizer built for actual purchasing decisions — not window shopping.
+          Compare TARDIS against IKEA Place, Houzz, and Wayfair&apos;s Tardis tool.
+        </p>
 
         <div className={styles.tableWrap}>
 

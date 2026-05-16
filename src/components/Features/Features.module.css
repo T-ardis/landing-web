@@ -25,7 +25,15 @@
   font-weight: 700;
   line-height: 1.05;
   letter-spacing: -0.03em;
-  margin-bottom: 4rem;
+  margin-bottom: 1.25rem;
+}
+
+.sub {
+  font-size: var(--text-lg);
+  color: var(--text-secondary);
+  line-height: 1.55;
+  max-width: 60ch;
+  margin-bottom: 3rem;
 }
 
 .wordWrap  { display: inline-block; overflow: hidden; vertical-align: bottom; }

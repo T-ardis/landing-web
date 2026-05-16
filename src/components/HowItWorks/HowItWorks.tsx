@@ -9,7 +9,7 @@ const steps = [
     num: '01',
     label: 'Scan',
     title: 'Point. Capture. Done.',
-    body: 'iPhone LiDAR builds a millimeter-precise 3D room map in under 60 seconds. Walls, windows, alcoves — captured automatically.',
+    body: 'iPhone LiDAR builds a millimeter-precise 3D map of your room in under 60 seconds. Walls, windows, alcoves — captured automatically. The foundation every AR furniture visualizer needs to render at true scale.',
     icon: (
       <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
         <rect x="8" y="8" width="32" height="32" rx="2"/>
@@ -22,8 +22,8 @@ const steps = [
   {
     num: '02',
     label: 'Design',
-    title: 'AI drops furniture. Instantly.',
-    body: 'Photorealistic furniture from our multi-brand catalog appears in your actual room. Swap styles, colors, sizes in real time.',
+    title: 'See furniture in your room.',
+    body: 'Photorealistic furniture from IKEA, Wayfair, CB2 and more appears inside your actual room with augmented reality — at true scale, in your light. Swap styles, colors and sizes in real time.',
     icon: (
       <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
         <path d="M6 42l8-8 4 4-8 8z"/><path d="M14 34l20-20"/>
@@ -185,7 +185,9 @@ export default function HowItWorks() {
                 </span>
               ))}
             </h2>
-            <p className={styles.sub}>Scroll to reveal each step</p>
+            <p className={styles.sub}>
+              LiDAR room scan → AR furniture visualizer → one-tap multi-brand checkout.
+            </p>
           </div>
 
           {/* Right: steps unfold on scroll */}

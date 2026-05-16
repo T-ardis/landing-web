@@ -4,6 +4,7 @@ import styles from './Footer.module.css';
 const FOOTER_LINKS = [
   { label: 'Home', href: '/' },
   { label: 'Blog', href: '/blog' },
+  { label: 'About', href: '/about' },
 ];
 
 export default function Footer() {

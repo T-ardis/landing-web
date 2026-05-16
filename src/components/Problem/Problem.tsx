@@ -158,6 +158,11 @@ export default function Problem() {
             People spend thousands on renovation.<br />
             They still get it <em>wrong.</em> Every time.
           </p>
+          <p className={styles.noteSub}>
+            Buying furniture online is guesswork. Product photos lie about scale, color, and light.
+            Without an AR furniture visualizer to see furniture in your room before you click buy,
+            every purchase is a $30B-a-year gamble — and most people just live with the mistake.
+          </p>
         </div>
       </div>
     </section>

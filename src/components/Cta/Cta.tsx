@@ -76,7 +76,8 @@ export default function Cta() {
           Build your<br /><em>dream home.</em>
         </h2>
         <p className={styles.sub}>
-          Join the waitlist. Be first to scan, design, and buy — all in one place.
+          Be first on the AR furniture visualizer that lets you see furniture in your room
+          at true scale — IKEA, Wayfair &amp; CB2, one cart, one tap.
         </p>
 
         {submitted ? (

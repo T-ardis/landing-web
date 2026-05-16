@@ -3,27 +3,42 @@ import robots from '../robots';
 import sitemap from '../sitemap';
 
 describe('layout.tsx metadata', () => {
-  it('should define the correct title', () => {
+  it('should define a keyword-led title for AR furniture visualizer SERPs', () => {
     expect(metadata.title).toEqual({
-      default: 'TARDIS — Scan it. Style it. Own it.',
+      default: 'AR Furniture Visualizer — See Furniture in Your Room | TARDIS',
       template: '%s | TARDIS',
     });
   });
 
-  it('should define the correct description', () => {
+  it('should define a description that front-loads the AR furniture visualizer keyword', () => {
     expect(metadata.description).toBe(
-      'TARDIS uses iPhone LiDAR to map your room in 60 seconds, drops AI-selected furniture photorealistically, and checks out across IKEA, Wayfair, CB2 and more — one cart, one tap.',
+      'The AR furniture visualizer for iPhone. Scan your room with LiDAR, see how furniture looks in your room photorealistically, and check out across IKEA, Wayfair & CB2 in one tap.',
     );
   });
 
-  it('should define keywords including commercial-intent terms', () => {
+  it('should include the top-volume Search Console keywords', () => {
     const keywords = metadata.keywords as string[];
+    // Head terms straight from Google Search Console (highest impressions)
+    expect(keywords).toContain('AR furniture visualizer');
+    expect(keywords).toContain('furniture visualizer');
+    expect(keywords).toContain('furniture visualiser');
+    expect(keywords).toContain('augmented reality furniture viewer');
+    expect(keywords).toContain('3d augmented reality furniture');
+    expect(keywords).toContain('AR furniture try-on');
+    expect(keywords).toContain('furniture in room visualizer');
+    // Long-tail intent variants
+    expect(keywords).toContain('see furniture in your room');
+    expect(keywords).toContain('visualize furniture in room');
+    expect(keywords).toContain('view furniture in room');
+    // Brand-defensive
+    expect(keywords).toContain('wayfair tardis alternative');
+    // Original commercial-intent kept for breadth
     expect(keywords).toContain('home renovation app');
     expect(keywords).toContain('AI interior design');
     expect(keywords).toContain('LiDAR room scanner');
     expect(keywords).toContain('best room scanner app iPhone');
     expect(keywords).toContain('try furniture before you buy');
-    expect(keywords.length).toBeGreaterThanOrEqual(12);
+    expect(keywords.length).toBeGreaterThanOrEqual(20);
   });
 });
 
@@ -32,25 +47,28 @@ describe('layout.tsx openGraph metadata', () => {
     expect(metadata.openGraph).toHaveProperty('url', 'https://www.tardis-ai.com');
   });
 
-  it('should set the correct title', () => {
-    expect(metadata.openGraph).toHaveProperty('title', 'TARDIS — Scan it. Style it. Own it.');
-  });
-
-  it('should set the correct description', () => {
+  it('should set a keyword-led OG title', () => {
     expect(metadata.openGraph).toHaveProperty(
-      'description',
-      'LiDAR scan your room → AI places furniture photorealistically → one-click checkout across IKEA, Wayfair, CB2 and more. Home design, reimagined.',
+      'title',
+      'AR Furniture Visualizer — See Furniture in Your Room | TARDIS',
     );
   });
 
-  it('should set the correct image', () => {
+  it('should set a keyword-rich OG description', () => {
+    expect(metadata.openGraph).toHaveProperty(
+      'description',
+      'Scan your room with iPhone LiDAR. See how furniture looks in your room with photorealistic AR. Check out across IKEA, Wayfair & CB2 in one tap.',
+    );
+  });
+
+  it('should set the OG image with keyword-rich alt text', () => {
     const og = metadata.openGraph as Record<string, unknown>;
     expect(og.images).toEqual([
       {
         url: '/opengraph-image',
         width: 1200,
         height: 630,
-        alt: 'TARDIS — AI-powered home design app',
+        alt: 'TARDIS — AR furniture visualizer for iPhone',
       },
     ]);
   });
@@ -61,18 +79,21 @@ describe('layout.tsx twitter metadata', () => {
     expect(metadata.twitter).toHaveProperty('card', 'summary_large_image');
   });
 
-  it('should set the correct title', () => {
-    expect(metadata.twitter).toHaveProperty('title', 'TARDIS — Scan it. Style it. Own it.');
-  });
-
-  it('should set the correct description', () => {
+  it('should set a keyword-led Twitter title', () => {
     expect(metadata.twitter).toHaveProperty(
-      'description',
-      'LiDAR scan → AI furniture placement → one-tap multi-brand checkout. Home design, finally solved.',
+      'title',
+      'AR Furniture Visualizer — See Furniture in Your Room | TARDIS',
     );
   });
 
-  it('should set the correct image', () => {
+  it('should set a keyword-rich Twitter description', () => {
+    expect(metadata.twitter).toHaveProperty(
+      'description',
+      'AR furniture visualizer for iPhone. Scan, see, and shop furniture in your room — one cart across IKEA, Wayfair & CB2.',
+    );
+  });
+
+  it('should set the correct Twitter image', () => {
     expect(metadata.twitter).toHaveProperty('images', ['/opengraph-image']);
   });
 });
@@ -83,6 +104,7 @@ describe('robots.ts', () => {
     expect(result.rules).toEqual({
       userAgent: '*',
       allow: '/',
+      disallow: ['/opengraph-image', '/blog/*/opengraph-image'],
     });
   });
 
@@ -98,11 +120,12 @@ describe('robots.ts', () => {
 });
 
 describe('sitemap.ts', () => {
-  it('should include home, blog index, and all blog posts', () => {
+  it('should include home, blog index, about page, and all blog posts', () => {
     const result = sitemap();
-    expect(result.length).toBeGreaterThanOrEqual(3);
+    expect(result.length).toBeGreaterThanOrEqual(4);
     expect(result[0].url).toBe('https://www.tardis-ai.com');
     expect(result[1].url).toBe('https://www.tardis-ai.com/blog');
+    expect(result[2].url).toBe('https://www.tardis-ai.com/about');
   });
 
   it('should set home page priority to 1', () => {
@@ -113,6 +136,11 @@ describe('sitemap.ts', () => {
   it('should set blog index priority to 0.9', () => {
     const result = sitemap();
     expect(result[1].priority).toBe(0.9);
+  });
+
+  it('should set about page priority lower than blog (secondary content)', () => {
+    const result = sitemap();
+    expect(result[2].priority).toBe(0.5);
   });
 
   it('should include blog posts with proper URLs', () => {

@@ -10,11 +10,10 @@ const APP_URL = process.env.NEXT_PUBLIC_APP_URL || '/try';
 
 const SECTION_LINKS = [
   { label: 'The Problem',   hash: '#problem' },
-  { label: 'The Solution',  hash: '#how-it-works' },
+  { label: 'How It Works',  hash: '#how-it-works' },
   { label: 'Features',      hash: '#features' },
-  { label: 'Market',        hash: '#market' },
-  { label: 'Team',          hash: '#team' },
-  { label: 'Roadmap',       hash: '#roadmap' },
+  { label: 'Use Cases',     hash: '#use-cases' },
+  { label: 'FAQ',           hash: '#faq' },
 ];
 
 export default function Nav() {
@@ -146,6 +145,15 @@ export default function Nav() {
               tabIndex={isOpen ? 0 : -1}
             >
               Blog
+            </Link>
+            <Link
+              href="/about"
+              className={`${styles.overlayLink} ${pathname === '/about' ? styles.overlayLinkActive : ''}`}
+              style={{ transitionDelay: isOpen ? `${0.08 + (isHome ? SECTION_LINKS.length + 1 : SECTION_LINKS.length + 2) * 0.055}s` : '0s' }}
+              onClick={() => setIsOpen(false)}
+              tabIndex={isOpen ? 0 : -1}
+            >
+              About
             </Link>
           </nav>
 
