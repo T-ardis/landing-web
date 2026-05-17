@@ -1,0 +1,9 @@
+[     145ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:3211/_next/static/chunks/node_modules_next_dist_f3530cac._.js:2297
+[     195ms] [LOG] [HMR] connected @ http://localhost:3211/_next/static/chunks/node_modules_next_dist_f3530cac._.js:2297
+[  101030ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:3211/_next/static/chunks/node_modules_next_dist_f3530cac._.js:2297
+[  101082ms] [LOG] [HMR] connected @ http://localhost:3211/_next/static/chunks/node_modules_next_dist_f3530cac._.js:2297
+[  112712ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3211/try:0
+[  112742ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:3211/_next/static/chunks/node_modules_next_dist_f3530cac._.js:2297
+[  112762ms] [LOG] [HMR] connected @ http://localhost:3211/_next/static/chunks/node_modules_next_dist_f3530cac._.js:2297
+[  114334ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:3211/_next/static/chunks/node_modules_next_dist_f3530cac._.js:2297
+[  114354ms] [LOG] [HMR] connected @ http://localhost:3211/_next/static/chunks/node_modules_next_dist_f3530cac._.js:2297

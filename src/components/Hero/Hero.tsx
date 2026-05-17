@@ -1,357 +1,326 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useState } from 'react';
 import styles from './Hero.module.css';
 
+const APP_URL = process.env.NEXT_PUBLIC_APP_URL || 'https://app.tardis-ai.com/';
+
 export default function Hero() {
-  const canvasRef  = useRef<HTMLCanvasElement>(null);
-  const sectionRef = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    let animFrameId: number;
-    let cleanupFn: (() => void) | undefined;
-
-    const init = async () => {
-      const [THREE, { gsap }, { ScrollTrigger }] = await Promise.all([
-        import('three'),
-        import('gsap'),
-        import('gsap/ScrollTrigger'),
-      ]);
-      gsap.registerPlugin(ScrollTrigger);
-
-      const canvas  = canvasRef.current;
-      const section = sectionRef.current;
-      if (!canvas || !section) return;
-
-      const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      const isMobile       = window.innerWidth < 768 || window.matchMedia('(hover: none)').matches;
-
-      // ─── Renderer ───────────────────────────────────────────
-      const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
-      renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
-      renderer.setSize(window.innerWidth, window.innerHeight);
-      renderer.setClearColor(0x000000, 0);
-
-      const scene  = new THREE.Scene();
-      const camera = new THREE.PerspectiveCamera(46, window.innerWidth / window.innerHeight, 0.1, 1000);
-      camera.position.set(1.5, 2.8, 10);
-      camera.lookAt(0, -0.5, 0);
-
-      const clock  = new THREE.Clock();
-      const ACCENT = new THREE.Color(0xc8a97e);
-
-      const rootGroup = new THREE.Group();
-      scene.add(rootGroup);
-
-      // ─── Materials ──────────────────────────────────────────
-      const wireMat = new THREE.LineBasicMaterial({
-        color: ACCENT, transparent: true, opacity: 0.30,
-      });
-      const edgeMat = new THREE.LineBasicMaterial({
-        color: ACCENT, transparent: true, opacity: 0.55,
-      });
-      const fillMat = new THREE.MeshBasicMaterial({
-        color: 0x0c0a07, transparent: true, opacity: 0.92,
-      });
-
-      // Helper: add a mesh + its edges to a group
-      const addBox = (
-        group: InstanceType<typeof THREE.Group>,
-        w: number, h: number, d: number,
-        x: number, y: number, z: number,
-        mat?: InstanceType<typeof THREE.MeshBasicMaterial>,
-      ) => {
-        const geo   = new THREE.BoxGeometry(w, h, d);
-        const mesh  = new THREE.Mesh(geo, mat ?? fillMat);
-        mesh.position.set(x, y, z);
-        const edges = new THREE.LineSegments(new THREE.EdgesGeometry(geo), edgeMat);
-        edges.position.set(x, y, z);
-        group.add(mesh, edges);
-        return { geo, mesh, edges };
-      };
-
-      const addCyl = (
-        group: InstanceType<typeof THREE.Group>,
-        rt: number, rb: number, h: number, segs: number,
-        x: number, y: number, z: number,
-      ) => {
-        const geo   = new THREE.CylinderGeometry(rt, rb, h, segs);
-        const mesh  = new THREE.Mesh(geo, fillMat);
-        mesh.position.set(x, y, z);
-        const edges = new THREE.LineSegments(new THREE.EdgesGeometry(geo), edgeMat);
-        edges.position.set(x, y, z);
-        group.add(mesh, edges);
-        return { geo, mesh, edges };
-      };
-
-      // ─── Room shell ─────────────────────────────────────────
-      // Back wall, left wall, right wall, floor, ceiling — open front
-      const FLOOR_Y = -2.25;
-      const CEIL_Y  =  2.25;
-      const roomGroup = new THREE.Group();
-
-      // Walls as planes (EdgesGeometry on PlaneGeometry = 4 lines per plane)
-      const wallMat = wireMat;
-      const planeEdge = (w: number, h: number, rx: number, ry: number, rz: number, px: number, py: number, pz: number) => {
-        const geo  = new THREE.PlaneGeometry(w, h, 4, 3);
-        const edge = new THREE.LineSegments(new THREE.EdgesGeometry(geo), wallMat.clone());
-        edge.rotation.set(rx, ry, rz);
-        edge.position.set(px, py, pz);
-        roomGroup.add(edge);
-      };
-      planeEdge(10, 4.5, 0,      0,    0,    0,  0, -3.5);   // back wall
-      planeEdge(4.5, 10, 0, -Math.PI/2, 0,  0, FLOOR_Y, 0);  // floor
-      planeEdge(4.5, 10, 0,  Math.PI/2, 0,  0, CEIL_Y,  0);  // ceiling
-      planeEdge(4.5, 4.5, 0,  Math.PI/2,  Math.PI/2, -5, 0, 0); // left wall
-      planeEdge(4.5, 4.5, 0, -Math.PI/2,  Math.PI/2,  5, 0, 0); // right wall
-
-      // Window frame on back wall
-      addBox(roomGroup, 2.0, 1.4, 0.04,  1.2, 0.6, -3.48);   // window opening border
-      addBox(roomGroup, 0.04, 1.4, 0.04, 1.2, 0.6, -3.48);   // vertical pane divider
-      addBox(roomGroup, 2.0, 0.04, 0.04, 1.2, 0.6, -3.48);   // horizontal pane divider
-
-      rootGroup.add(roomGroup);
-
-      // ─── Floor grid ─────────────────────────────────────────
-      const grid    = new THREE.GridHelper(10, 20, ACCENT, ACCENT);
-      const gridMat = grid.material as import('three').Material;
-      gridMat.transparent = true;
-      gridMat.opacity     = 0.08;
-      grid.position.y     = FLOOR_Y;
-      rootGroup.add(grid);
-
-      // ─── Furniture ──────────────────────────────────────────
-      const furGroup = new THREE.Group();
-
-      // ── Sofa ──────────────────────────────────────────────
-      const sofa = new THREE.Group();
-      // Seat cushion base
-      addBox(sofa, 3.2, 0.45, 1.1,  0, 0, 0);
-      // Back rest
-      addBox(sofa, 3.2, 1.0, 0.30,  0, 0.72, -0.40);
-      // Left armrest
-      addBox(sofa, 0.28, 0.65, 1.1, -1.46, 0.10, 0);
-      // Right armrest
-      addBox(sofa, 0.28, 0.65, 1.1,  1.46, 0.10, 0);
-      // 4 legs
-      [[-1.3, -0.4], [1.3, -0.4], [-1.3, 0.4], [1.3, 0.4]].forEach(([lx, lz]) => {
-        addBox(sofa, 0.10, 0.28, 0.10, lx, -0.36, lz);
-      });
-      // 3 seat cushions (thin pillows)
-      [-1.0, 0, 1.0].forEach(cx => {
-        addBox(sofa, 0.9, 0.12, 1.0, cx, 0.25, 0.02);
-      });
-      // 2 back cushions
-      [-0.82, 0.82].forEach(cx => {
-        addBox(sofa, 1.1, 0.7, 0.18, cx, 0.6, -0.30);
-      });
-      sofa.position.set(-1.8, FLOOR_Y + 0.50, 0.6);
-      furGroup.add(sofa);
-
-      // ── Coffee table ──────────────────────────────────────
-      const table = new THREE.Group();
-      // Tabletop
-      addBox(table, 1.8, 0.08, 0.90, 0, 0, 0);
-      // Lower shelf
-      addBox(table, 1.5, 0.06, 0.70, 0, -0.38, 0);
-      // 4 tapered legs
-      [[-0.82, -0.38], [0.82, -0.38], [-0.82, 0.38], [0.82, 0.38]].forEach(([lx, lz]) => {
-        addCyl(table, 0.035, 0.045, 0.74, 6, lx, -0.37, lz);
-      });
-      // Small decor: a book stack
-      addBox(table, 0.35, 0.07, 0.25,  0.5, 0.07, 0);
-      addBox(table, 0.30, 0.05, 0.22,  0.5, 0.135, 0);
-      // Small bowl/sphere
-      addCyl(table, 0.12, 0.15, 0.08, 8, -0.4, 0.06, 0);
-      table.position.set(1.0, FLOOR_Y + 0.42, 0.3);
-      furGroup.add(table);
-
-      // ── Floor lamp ────────────────────────────────────────
-      const lamp = new THREE.Group();
-      // Heavy base disc
-      addCyl(lamp, 0.22, 0.26, 0.06, 10, 0, 0, 0);
-      // Pole — slim cylinder
-      addCyl(lamp, 0.025, 0.025, 2.4, 8, 0, 1.23, 0);
-      // Mid-pole ring detail
-      addCyl(lamp, 0.06, 0.06, 0.05, 8, 0, 0.9, 0);
-      // Shade (cone)
-      const shadGeo  = new THREE.CylinderGeometry(0.30, 0.16, 0.55, 10, 1, true);
-      const shadMesh = new THREE.Mesh(shadGeo, fillMat);
-      shadMesh.position.set(0, 2.55, 0);
-      const shadEdge = new THREE.LineSegments(new THREE.EdgesGeometry(shadGeo), edgeMat);
-      shadEdge.position.set(0, 2.55, 0);
-      lamp.add(shadMesh, shadEdge);
-      // Inner top cap
-      addCyl(lamp, 0.15, 0.15, 0.04, 10, 0, 2.83, 0);
-      lamp.position.set(3.5, FLOOR_Y, -1.2);
-      furGroup.add(lamp);
-
-      // ── Bookshelf ─────────────────────────────────────────
-      const shelf = new THREE.Group();
-      const SW = 1.4, SH = 3.0, SD = 0.36;
-      // Outer frame
-      addBox(shelf, SW, 0.055, SD,  0, 0,      0);   // bottom
-      addBox(shelf, SW, 0.055, SD,  0, SH,     0);   // top
-      addBox(shelf, 0.055, SH, SD, -SW/2 + 0.03, SH/2, 0); // left side
-      addBox(shelf, 0.055, SH, SD,  SW/2 - 0.03, SH/2, 0); // right side
-      addBox(shelf, SW, SH, 0.055,  0, SH/2, -SD/2 + 0.03); // back panel
-      // 3 internal shelves at different heights
-      [0.75, 1.55, 2.35].forEach(sy => {
-        addBox(shelf, SW - 0.12, 0.04, SD, 0, sy, 0);
-      });
-      // Books — varying heights & widths on each shelf level
-      const bookData: [number, number, number, number][] = [
-        // [shelf_y, x_offset, book_w, book_h]
-        [0.42,  -0.48, 0.10, 0.54], [0.42, -0.36, 0.09, 0.50], [0.42, -0.24, 0.11, 0.60],
-        [0.42, -0.11, 0.08, 0.45], [0.42,  0.02, 0.10, 0.52], [0.42,  0.15, 0.09, 0.48],
-        [0.42,  0.26, 0.10, 0.56], [0.42,  0.38, 0.11, 0.42],
-        [1.22, -0.5,  0.10, 0.55], [1.22, -0.38, 0.09, 0.48], [1.22, -0.25, 0.12, 0.62],
-        [1.22, -0.10, 0.08, 0.44], [1.22,  0.02, 0.10, 0.58],
-        [2.02, -0.48, 0.09, 0.46], [2.02, -0.37, 0.11, 0.52], [2.02, -0.23, 0.10, 0.50],
-        [2.02, -0.10, 0.08, 0.44], [2.02,  0.02, 0.09, 0.49], [2.02,  0.13, 0.10, 0.53],
-      ];
-      bookData.forEach(([sy, bx, bw, bh]) => {
-        addBox(shelf, bw, bh, SD * 0.82, bx, sy + bh / 2, 0);
-      });
-      // Small decorative object on top
-      addCyl(shelf, 0.07, 0.09, 0.28, 8, 0.2, SH + 0.16, 0);
-      addBox(shelf, 0.22, 0.10, 0.14, -0.3, SH + 0.055, 0);
-      shelf.position.set(-4.2, FLOOR_Y, -0.5);
-      furGroup.add(shelf);
-
-      // ── Rug (flat box with subdivided edge lines) ──────────
-      const rugGeo  = new THREE.BoxGeometry(4.2, 0.03, 2.6, 6, 1, 4);
-      const rugMesh = new THREE.Mesh(rugGeo, fillMat);
-      rugMesh.position.set(-0.4, FLOOR_Y + 0.016, 0.4);
-      const rugEdge = new THREE.LineSegments(new THREE.EdgesGeometry(rugGeo), new THREE.LineBasicMaterial({ color: ACCENT, transparent: true, opacity: 0.20 }));
-      rugEdge.position.copy(rugMesh.position);
-      furGroup.add(rugMesh, rugEdge);
-
-      rootGroup.add(furGroup);
-
-      // ─── Particles ──────────────────────────────────────────
-      const COUNT = isMobile ? 80 : 220;
-      const positions = new Float32Array(COUNT * 3);
-      const velocities: { phase: number; speed: number; amp: number; origY: number }[] = [];
-      for (let i = 0; i < COUNT; i++) {
-        const x = (Math.random() - 0.5) * 9;
-        const y = (Math.random() - 0.5) * 4;
-        const z = (Math.random() - 0.5) * 7;
-        positions[i * 3] = x; positions[i * 3 + 1] = y; positions[i * 3 + 2] = z;
-        velocities.push({ phase: Math.random() * Math.PI * 2, speed: 0.15 + Math.random() * 0.35, amp: 0.002 + Math.random() * 0.003, origY: y });
-      }
-      const particleGeo = new THREE.BufferGeometry();
-      particleGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-      const particleMat = new THREE.PointsMaterial({ color: ACCENT, size: 0.035, transparent: true, opacity: 0.40, sizeAttenuation: true });
-      rootGroup.add(new THREE.Points(particleGeo, particleMat));
-
-      // ─── Mouse ──────────────────────────────────────────────
-      const mouseTarget  = { x: 0, y: 0 };
-      const mouseCurrent = { x: 0, y: 0 };
-      const onMouse = (e: MouseEvent) => {
-        mouseTarget.x = (e.clientX / window.innerWidth  - 0.5) * 2;
-        mouseTarget.y = (e.clientY / window.innerHeight - 0.5) * 2;
-      };
-      if (!isMobile) document.addEventListener('mousemove', onMouse);
-
-      // ─── Visibility observer ────────────────────────────────
-      let visible = true;
-      const obs = new IntersectionObserver(e => { visible = e[0].isIntersecting; }, { threshold: 0 });
-      obs.observe(section);
-
-      // ─── Render loop ────────────────────────────────────────
-      const animate = () => {
-        animFrameId = requestAnimationFrame(animate);
-        if (!visible) { renderer.render(scene, camera); return; }
-        const t = clock.getElapsedTime();
-
-        if (!prefersReduced) {
-          mouseCurrent.x += (mouseTarget.x - mouseCurrent.x) * 0.028;
-          mouseCurrent.y += (mouseTarget.y - mouseCurrent.y) * 0.028;
-          rootGroup.rotation.y = Math.sin(t * 0.06) * 0.04 + mouseCurrent.x * 0.09;
-          rootGroup.rotation.x = mouseCurrent.y * 0.04;
-          wireMat.opacity   = 0.22 + Math.sin(t * 0.5) * 0.08;
-          edgeMat.opacity   = 0.45 + Math.sin(t * 0.5 + 1) * 0.10;
-
-          const pos = particleGeo.attributes.position.array as Float32Array;
-          for (let i = 0; i < COUNT; i++) {
-            const v = velocities[i];
-            pos[i * 3 + 1] = v.origY + Math.sin(t * v.speed + v.phase) * v.amp * 60;
-          }
-          particleGeo.attributes.position.needsUpdate = true;
-        }
-
-        renderer.render(scene, camera);
-      };
-      animate();
-
-      // ─── Resize ─────────────────────────────────────────────
-      const onResize = () => {
-        camera.aspect = window.innerWidth / window.innerHeight;
-        camera.updateProjectionMatrix();
-        renderer.setSize(window.innerWidth, window.innerHeight);
-        renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
-      };
-      window.addEventListener('resize', onResize);
-
-      // ─── Scroll fade ────────────────────────────────────────
-      const st = ScrollTrigger.create({
-        trigger: section,
-        start: 'top top',
-        end: 'bottom top',
-        scrub: 1.2,
-        onUpdate: self => {
-          if (canvas) canvas.style.opacity = String(Math.max(0, 1 - self.progress * 1.4));
-          if (!prefersReduced) rootGroup.rotation.y += self.progress * 0.004;
-        },
-      });
-
-      cleanupFn = () => {
-        cancelAnimationFrame(animFrameId);
-        st.kill();
-        obs.disconnect();
-        document.removeEventListener('mousemove', onMouse);
-        window.removeEventListener('resize', onResize);
-        renderer.dispose();
-        particleGeo.dispose();
-      };
-    };
-
-    if ('requestIdleCallback' in window) {
-      requestIdleCallback(() => init(), { timeout: 2000 });
-    } else {
-      setTimeout(init, 200);
-    }
-    return () => { cleanupFn?.(); };
-  }, []);
-
   return (
-    <section ref={sectionRef} id="hero" className={styles.hero}>
-      <canvas ref={canvasRef} className={styles.canvas} aria-hidden="true" />
+    <header id="hero" className={styles.hero}>
+      <div className="wrap">
+        <div className={styles.grid}>
+          <div className={styles.copy}>
+            <span className="eyebrow">
+              <span className="dot" />
+              HOME DESIGN · FINALLY SOLVED
+            </span>
+            <h1 className={styles.headline}>
+              Scan it. <span className="italic">Style it.</span>
+              <br />
+              Own it.
+            </h1>
+            <p className={`lead ${styles.lead}`}>
+              TARDIS turns your iPhone into a furniture superpower. Scan your room in 60 seconds.
+              Let AI style it across every retailer. Buy it — coordinated, in one cart.
+            </p>
 
-      <div className={styles.content}>
-        <p className={styles.eyebrow}>AR Furniture Visualizer for iPhone</p>
-        <h1 className={styles.headline} aria-label="TARDIS — the AR furniture visualizer that lets you scan your room, style it, and own it.">
-          <span className={styles.line}><span className={styles.lineInner}>Scan it.</span></span>
-          <span className={styles.line}><span className={styles.lineInner}>Style it.</span></span>
-          <span className={`${styles.line} ${styles.lineAccent}`}>
-            <span className={styles.lineInner}>Own it.</span>
-          </span>
-        </h1>
-        <p className={styles.sub}>
-          See how furniture looks in your room with photorealistic AR. LiDAR-precise.
-          One cart across IKEA, Wayfair &amp; CB2.
-        </p>
-        <div className={styles.ctaGroup}>
-          <a href={process.env.NEXT_PUBLIC_APP_URL || '/try'} className={styles.btnPrimary}>Try It Free</a>
-          <a href="#how-it-works" className={styles.btnGhost}>How it works</a>
+            <div className={styles.ctaRow}>
+              <a href={APP_URL} className="btn btn-primary">
+                Try the AR viewer free <span className="arrow">→</span>
+              </a>
+              <a href="#products" className="btn btn-ghost">
+                See the three tools
+              </a>
+            </div>
+
+            <div className={styles.stats}>
+              <Stat value="60" unit="s"   label="AVERAGE ROOM SCAN" />
+              <Stat value="±1" unit="cm"  label="PLACEMENT PRECISION" />
+              <Stat value="1"  unit="×"   label="CART · EVERY BRAND" />
+            </div>
+          </div>
+
+          <PhotoRoomCard />
         </div>
       </div>
+    </header>
+  );
+}
 
-      <div className={styles.scrollHint} aria-hidden="true">
-        <span>Scroll</span>
-        <div className={styles.scrollLine} />
+function Stat({ value, unit, label }: { value: string; unit: string; label: string }) {
+  return (
+    <div className={styles.stat}>
+      <div className={styles.statNum}>
+        {value}
+        <span className={styles.statUnit}>{unit}</span>
       </div>
-    </section>
+      <div className={`caption ${styles.statLabel}`}>{label}</div>
+    </div>
+  );
+}
+
+/* =========================================================
+   PhotoRoomCard — rotates between empty / scanning / styled
+========================================================= */
+function PhotoRoomCard() {
+  const [phase, setPhase] = useState(0);
+
+  useEffect(() => {
+    const id = setInterval(() => setPhase((p) => (p + 1) % 3), 3400);
+    return () => clearInterval(id);
+  }, []);
+
+  const chipLabel =
+    phase === 0 ? 'ROOM · UNFURNISHED'
+    : phase === 1 ? 'SCANNING · LIDAR'
+    : 'STYLED · AI · ONE CART';
+
+  return (
+    <figure className={styles.photoCard}>
+      <div className={styles.photoStack}>
+        <div className={styles.photoLayer} style={{ opacity: phase === 0 ? 1 : 0 }}>
+          <PhotoRoomEmpty />
+        </div>
+        <div className={styles.photoLayer} style={{ opacity: phase === 1 ? 1 : 0 }}>
+          <PhotoRoomEmpty />
+          <div className={styles.scanOverlay}>
+            <ScanOverlay active={phase === 1} />
+          </div>
+        </div>
+        <div className={styles.photoLayer} style={{ opacity: phase === 2 ? 1 : 0 }}>
+          <PhotoRoomStyled />
+        </div>
+
+        <div className={`chip ${styles.phaseChip}`}>
+          <span className="led" />
+          {chipLabel}
+        </div>
+
+        <div className={styles.dots}>
+          {[0, 1, 2].map((i) => (
+            <button
+              key={i}
+              onClick={() => setPhase(i)}
+              aria-label={`Show step ${i + 1}`}
+              className={`${styles.dot} ${phase === i ? styles.dotActive : ''}`}
+            />
+          ))}
+        </div>
+      </div>
+    </figure>
+  );
+}
+
+/* =========================================================
+   SVG illustrations — magazine-quality empty + styled room
+========================================================= */
+function PhotoRoomEmpty() {
+  return (
+    <svg
+      viewBox="0 0 400 500"
+      preserveAspectRatio="xMidYMid slice"
+      aria-hidden="true"
+      style={{ width: '100%', height: '100%' }}
+    >
+      <defs>
+        <linearGradient id="he-wall" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="#EFE5D2" />
+          <stop offset="100%" stopColor="#E5D7BD" />
+        </linearGradient>
+        <linearGradient id="he-floor" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="#A07349" />
+          <stop offset="100%" stopColor="#6F4A2A" />
+        </linearGradient>
+        <linearGradient id="he-window" x1="0.5" y1="0" x2="0.5" y2="1">
+          <stop offset="0%" stopColor="#FFF4DD" stopOpacity="0.9" />
+          <stop offset="100%" stopColor="#FFF4DD" stopOpacity="0" />
+        </linearGradient>
+        <linearGradient id="he-sun" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="#FFE9B8" stopOpacity="0.7" />
+          <stop offset="100%" stopColor="#FFE9B8" stopOpacity="0" />
+        </linearGradient>
+      </defs>
+
+      <rect x="0" y="0" width="400" height="340" fill="url(#he-wall)" />
+      <polygon points="0,340 400,340 400,500 0,500" fill="url(#he-floor)" />
+      <g stroke="#4A2E18" strokeWidth="0.5" opacity="0.3">
+        <line x1="60" y1="340" x2="40" y2="500" />
+        <line x1="140" y1="340" x2="140" y2="500" />
+        <line x1="220" y1="340" x2="240" y2="500" />
+        <line x1="300" y1="340" x2="340" y2="500" />
+      </g>
+      <rect x="0" y="332" width="400" height="10" fill="#FBFAF7" />
+      <line x1="0" y1="342" x2="400" y2="342" stroke="#4A2E18" strokeWidth="0.4" opacity="0.5" />
+
+      <rect x="50" y="60" width="220" height="200" fill="#F5F1EA" stroke="#3A2818" strokeWidth="1.5" />
+      <line x1="160" y1="60" x2="160" y2="260" stroke="#3A2818" strokeWidth="1.5" />
+      <line x1="50" y1="160" x2="270" y2="160" stroke="#3A2818" strokeWidth="1" />
+      <rect x="52" y="62" width="216" height="196" fill="url(#he-window)" />
+      <rect x="52" y="200" width="216" height="58" fill="#C9D8C2" opacity="0.5" />
+      <circle cx="220" cy="120" r="22" fill="#FFE9B8" opacity="0.6" />
+
+      <polygon points="60,340 270,340 330,500 30,500" fill="url(#he-sun)" opacity="0.85" />
+
+      <rect x="320" y="80" width="60" height="252" fill="#4A2E18" opacity="0.05" stroke="#3A2818" strokeWidth="0.6" />
+      <rect x="328" y="100" width="44" height="60" fill="none" stroke="#3A2818" strokeWidth="0.5" />
+      <rect x="328" y="170" width="44" height="60" fill="none" stroke="#3A2818" strokeWidth="0.5" />
+      <rect x="328" y="240" width="44" height="80" fill="none" stroke="#3A2818" strokeWidth="0.5" />
+      <circle cx="335" cy="218" r="2" fill="#3A2818" />
+
+      <g fontFamily="var(--font-mono)" fontSize="8" fill="#3A2818" opacity="0.55" letterSpacing="0.12em">
+        <text x="20" y="490">4.2M × 2.8M</text>
+        <text x="380" y="490" textAnchor="end">UNFURNISHED</text>
+      </g>
+    </svg>
+  );
+}
+
+function PhotoRoomStyled() {
+  return (
+    <svg
+      viewBox="0 0 400 500"
+      preserveAspectRatio="xMidYMid slice"
+      aria-hidden="true"
+      style={{ width: '100%', height: '100%' }}
+    >
+      <defs>
+        <linearGradient id="hs-wall" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="#F0E6D2" />
+          <stop offset="100%" stopColor="#E1CFB2" />
+        </linearGradient>
+        <linearGradient id="hs-floor" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="#A87850" />
+          <stop offset="100%" stopColor="#704A2A" />
+        </linearGradient>
+        <linearGradient id="hs-window" x1="0.5" y1="0" x2="0.5" y2="1">
+          <stop offset="0%" stopColor="#FFF4DD" stopOpacity="0.85" />
+          <stop offset="100%" stopColor="#FFF4DD" stopOpacity="0" />
+        </linearGradient>
+        <linearGradient id="hs-sun" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="#FFE9B8" stopOpacity="0.55" />
+          <stop offset="100%" stopColor="#FFE9B8" stopOpacity="0" />
+        </linearGradient>
+        <radialGradient id="hs-lamp" cx="0.5" cy="0.4" r="0.6">
+          <stop offset="0%" stopColor="#FFCB80" stopOpacity="0.55" />
+          <stop offset="100%" stopColor="#FFCB80" stopOpacity="0" />
+        </radialGradient>
+        <linearGradient id="hs-sofa" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="#3A3530" />
+          <stop offset="100%" stopColor="#1F1B17" />
+        </linearGradient>
+        <pattern id="hs-rug" width="20" height="20" patternUnits="userSpaceOnUse">
+          <rect width="20" height="20" fill="#9CAE92" />
+          <line x1="0" y1="10" x2="20" y2="10" stroke="#6E8068" strokeWidth="0.4" />
+          <line x1="10" y1="0" x2="10" y2="20" stroke="#6E8068" strokeWidth="0.4" />
+          <circle cx="10" cy="10" r="1.5" fill="#6E8068" opacity="0.5" />
+        </pattern>
+      </defs>
+
+      <rect x="0" y="0" width="400" height="340" fill="url(#hs-wall)" />
+      <polygon points="0,340 400,340 400,500 0,500" fill="url(#hs-floor)" />
+      <g stroke="#4A2E18" strokeWidth="0.5" opacity="0.3">
+        <line x1="60" y1="340" x2="40" y2="500" />
+        <line x1="140" y1="340" x2="140" y2="500" />
+        <line x1="220" y1="340" x2="240" y2="500" />
+        <line x1="300" y1="340" x2="340" y2="500" />
+      </g>
+      <rect x="0" y="332" width="400" height="10" fill="#FBFAF7" />
+
+      <rect x="50" y="60" width="220" height="200" fill="#F5F1EA" stroke="#3A2818" strokeWidth="1.5" />
+      <line x1="160" y1="60" x2="160" y2="260" stroke="#3A2818" strokeWidth="1.5" />
+      <line x1="50" y1="160" x2="270" y2="160" stroke="#3A2818" strokeWidth="1" />
+      <rect x="52" y="62" width="216" height="196" fill="url(#hs-window)" />
+      <rect x="52" y="200" width="216" height="58" fill="#C9D8C2" opacity="0.5" />
+      <circle cx="220" cy="120" r="22" fill="#FFE9B8" opacity="0.6" />
+
+      <rect x="298" y="90" width="80" height="100" fill="#FBFAF7" stroke="#3A2818" strokeWidth="1.2" />
+      <rect x="304" y="96" width="68" height="88" fill="#C95A3A" opacity="0.85" />
+      <circle cx="338" cy="135" r="22" fill="#F5E6D0" opacity="0.85" />
+
+      <polygon points="60,340 270,340 330,500 30,500" fill="url(#hs-sun)" />
+
+      <polygon points="40,400 360,400 380,470 20,470" fill="url(#hs-rug)" opacity="0.95" />
+      <polygon points="40,400 360,400 380,470 20,470" fill="none" stroke="#3A2818" strokeWidth="0.6" opacity="0.5" />
+
+      <ellipse cx="200" cy="408" rx="160" ry="14" fill="#000" opacity="0.18" />
+      <polygon points="60,360 340,360 360,400 40,400" fill="url(#hs-sofa)" />
+      <polygon points="60,300 340,300 340,360 60,360" fill="url(#hs-sofa)" opacity="0.85" />
+      <line x1="150" y1="300" x2="150" y2="395" stroke="#000" strokeWidth="0.5" opacity="0.4" />
+      <line x1="250" y1="300" x2="250" y2="395" stroke="#000" strokeWidth="0.5" opacity="0.4" />
+      <rect x="60" y="300" width="280" height="6" fill="#5A4F45" opacity="0.4" />
+      <ellipse cx="100" cy="318" rx="22" ry="14" fill="#C95A3A" />
+      <ellipse cx="100" cy="316" rx="20" ry="10" fill="#D87555" opacity="0.7" />
+      <rect x="62" y="395" width="6" height="6" fill="#1A1815" />
+      <rect x="332" y="395" width="6" height="6" fill="#1A1815" />
+
+      <ellipse cx="200" cy="450" rx="80" ry="8" fill="#000" opacity="0.18" />
+      <polygon points="140,420 260,420 280,445 120,445" fill="#8B6F47" />
+      <polygon points="120,445 280,445 280,455 120,455" fill="#5C4527" />
+      <rect x="150" y="455" width="4" height="14" fill="#5C4527" />
+      <rect x="246" y="455" width="4" height="14" fill="#5C4527" />
+      <ellipse cx="200" cy="423" rx="10" ry="3" fill="#F5F1EA" />
+      <path d="M 195 423 Q 200 412, 205 423" fill="#F5F1EA" />
+
+      <ellipse cx="350" cy="468" rx="22" ry="5" fill="#000" opacity="0.18" />
+      <ellipse cx="350" cy="463" rx="20" ry="4" fill="#1A1815" />
+      <rect x="347" y="270" width="6" height="195" fill="#1A1815" />
+      <ellipse cx="350" cy="265" rx="28" ry="8" fill="#FBFAF7" stroke="#3A2818" strokeWidth="0.8" />
+      <polygon points="322,265 378,265 372,290 328,290" fill="#FBFAF7" stroke="#3A2818" strokeWidth="0.8" />
+      <ellipse cx="350" cy="320" rx="80" ry="55" fill="url(#hs-lamp)" />
+
+      <ellipse cx="50" cy="468" rx="22" ry="5" fill="#000" opacity="0.18" />
+      <path d="M 32 465 L 68 465 L 65 430 L 35 430 Z" fill="#5C4527" />
+      <ellipse cx="50" cy="410" rx="6" ry="22" fill="#5C7A52" transform="rotate(-25 50 410)" />
+      <ellipse cx="50" cy="408" rx="6" ry="24" fill="#6E8C62" transform="rotate(10 50 408)" />
+      <ellipse cx="50" cy="412" rx="6" ry="22" fill="#5C7A52" transform="rotate(35 50 412)" />
+      <ellipse cx="50" cy="405" rx="5" ry="20" fill="#7A9670" transform="rotate(-5 50 405)" />
+
+      <g fontFamily="var(--font-mono)" fontSize="8" letterSpacing="0.1em">
+        <line x1="200" y1="320" x2="200" y2="100" stroke="var(--terracotta)" strokeWidth="0.6" strokeDasharray="2 3" />
+        <rect x="170" y="86" width="62" height="18" rx="9" fill="var(--paper)" stroke="var(--terracotta)" strokeWidth="0.6" />
+        <text x="201" y="98" textAnchor="middle" fill="var(--terracotta)">CB2 · $1,899</text>
+        <line x1="350" y1="265" x2="370" y2="220" stroke="var(--terracotta)" strokeWidth="0.6" strokeDasharray="2 3" />
+        <rect x="320" y="208" width="68" height="18" rx="9" fill="var(--paper)" stroke="var(--terracotta)" strokeWidth="0.6" />
+        <text x="354" y="220" textAnchor="middle" fill="var(--terracotta)">WEST ELM · $329</text>
+      </g>
+    </svg>
+  );
+}
+
+function ScanOverlay({ active }: { active: boolean }) {
+  return (
+    <svg viewBox="0 0 400 500" style={{ width: '100%', height: '100%' }} aria-hidden="true">
+      <defs>
+        <linearGradient id="hero-sweep" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="var(--terracotta)" stopOpacity="0" />
+          <stop offset="50%" stopColor="var(--terracotta)" stopOpacity="0.5" />
+          <stop offset="100%" stopColor="var(--terracotta)" stopOpacity="0" />
+        </linearGradient>
+      </defs>
+      <g stroke="var(--terracotta)" strokeWidth="0.5" fill="none" opacity="0.7">
+        {Array.from({ length: 9 }).map((_, r) =>
+          Array.from({ length: 8 }).map((_, c) => {
+            const x = 40 + (c / 7) * 320;
+            const y = 60 + (r / 8) * 380;
+            const x2 = 40 + ((c + 1) / 7) * 320;
+            const y2 = 60 + ((r + 1) / 8) * 380;
+            return (
+              <g key={`${r}-${c}`}>
+                {c < 7 && <line x1={x} y1={y} x2={x2} y2={y} />}
+                {r < 8 && <line x1={x} y1={y} x2={x} y2={y2} />}
+                {c < 7 && r < 8 && <line x1={x} y1={y} x2={x2} y2={y2} />}
+              </g>
+            );
+          })
+        )}
+      </g>
+      <rect x="0" y="0" width="400" height="80" fill="url(#hero-sweep)">
+        {active && <animate attributeName="y" values="0;420;0" dur="2.6s" repeatCount="indefinite" />}
+      </rect>
+      {[[40, 60], [360, 60], [40, 440], [360, 440]].map(([x, y], i) => (
+        <circle key={i} cx={x} cy={y} r="3" fill="var(--paper)" stroke="var(--terracotta)" strokeWidth="1.2" />
+      ))}
+    </svg>
   );
 }

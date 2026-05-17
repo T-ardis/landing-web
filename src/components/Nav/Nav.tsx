@@ -3,24 +3,20 @@
 import { useEffect, useRef, useState } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 import Link from 'next/link';
-import useScrambleHover from '@/hooks/useScrambleHover';
 import styles from './Nav.module.css';
 
-const APP_URL = process.env.NEXT_PUBLIC_APP_URL || '/try';
+const APP_URL = process.env.NEXT_PUBLIC_APP_URL || 'https://app.tardis-ai.com/';
 
 const SECTION_LINKS = [
-  { label: 'The Problem',   hash: '#problem' },
-  { label: 'How It Works',  hash: '#how-it-works' },
-  { label: 'Features',      hash: '#features' },
-  { label: 'Use Cases',     hash: '#use-cases' },
-  { label: 'FAQ',           hash: '#faq' },
+  { label: 'Scan',     hash: '#scan' },
+  { label: 'Studio',   hash: '#studio' },
+  { label: 'View',     hash: '#view' },
+  { label: 'FAQ',      hash: '#faq' },
 ];
 
 export default function Nav() {
-  const logoRef    = useScrambleHover<HTMLSpanElement>('TARDIS');
-  const [isOpen,     setIsOpen]     = useState(false);
-  const [isHidden,   setIsHidden]   = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
+  const [isOpen, setIsOpen]       = useState(false);
+  const [isHidden, setIsHidden]   = useState(false);
   const lastScrollY = useRef(0);
   const pathname = usePathname();
   const router = useRouter();
@@ -30,15 +26,13 @@ export default function Nav() {
   useEffect(() => {
     const onScroll = () => {
       const y = window.scrollY;
-      if (!isOpen) setIsHidden(y > lastScrollY.current && y > 100);
-      setIsScrolled(y > 80);
+      if (!isOpen) setIsHidden(y > lastScrollY.current && y > 120);
       lastScrollY.current = y;
     };
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, [isOpen]);
 
-  // Lock body scroll when menu is open
   useEffect(() => {
     document.body.style.overflow = isOpen ? 'hidden' : '';
     return () => { document.body.style.overflow = ''; };
@@ -50,67 +44,56 @@ export default function Nav() {
     if (isHome) {
       setTimeout(() => {
         document.querySelector(hash)?.scrollIntoView({ behavior: 'smooth' });
-      }, 400);
+      }, 350);
     } else {
       router.push(`/${hash}`);
     }
   };
 
-  const handleCtaClick = (e: React.MouseEvent) => {
-    e.preventDefault();
-    setIsOpen(false);
-    if (isHome) {
-      setTimeout(() => {
-        document.querySelector('#cta')?.scrollIntoView({ behavior: 'smooth' });
-      }, 400);
-    } else {
-      router.push('/#cta');
-    }
-  };
-
   return (
     <>
-      <nav
-        className={[
-          styles.nav,
-          isScrolled ? styles.scrolled : '',
-          isHidden   ? styles.hidden   : '',
-        ].join(' ')}
-      >
-        <Link href="/" className={styles.logo}>
-          <span ref={logoRef}>TARDIS</span>
-        </Link>
-
-        <div className={styles.right}>
-          <Link
-            href="/blog"
-            className={`${styles.blogLink} ${isBlog ? styles.blogLinkActive : ''}`}
-          >
-            Blog
+      <nav className={`${styles.nav} ${isHidden ? styles.hidden : ''}`}>
+        <div className={styles.inner}>
+          <Link href="/" className={styles.brand} aria-label="TARDIS home">
+            <span className={styles.mark} aria-hidden="true" />
+            <span className={styles.brandName}>TARDIS</span>
           </Link>
 
-          <a href={APP_URL} className={styles.tryBtn}>
-            Try It Free
-          </a>
-          <a href="#cta" className={styles.ctaBtn} onClick={handleCtaClick}>
-            Get Early Access
-          </a>
+          <div className={styles.links}>
+            {SECTION_LINKS.map(({ label, hash }) => (
+              <a
+                key={hash}
+                href={isHome ? hash : `/${hash}`}
+                onClick={handleSectionClick(hash)}
+                className={`${styles.link} ${styles.hideSm}`}
+              >
+                {label}
+              </a>
+            ))}
+            <Link
+              href="/blog"
+              className={`${styles.link} ${styles.hideSm} ${isBlog ? styles.linkActive : ''}`}
+            >
+              Blog
+            </Link>
+            <a href={APP_URL} className={styles.pill}>
+              Try free <span className={styles.pillArrow}>→</span>
+            </a>
 
-          <button
-            className={`${styles.menuBtn} ${isOpen ? styles.menuBtnActive : ''}`}
-            onClick={() => setIsOpen(o => !o)}
-            aria-label={isOpen ? 'Close menu' : 'Open menu'}
-            aria-expanded={isOpen}
-          >
-            <span className={styles.menuBtnIcon} aria-hidden="true">
-              {isOpen ? <CloseIcon /> : <MenuIcon />}
-            </span>
-            <span className={styles.menuBtnText}>{isOpen ? 'Close' : 'Menu'}</span>
-          </button>
+            <button
+              className={`${styles.menuBtn} ${isOpen ? styles.menuBtnActive : ''}`}
+              onClick={() => setIsOpen(o => !o)}
+              aria-label={isOpen ? 'Close menu' : 'Open menu'}
+              aria-expanded={isOpen}
+            >
+              <span aria-hidden="true">
+                {isOpen ? <CloseIcon /> : <MenuIcon />}
+              </span>
+            </button>
+          </div>
         </div>
       </nav>
 
-      {/* Full-screen overlay — expands from top-right */}
       <div className={`${styles.overlay} ${isOpen ? styles.overlayOpen : ''}`} aria-hidden={!isOpen}>
         <div className={styles.overlayInner}>
           <nav className={styles.overlayNav}>
@@ -118,7 +101,7 @@ export default function Nav() {
               <Link
                 href="/"
                 className={styles.overlayLink}
-                style={{ transitionDelay: isOpen ? '0.08s' : '0s' }}
+                style={{ transitionDelay: isOpen ? '0.05s' : '0s' }}
                 onClick={() => setIsOpen(false)}
                 tabIndex={isOpen ? 0 : -1}
               >
@@ -130,7 +113,7 @@ export default function Nav() {
                 key={hash}
                 href={isHome ? hash : `/${hash}`}
                 className={styles.overlayLink}
-                style={{ transitionDelay: isOpen ? `${0.08 + (isHome ? i : i + 1) * 0.055}s` : '0s' }}
+                style={{ transitionDelay: isOpen ? `${0.05 + (isHome ? i : i + 1) * 0.05}s` : '0s' }}
                 onClick={handleSectionClick(hash)}
                 tabIndex={isOpen ? 0 : -1}
               >
@@ -140,7 +123,7 @@ export default function Nav() {
             <Link
               href="/blog"
               className={`${styles.overlayLink} ${isBlog ? styles.overlayLinkActive : ''}`}
-              style={{ transitionDelay: isOpen ? `${0.08 + (isHome ? SECTION_LINKS.length : SECTION_LINKS.length + 1) * 0.055}s` : '0s' }}
+              style={{ transitionDelay: isOpen ? `${0.05 + (isHome ? SECTION_LINKS.length : SECTION_LINKS.length + 1) * 0.05}s` : '0s' }}
               onClick={() => setIsOpen(false)}
               tabIndex={isOpen ? 0 : -1}
             >
@@ -149,7 +132,7 @@ export default function Nav() {
             <Link
               href="/about"
               className={`${styles.overlayLink} ${pathname === '/about' ? styles.overlayLinkActive : ''}`}
-              style={{ transitionDelay: isOpen ? `${0.08 + (isHome ? SECTION_LINKS.length + 1 : SECTION_LINKS.length + 2) * 0.055}s` : '0s' }}
+              style={{ transitionDelay: isOpen ? `${0.05 + (isHome ? SECTION_LINKS.length + 1 : SECTION_LINKS.length + 2) * 0.05}s` : '0s' }}
               onClick={() => setIsOpen(false)}
               tabIndex={isOpen ? 0 : -1}
             >
@@ -158,13 +141,12 @@ export default function Nav() {
           </nav>
 
           <a
-            href={isHome ? '#cta' : '/#cta'}
+            href={APP_URL}
             className={styles.overlayCta}
-            style={{ transitionDelay: isOpen ? '0.5s' : '0s' }}
-            onClick={handleCtaClick}
+            style={{ transitionDelay: isOpen ? '0.42s' : '0s' }}
             tabIndex={isOpen ? 0 : -1}
           >
-            Get Early Access →
+            Try the AR viewer free →
           </a>
         </div>
       </div>
@@ -175,9 +157,9 @@ export default function Nav() {
 function MenuIcon() {
   return (
     <svg width="14" height="10" viewBox="0 0 14 10" fill="none" aria-hidden="true">
-      <rect width="14" height="1.5" fill="currentColor" />
-      <rect y="4.25" width="14" height="1.5" fill="currentColor" />
-      <rect y="8.5" width="14" height="1.5" fill="currentColor" />
+      <rect width="14" height="1.4" fill="currentColor" />
+      <rect y="4.3" width="14" height="1.4" fill="currentColor" />
+      <rect y="8.6" width="14" height="1.4" fill="currentColor" />
     </svg>
   );
 }
@@ -185,7 +167,7 @@ function MenuIcon() {
 function CloseIcon() {
   return (
     <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-      <path d="M1 1l12 12M13 1L1 13" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+      <path d="M1 1l12 12M13 1L1 13" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
     </svg>
   );
 }

@@ -1,0 +1,432 @@
+- generic [active] [ref=e1]:
+  - navigation [ref=e2]:
+    - generic [ref=e3]:
+      - link "TARDIS home" [ref=e4] [cursor=pointer]:
+        - /url: /
+        - generic [ref=e6]: TARDIS
+      - generic [ref=e7]:
+        - link "Scan" [ref=e8] [cursor=pointer]:
+          - /url: "#scan"
+        - link "Studio" [ref=e9] [cursor=pointer]:
+          - /url: "#studio"
+        - link "View" [ref=e10] [cursor=pointer]:
+          - /url: "#view"
+        - link "FAQ" [ref=e11] [cursor=pointer]:
+          - /url: "#faq"
+        - link "Blog" [ref=e12] [cursor=pointer]:
+          - /url: /blog
+        - link "Try free →" [ref=e13] [cursor=pointer]:
+          - /url: /try
+          - text: Try free
+          - generic [ref=e14]: →
+  - generic:
+    - generic:
+      - navigation:
+        - link:
+          - /url: "#scan"
+          - text: Scan
+        - link:
+          - /url: "#studio"
+          - text: Studio
+        - link:
+          - /url: "#view"
+          - text: View
+        - link:
+          - /url: "#faq"
+          - text: FAQ
+        - link:
+          - /url: /blog
+          - text: Blog
+        - link:
+          - /url: /about
+          - text: About
+      - link:
+        - /url: /try
+        - text: Try the AR viewer free →
+  - main [ref=e15]:
+    - generic [ref=e18]:
+      - generic [ref=e19]:
+        - generic [ref=e20]: HOME DESIGN · FINALLY SOLVED
+        - heading "Scan it. Style it. Own it." [level=1] [ref=e22]:
+          - text: Scan it. Style it.
+          - text: Own it.
+        - paragraph [ref=e23]: TARDIS turns your iPhone into a furniture superpower. Scan your room in 60 seconds. Let AI style it across every retailer. Buy it — coordinated, in one cart.
+        - generic [ref=e24]:
+          - link "Try the AR viewer free →" [ref=e25] [cursor=pointer]:
+            - /url: /try
+            - text: Try the AR viewer free
+            - generic [ref=e26]: →
+          - link "See the three tools" [ref=e27] [cursor=pointer]:
+            - /url: "#products"
+        - generic [ref=e28]:
+          - generic [ref=e29]:
+            - generic [ref=e30]: 60s
+            - generic [ref=e31]: AVERAGE ROOM SCAN
+          - generic [ref=e32]:
+            - generic [ref=e33]: ±1cm
+            - generic [ref=e34]: PLACEMENT PRECISION
+          - generic [ref=e35]:
+            - generic [ref=e36]: 1×
+            - generic [ref=e37]: CART · EVERY BRAND
+      - figure [ref=e38]:
+        - generic [ref=e39]:
+          - img [ref=e41]:
+            - generic [ref=e59]:
+              - generic [ref=e60]: 4.2M × 2.8M
+              - generic [ref=e61]: UNFURNISHED
+          - generic [ref=e62]:
+            - img [ref=e63]:
+              - generic [ref=e81]:
+                - generic [ref=e82]: 4.2M × 2.8M
+                - generic [ref=e83]: UNFURNISHED
+            - img [ref=e85]
+          - img [ref=e205]:
+            - generic [ref=e250]:
+              - generic [ref=e252]: CB2 · $1,899
+              - generic [ref=e255]: WEST ELM · $329
+          - generic [ref=e256]: SCANNING · LIDAR
+          - generic [ref=e258]:
+            - button "Show step 1" [ref=e259] [cursor=pointer]
+            - button "Show step 2" [ref=e260] [cursor=pointer]
+            - button "Show step 3" [ref=e261] [cursor=pointer]
+    - generic [ref=e263]:
+      - generic [ref=e264]:
+        - text: LiDAR scan
+        - generic [ref=e265]: ✦
+      - generic [ref=e266]:
+        - text: AI room styling
+        - generic [ref=e267]: ✦
+      - generic [ref=e268]:
+        - text: AR in browser
+        - generic [ref=e269]: ✦
+      - generic [ref=e270]:
+        - text: IKEA · Wayfair · CB2
+        - generic [ref=e271]: ✦
+      - generic [ref=e272]:
+        - text: One cart, every brand
+        - generic [ref=e273]: ✦
+      - generic [ref=e274]:
+        - text: Free to try
+        - generic [ref=e275]: ✦
+      - generic [ref=e276]:
+        - text: LiDAR scan
+        - generic [ref=e277]: ✦
+      - generic [ref=e278]:
+        - text: AI room styling
+        - generic [ref=e279]: ✦
+      - generic [ref=e280]:
+        - text: AR in browser
+        - generic [ref=e281]: ✦
+      - generic [ref=e282]:
+        - text: IKEA · Wayfair · CB2
+        - generic [ref=e283]: ✦
+      - generic [ref=e284]:
+        - text: One cart, every brand
+        - generic [ref=e285]: ✦
+      - generic [ref=e286]:
+        - text: Free to try
+        - generic [ref=e287]: ✦
+      - generic [ref=e288]:
+        - text: LiDAR scan
+        - generic [ref=e289]: ✦
+      - generic [ref=e290]:
+        - text: AI room styling
+        - generic [ref=e291]: ✦
+      - generic [ref=e292]:
+        - text: AR in browser
+        - generic [ref=e293]: ✦
+      - generic [ref=e294]:
+        - text: IKEA · Wayfair · CB2
+        - generic [ref=e295]: ✦
+      - generic [ref=e296]:
+        - text: One cart, every brand
+        - generic [ref=e297]: ✦
+      - generic [ref=e298]:
+        - text: Free to try
+        - generic [ref=e299]: ✦
+    - generic [ref=e302]:
+      - generic [ref=e303]:
+        - generic [ref=e304]: The problem
+        - heading "87% buy on faith." [level=2] [ref=e306]:
+          - text: 87%
+          - text: buy on faith.
+      - generic [ref=e307]:
+        - paragraph [ref=e308]: Furniture is the biggest purchase you make blind.
+        - paragraph [ref=e309]: The sectional won't clear the door. The dining table eats the walkway. The brass lamp clashes with the floor. You find out the day it arrives.
+        - paragraph [ref=e310]: We're done with that.
+    - generic [ref=e312]:
+      - generic [ref=e313]:
+        - generic [ref=e314]:
+          - generic [ref=e315]: The toolkit
+          - heading "Three tools. One workflow." [level=2] [ref=e317]
+        - paragraph [ref=e318]:
+          - text: "TARDIS is a sequence:"
+          - strong [ref=e319]: scan
+          - text: your room,
+          - strong [ref=e320]: style
+          - text: it with AI,
+          - strong [ref=e321]: view
+          - text: it in AR before you buy. Each piece works on its own — together, they replace ten tabs and four months of indecision.
+      - generic [ref=e322]:
+        - generic [ref=e323]:
+          - generic [ref=e324]:
+            - generic [ref=e325]: "01"
+            - generic [ref=e326]: TARDIS · SCAN
+          - heading "Your iPhone becomes a 3D scanner." [level=3] [ref=e327]
+          - paragraph [ref=e328]: LiDAR fires 20,000+ depth points across your room in 60 seconds. The result is a millimeter-precise digital twin you can design from, share with a contractor, or export to any 3D tool. Free. No app.
+          - list [ref=e329]:
+            - listitem [ref=e330]:
+              - generic [ref=e331]: ✦
+              - generic [ref=e332]: iPhone 12 Pro and newer · all iPad Pro 2020+
+            - listitem [ref=e333]:
+              - generic [ref=e334]: ✦
+              - generic [ref=e335]: ±1cm precision · pro-grade output
+            - listitem [ref=e336]:
+              - generic [ref=e337]: ✦
+              - generic [ref=e338]: Export USDZ · OBJ · GLTF · DXF · PDF
+          - link "Open TARDIS Scan →" [ref=e339] [cursor=pointer]:
+            - /url: /try
+            - text: Open TARDIS Scan
+            - generic [ref=e340]: →
+          - paragraph [ref=e341]: "RANKS FOR: house 3d scanner · 3d scanning home interiors"
+        - generic [ref=e343]:
+          - generic [ref=e344]:
+            - generic [ref=e345]: SCANNING · 74%
+            - generic [ref=e347]: ±0.4CM PRECISION
+          - img [ref=e349]
+          - generic [ref=e467]:
+            - generic [ref=e468]: LIDAR · iPHONE 16 PRO
+            - generic [ref=e469]: 14601 PTS
+            - generic [ref=e470]: EST 16S
+      - generic [ref=e471]:
+        - separator [ref=e472]
+        - generic [ref=e473]: ↓
+        - separator [ref=e474]
+      - generic [ref=e475]:
+        - generic [ref=e476]:
+          - generic [ref=e477]:
+            - generic [ref=e478]: "02"
+            - generic [ref=e479]: TARDIS · STUDIO
+          - heading "AI styles your whole room." [level=3] [ref=e480]
+          - paragraph [ref=e481]: Not another single-SKU AR app. Studio reads your scan, your style, and your budget — then composes complete photoreal designs across every retailer. Swap one piece, mix two, generate ten more in seconds.
+          - list [ref=e482]:
+            - listitem [ref=e483]:
+              - generic [ref=e484]: ✦
+              - generic [ref=e485]: Full-room AI rendering · photoreal lighting
+            - listitem [ref=e486]:
+              - generic [ref=e487]: ✦
+              - generic [ref=e488]: "Mix brands freely: IKEA + CB2 + West Elm"
+            - listitem [ref=e489]:
+              - generic [ref=e490]: ✦
+              - generic [ref=e491]: Side-by-side variants · share + collaborate
+          - link "Open TARDIS Studio →" [ref=e492] [cursor=pointer]:
+            - /url: /try
+            - text: Open TARDIS Studio
+            - generic [ref=e493]: →
+          - paragraph [ref=e494]: "RANKS FOR: furniture visualization tool · visualize furniture in room AI · room viewer"
+        - generic [ref=e496]:
+          - generic [ref=e497]:
+            - generic [ref=e498]: STUDIO · VARIANT 2/3
+            - generic [ref=e500]: West Elm · Amazon
+          - generic [ref=e501]:
+            - img [ref=e503]
+            - img [ref=e522]
+            - img [ref=e541]
+            - generic [ref=e559]:
+              - button "WARM MINIMAL" [ref=e560] [cursor=pointer]
+              - button "EDITORIAL DARK" [ref=e561] [cursor=pointer]
+              - button "JAPANDI" [ref=e562] [cursor=pointer]
+          - generic [ref=e563]:
+            - generic [ref=e564]: 4 PIECES · 3 BRANDS
+            - generic [ref=e565]: UNDER $3,200
+            - generic [ref=e566]: ONE CART
+      - generic [ref=e567]:
+        - separator [ref=e568]
+        - generic [ref=e569]: ↓
+        - separator [ref=e570]
+      - generic [ref=e571]:
+        - generic [ref=e572]:
+          - generic [ref=e573]:
+            - generic [ref=e574]: "03"
+            - generic [ref=e575]: TARDIS · VIEW
+          - heading "See it in your room. Before you buy." [level=3] [ref=e576]
+          - paragraph [ref=e577]: Drop any product image into a precise scan of your space. Real walls, real light, real shadows. Works with the Wayfair you've been browsing, the Amazon link your friend sent, the CB2 sofa you've been circling for weeks.
+          - list [ref=e578]:
+            - listitem [ref=e579]:
+              - generic [ref=e580]: ✦
+              - generic [ref=e581]: Web-based AR · iPhone + Android · no app
+            - listitem [ref=e582]:
+              - generic [ref=e583]: ✦
+              - generic [ref=e584]: Any retailer · drag a photo, see it placed
+            - listitem [ref=e585]:
+              - generic [ref=e586]: ✦
+              - generic [ref=e587]: One cart across IKEA · Wayfair · CB2 · more
+          - link "Open TARDIS View →" [ref=e588] [cursor=pointer]:
+            - /url: /try
+            - text: Open TARDIS View
+            - generic [ref=e589]: →
+          - paragraph [ref=e590]: "RANKS FOR: view in room · AR view · view in room furniture"
+        - generic [ref=e592]:
+          - generic [ref=e593]:
+            - img [ref=e596]
+            - generic [ref=e608]:
+              - generic [ref=e609]: ✓ FITS · 92CM
+              - generic [ref=e610]: ADD →
+          - generic [ref=e611]:
+            - generic [ref=e612]: CATALOG · DRAGGABLE
+            - generic [ref=e613]:
+              - img [ref=e615]
+              - generic [ref=e618]:
+                - generic [ref=e619]: Linen sectional
+                - generic [ref=e620]: CB2 · $1,899
+              - generic [ref=e1154]: ↗
+            - generic [ref=e622]:
+              - img [ref=e624]
+              - generic [ref=e627]:
+                - generic [ref=e628]: Lounge chair
+                - generic [ref=e629]: Article · $649
+            - generic [ref=e630]:
+              - img [ref=e632]
+              - generic [ref=e635]:
+                - generic [ref=e636]: Arc floor lamp
+                - generic [ref=e637]: West Elm · $329
+            - generic [ref=e638]:
+              - generic [ref=e639]: ONE CART
+              - generic [ref=e640]: 3 BRANDS · $2,877
+    - generic [ref=e642]:
+      - generic [ref=e643]:
+        - generic [ref=e644]: One cart, every brand
+        - paragraph [ref=e646]: Works with every store you already shop
+      - generic [ref=e647]:
+        - generic [ref=e648]:
+          - generic [ref=e649]: IKEA
+          - generic [ref=e650]: all SKUs
+        - generic [ref=e651]:
+          - generic [ref=e652]: Wayfair
+          - generic [ref=e653]: live catalog
+        - generic [ref=e654]:
+          - generic [ref=e655]: CB2
+          - generic [ref=e656]: + Crate & Barrel
+        - generic [ref=e657]:
+          - generic [ref=e658]: West Elm
+          - generic [ref=e659]: + Pottery Barn
+        - generic [ref=e660]:
+          - generic [ref=e661]: Article
+          - generic [ref=e662]: direct import
+        - generic [ref=e663]:
+          - generic [ref=e664]: Amazon
+          - generic [ref=e665]: any image
+    - generic [ref=e667]:
+      - generic [ref=e668]:
+        - generic [ref=e669]:
+          - generic [ref=e670]: The sound of buying blind
+          - heading "Less guesswork. More furniture that fits." [level=2] [ref=e672]:
+            - text: Less guesswork.
+            - text: More furniture that fits.
+        - paragraph [ref=e673]: Furniture is a $30B-a-year gamble, and the receipts are public. These are real posts from real people — the kind of pain TARDIS exists to remove.
+      - generic [ref=e674]:
+        - figure "r/InteriorDesign ↗" [ref=e675]:
+          - blockquote [ref=e676]: “Got scammed by a designer. After paying upfront, he charged an extra $2,500 just to release the files.
+          - link "r/InteriorDesign ↗" [ref=e678] [cursor=pointer]:
+            - /url: https://www.reddit.com/r/InteriorDesign/comments/1akbhqr/got_scammed_by_a_designer/
+        - figure "r/kitchens ↗" [ref=e679]:
+          - blockquote [ref=e680]: “Does this kitchen layout make sense? I've been staring at it for three weeks and I genuinely can't tell anymore.
+          - link "r/kitchens ↗" [ref=e682] [cursor=pointer]:
+            - /url: https://www.reddit.com/r/kitchens/comments/1rioli0/does_this_kitchen_layout_make_sense/
+        - figure "r/DIYUK ↗" [ref=e683]:
+          - blockquote [ref=e684]: “House renovations are making me depressed. I am doing everything by myself. Every step forward, five steps back.
+          - link "r/DIYUK ↗" [ref=e686] [cursor=pointer]:
+            - /url: https://www.reddit.com/r/DIYUK/comments/1ciqed2/house_renovations_are_making_me_depressed/
+    - generic [ref=e688]:
+      - generic [ref=e690]:
+        - generic [ref=e691]: Frequently asked
+        - heading "Questions, answered." [level=2] [ref=e693]
+      - generic [ref=e694]:
+        - separator [ref=e695]
+        - group [ref=e696]:
+          - generic "What does TARDIS actually do? +" [ref=e697] [cursor=pointer]
+        - group [ref=e698]:
+          - generic "Do I need to download an app? +" [ref=e699] [cursor=pointer]
+        - group [ref=e700]:
+          - generic "Is it free? +" [ref=e701] [cursor=pointer]
+        - group [ref=e702]:
+          - generic "Which retailers work? +" [ref=e703] [cursor=pointer]
+        - group [ref=e704]:
+          - generic "Is TARDIS the same as Wayfair’s Tardis tool? +" [ref=e705] [cursor=pointer]
+        - group [ref=e706]:
+          - generic "Which iPhones support the TARDIS furniture visualizer? +" [ref=e707] [cursor=pointer]
+        - group [ref=e708]:
+          - generic "Does TARDIS support multi-brand checkout? +" [ref=e709] [cursor=pointer]
+    - generic [ref=e712]:
+      - generic [ref=e713]: Ready when you are
+      - heading "Stop guessing. Start placing." [level=2] [ref=e715]:
+        - text: Stop guessing.
+        - text: Start placing.
+      - generic [ref=e716]:
+        - textbox "Email address" [ref=e717]:
+          - /placeholder: your@email.com
+        - button "Get early access →" [ref=e718] [cursor=pointer]
+      - generic [ref=e719]:
+        - link "Try the AR viewer free" [ref=e720] [cursor=pointer]:
+          - /url: https://app.tardis-ai.com
+        - generic [ref=e721]: ·
+        - link "How LiDAR works" [ref=e722] [cursor=pointer]:
+          - /url: "#products"
+      - paragraph [ref=e723]: FREE · NO APP DOWNLOAD · WORKS IN BROWSER
+  - contentinfo [ref=e724]:
+    - generic [ref=e725]:
+      - generic [ref=e726]:
+        - heading "Scan it. Style it. Own it." [level=2] [ref=e727]
+        - generic [ref=e728]:
+          - paragraph [ref=e729]: Join the waitlist. Be first to scan, design, and buy — all in one place.
+          - link "Get early access →" [ref=e730] [cursor=pointer]:
+            - /url: "#cta"
+            - text: Get early access
+            - generic [ref=e731]: →
+      - generic [ref=e732]:
+        - generic [ref=e733]:
+          - link "TARDIS" [ref=e734] [cursor=pointer]:
+            - /url: /
+            - generic [ref=e736]: TARDIS
+          - paragraph [ref=e737]: Home design, finally solved. LiDAR scan → AI furniture placement → one-tap multi-brand checkout.
+        - generic [ref=e738]:
+          - heading "Product" [level=4] [ref=e739]
+          - link "3D Room Scan" [ref=e740] [cursor=pointer]:
+            - /url: "#scan"
+          - link "Visualization Tool" [ref=e741] [cursor=pointer]:
+            - /url: "#studio"
+          - link "View in Room" [ref=e742] [cursor=pointer]:
+            - /url: "#view"
+          - link "AR Viewer" [ref=e743] [cursor=pointer]:
+            - /url: /try
+        - generic [ref=e744]:
+          - heading "Compatibility" [level=4] [ref=e745]
+          - link "IKEA" [ref=e746] [cursor=pointer]:
+            - /url: "#"
+          - link "Wayfair" [ref=e747] [cursor=pointer]:
+            - /url: "#"
+          - link "CB2" [ref=e748] [cursor=pointer]:
+            - /url: "#"
+          - link "West Elm" [ref=e749] [cursor=pointer]:
+            - /url: "#"
+          - link "Article" [ref=e750] [cursor=pointer]:
+            - /url: "#"
+          - link "Amazon" [ref=e751] [cursor=pointer]:
+            - /url: "#"
+        - generic [ref=e752]:
+          - heading "Company" [level=4] [ref=e753]
+          - link "About" [ref=e754] [cursor=pointer]:
+            - /url: /about
+          - link "Blog" [ref=e755] [cursor=pointer]:
+            - /url: /blog
+          - link "Press" [ref=e756] [cursor=pointer]:
+            - /url: mailto:tardis.ai.com@gmail.com
+          - link "For brands" [ref=e757] [cursor=pointer]:
+            - /url: mailto:tardis.ai.com@gmail.com
+      - generic [ref=e758]:
+        - generic [ref=e759]: © 2026 TARDIS — patent pending
+        - link "tardis.ai.com@gmail.com" [ref=e760] [cursor=pointer]:
+          - /url: mailto:tardis.ai.com@gmail.com
+  - button "Open Next.js Dev Tools" [ref=e766] [cursor=pointer]:
+    - img [ref=e767]
+  - alert [ref=e770]

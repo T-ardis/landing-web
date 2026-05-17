@@ -3,10 +3,9 @@ import Hero from '@/components/Hero/Hero';
 import Problem from '@/components/Problem/Problem';
 import Marquee from '@/components/Marquee/Marquee';
 import HowItWorks from '@/components/HowItWorks/HowItWorks';
-import Features from '@/components/Features/Features';
-import UseCases from '@/components/UseCases/UseCases';
+import Retailers from '@/components/Retailers/Retailers';
+import Testimonials from '@/components/Testimonials/Testimonials';
 import Faq from '@/components/Faq/Faq';
-import BuiltBy from '@/components/BuiltBy/BuiltBy';
 import Cta from '@/components/Cta/Cta';
 import Footer from '@/components/Footer/Footer';
 
@@ -145,14 +144,12 @@ export default function Home() {
       <Nav />
       <main>
         <Hero />
-        <Problem />
         <Marquee />
+        <Problem />
         <HowItWorks />
-        <Marquee reverse items={['AR FURNITURE VISUALIZER', 'SEE IT IN YOUR ROOM', 'LIDAR SCAN', 'IKEA · WAYFAIR · CB2', 'ONE CART, ONE TAP', 'TARDIS']} />
-        <Features />
-        <UseCases />
+        <Retailers />
+        <Testimonials />
         <Faq />
-        <BuiltBy />
         <Cta />
       </main>
       <Footer />

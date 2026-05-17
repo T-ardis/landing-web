@@ -1,19 +1,27 @@
 import type { Metadata } from 'next';
-import { Space_Grotesk, Inter } from 'next/font/google';
+import { Instrument_Serif, Inter_Tight, JetBrains_Mono } from 'next/font/google';
 import SmoothScroll from '@/components/SmoothScroll/SmoothScroll';
 import './globals.css';
 
-const spaceGrotesk = Space_Grotesk({
+const instrumentSerif = Instrument_Serif({
   subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
+  weight: ['400'],
+  style: ['normal', 'italic'],
   variable: '--font-display',
   display: 'swap',
 });
 
-const inter = Inter({
+const interTight = Inter_Tight({
+  subsets: ['latin'],
+  weight: ['400', '500', '600'],
+  variable: '--font-body',
+  display: 'swap',
+});
+
+const jetBrainsMono = JetBrains_Mono({
   subsets: ['latin'],
   weight: ['400', '500'],
-  variable: '--font-body',
+  variable: '--font-mono',
   display: 'swap',
 });
 
@@ -29,7 +37,6 @@ export const metadata: Metadata = {
   description:
     'The AR furniture visualizer for iPhone. Scan your room with LiDAR, see how furniture looks in your room photorealistically, and check out across IKEA, Wayfair & CB2 in one tap.',
   keywords: [
-    // Top-volume head terms from Search Console
     'AR furniture visualizer',
     'furniture visualizer',
     'furniture visualiser',
@@ -41,7 +48,6 @@ export const metadata: Metadata = {
     'furniture visualization',
     'furniture visualization tool',
     'furniture room visualizer',
-    // High-intent long-tail
     'see furniture in your room',
     'see furniture in my room',
     'visualize furniture in room',
@@ -50,19 +56,16 @@ export const metadata: Metadata = {
     'view furniture in room',
     'see how furniture looks in a room',
     'how to view furniture in your room',
-    // AR / room viewer secondary
     'ar view',
     'ar room viewer',
     'view in room',
     'view in my space',
     'room viewer',
-    // 3D scanning theme (rising in Search Console)
     'iPhone LiDAR room scanner',
     'LiDAR room scanner',
     'house 3d scanner',
     '3d scanning home interiors',
     '3d scan furniture',
-    // Commercial intent — kept for breadth
     'home renovation app',
     'AI interior design',
     'best room scanner app iPhone',
@@ -131,8 +134,12 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${spaceGrotesk.variable} ${inter.variable}`}>
-      <body style={{ fontFamily: 'var(--font-body, Inter, sans-serif)' }}>
+    <html
+      lang="en"
+      className={`${instrumentSerif.variable} ${interTight.variable} ${jetBrainsMono.variable}`}
+      data-theme="light"
+    >
+      <body>
         <SmoothScroll />
         {children}
       </body>
