@@ -1,0 +1,84 @@
+.section {
+  background: var(--coal);
+  border-top: 1px solid var(--line-soft);
+  border-bottom: 1px solid var(--line-soft);
+}
+
+.inner {
+  display: grid;
+  grid-template-columns: 1fr 1.25fr;
+  gap: clamp(40px, 5vw, 72px);
+  align-items: center;
+}
+
+@media (max-width: 880px) {
+  .inner { grid-template-columns: 1fr; gap: 48px; }
+}
+
+.heading {
+  margin-top: 18px;
+}
+
+.lead {
+  margin-top: 22px;
+}
+
+.ctaRow {
+  margin-top: 36px;
+}
+
+.note {
+  margin-top: 18px;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--mute);
+  font-weight: 500;
+}
+
+/* ── Browser frame with a real desktop screenshot ── */
+.browser {
+  display: block;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: #0E0C0A;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+  transition: border-color 0.2s, transform 0.25s ease;
+}
+.browser:hover {
+  border-color: var(--line-gold);
+  transform: translateY(-3px);
+}
+
+.browserBar {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 11px 14px;
+  border-bottom: 1px solid var(--line-soft);
+  background: #14110E;
+}
+
+.dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: rgba(232, 221, 202, 0.16);
+}
+
+.urlBar {
+  margin-left: 12px;
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  color: var(--mute);
+  background: rgba(232, 221, 202, 0.05);
+  border-radius: 5px;
+  padding: 4px 12px;
+}
+
+.browser img {
+  width: 100%;
+  height: auto;
+  display: block;
+}

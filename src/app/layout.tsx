@@ -1,27 +1,13 @@
 import type { Metadata } from 'next';
-import { Instrument_Serif, Inter_Tight, JetBrains_Mono } from 'next/font/google';
+import { Archivo } from 'next/font/google';
 import SmoothScroll from '@/components/SmoothScroll/SmoothScroll';
 import './globals.css';
 
-const instrumentSerif = Instrument_Serif({
+const archivo = Archivo({
   subsets: ['latin'],
-  weight: ['400'],
   style: ['normal', 'italic'],
-  variable: '--font-display',
-  display: 'swap',
-});
-
-const interTight = Inter_Tight({
-  subsets: ['latin'],
-  weight: ['400', '500', '600'],
-  variable: '--font-body',
-  display: 'swap',
-});
-
-const jetBrainsMono = JetBrains_Mono({
-  subsets: ['latin'],
-  weight: ['400', '500'],
-  variable: '--font-mono',
+  axes: ['wdth'],
+  variable: '--font-archivo',
   display: 'swap',
 });
 
@@ -35,7 +21,7 @@ export const metadata: Metadata = {
     template: '%s | TARDIS',
   },
   description:
-    'The AR furniture visualizer for iPhone. Scan your room with LiDAR, see how furniture looks in your room photorealistically, and check out across IKEA, Wayfair & CB2 in one tap.',
+    'TARDIS is an AR furniture visualizer. Paste a product link from IKEA, Wayfair, CB2 or any store, get a true-scale 3D model, and see furniture in your room with AR — free, in your browser.',
   keywords: [
     'AR furniture visualizer',
     'furniture visualizer',
@@ -88,13 +74,13 @@ export const metadata: Metadata = {
     siteName: 'TARDIS',
     title: 'AR Furniture Visualizer — See Furniture in Your Room | TARDIS',
     description:
-      'Scan your room with iPhone LiDAR. See how furniture looks in your room with photorealistic AR. Check out across IKEA, Wayfair & CB2 in one tap.',
+      'Paste a product link from any store, get a true-scale 3D model, and see it in your room with AR. Free, in your browser.',
     images: [
       {
         url: '/opengraph-image',
         width: 1200,
         height: 630,
-        alt: 'TARDIS — AR furniture visualizer for iPhone',
+        alt: 'TARDIS — AR furniture visualizer',
       },
     ],
   },
@@ -103,7 +89,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'AR Furniture Visualizer — See Furniture in Your Room | TARDIS',
     description:
-      'AR furniture visualizer for iPhone. Scan, see, and shop furniture in your room — one cart across IKEA, Wayfair & CB2.',
+      'Paste a product link from any store, get a true-scale 3D model, and see it in your room with AR. Free, in your browser.',
     images: ['/opengraph-image'],
     creator: '@tardisapp',
   },
@@ -125,20 +111,13 @@ export const metadata: Metadata = {
   },
 
   icons: {
-    icon: '/favicon.ico',
-    shortcut: '/favicon.ico',
+    apple: '/apple-touch-icon.png',
   },
-
-  verification: {},
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html
-      lang="en"
-      className={`${instrumentSerif.variable} ${interTight.variable} ${jetBrainsMono.variable}`}
-      data-theme="light"
-    >
+    <html lang="en" className={archivo.variable}>
       <body>
         <SmoothScroll />
         {children}

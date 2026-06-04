@@ -8,15 +8,14 @@ import styles from './Nav.module.css';
 const APP_URL = process.env.NEXT_PUBLIC_APP_URL || 'https://app.tardis-ai.com/';
 
 const SECTION_LINKS = [
-  { label: 'Scan',     hash: '#scan' },
-  { label: 'Studio',   hash: '#studio' },
-  { label: 'View',     hash: '#view' },
-  { label: 'FAQ',      hash: '#faq' },
+  { label: 'How it works', hash: '#how' },
+  { label: 'Demo',         hash: '#demo' },
+  { label: 'FAQ',          hash: '#faq' },
 ];
 
 export default function Nav() {
-  const [isOpen, setIsOpen]       = useState(false);
-  const [isHidden, setIsHidden]   = useState(false);
+  const [isOpen, setIsOpen]     = useState(false);
+  const [isHidden, setIsHidden] = useState(false);
   const lastScrollY = useRef(0);
   const pathname = usePathname();
   const router = useRouter();
@@ -55,8 +54,7 @@ export default function Nav() {
       <nav className={`${styles.nav} ${isHidden ? styles.hidden : ''}`}>
         <div className={styles.inner}>
           <Link href="/" className={styles.brand} aria-label="TARDIS home">
-            <span className={styles.mark} aria-hidden="true" />
-            <span className={styles.brandName}>TARDIS</span>
+            TARDIS
           </Link>
 
           <div className={styles.links}>
@@ -71,13 +69,19 @@ export default function Nav() {
               </a>
             ))}
             <Link
+              href="/about"
+              className={`${styles.link} ${styles.hideSm} ${pathname === '/about' ? styles.linkActive : ''}`}
+            >
+              About
+            </Link>
+            <Link
               href="/blog"
               className={`${styles.link} ${styles.hideSm} ${isBlog ? styles.linkActive : ''}`}
             >
               Blog
             </Link>
             <a href={APP_URL} className={styles.pill}>
-              Try free <span className={styles.pillArrow}>→</span>
+              Open the app
             </a>
 
             <button
@@ -121,22 +125,31 @@ export default function Nav() {
               </a>
             ))}
             <Link
+              href="/about"
+              className={`${styles.overlayLink} ${pathname === '/about' ? styles.overlayLinkActive : ''}`}
+              style={{ transitionDelay: isOpen ? `${0.05 + (isHome ? SECTION_LINKS.length : SECTION_LINKS.length + 1) * 0.05}s` : '0s' }}
+              onClick={() => setIsOpen(false)}
+              tabIndex={isOpen ? 0 : -1}
+            >
+              About
+            </Link>
+            <Link
               href="/blog"
               className={`${styles.overlayLink} ${isBlog ? styles.overlayLinkActive : ''}`}
-              style={{ transitionDelay: isOpen ? `${0.05 + (isHome ? SECTION_LINKS.length : SECTION_LINKS.length + 1) * 0.05}s` : '0s' }}
+              style={{ transitionDelay: isOpen ? `${0.05 + (isHome ? SECTION_LINKS.length + 1 : SECTION_LINKS.length + 2) * 0.05}s` : '0s' }}
               onClick={() => setIsOpen(false)}
               tabIndex={isOpen ? 0 : -1}
             >
               Blog
             </Link>
             <Link
-              href="/about"
-              className={`${styles.overlayLink} ${pathname === '/about' ? styles.overlayLinkActive : ''}`}
-              style={{ transitionDelay: isOpen ? `${0.05 + (isHome ? SECTION_LINKS.length + 1 : SECTION_LINKS.length + 2) * 0.05}s` : '0s' }}
+              href="/contact"
+              className={`${styles.overlayLink} ${pathname === '/contact' ? styles.overlayLinkActive : ''}`}
+              style={{ transitionDelay: isOpen ? `${0.05 + (isHome ? SECTION_LINKS.length + 2 : SECTION_LINKS.length + 3) * 0.05}s` : '0s' }}
               onClick={() => setIsOpen(false)}
               tabIndex={isOpen ? 0 : -1}
             >
-              About
+              Contact
             </Link>
           </nav>
 
@@ -146,7 +159,7 @@ export default function Nav() {
             style={{ transitionDelay: isOpen ? '0.42s' : '0s' }}
             tabIndex={isOpen ? 0 : -1}
           >
-            Try the AR viewer free →
+            Open the app →
           </a>
         </div>
       </div>

@@ -66,7 +66,6 @@ export default async function BlogPostPage({ params }: Props) {
   if (!post) notFound();
 
   const allPosts = getAllPosts();
-  const currentIdx = allPosts.findIndex((p) => p.slug === slug);
   const relatedPosts = allPosts
     .filter((p) => p.slug !== slug)
     .slice(0, 3);

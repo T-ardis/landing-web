@@ -67,16 +67,16 @@ export default function Cta() {
     <section id="cta" className={styles.section}>
       <div className="wrap">
         <div className={styles.inner}>
-          <span className="eyebrow">
-            <span className="dot" />
-            Ready when you are
-          </span>
+          <span className="eyebrow">Early access</span>
 
           <h2 className={styles.headline}>
-            Stop <span className="italic">guessing.</span>
-            <br />
-            Start placing.
+            Stop guessing. <span className="au">Start placing.</span>
           </h2>
+
+          <p className={`lead ${styles.sub}`}>
+            The visualizer is free today. Join the waitlist to get room
+            scanning and full-room AI styling as they ship.
+          </p>
 
           {submitted ? (
             <div className={styles.success}>
@@ -102,27 +102,19 @@ export default function Cta() {
                   aria-label="Email address"
                 />
                 <button type="submit" className={styles.submit} disabled={loading}>
-                  {loading ? 'Sending…' : 'Get early access →'}
+                  {loading ? 'Sending…' : 'Get early access'}
                 </button>
               </form>
 
               <div className={styles.altRow}>
                 <a href={APP_URL} className={styles.altLink}>
-                  Try the AR viewer free
-                </a>
-                <span className={styles.altSep}>·</span>
-                <a href="#products" className={styles.altLink}>
-                  How LiDAR works
+                  Or try the visualizer free — no signup
                 </a>
               </div>
             </>
           )}
 
           {error && <p className={styles.errorNote}>Something went wrong — please try again.</p>}
-
-          <p className={`caption ${styles.footnote}`}>
-            FREE · NO APP DOWNLOAD · WORKS IN BROWSER
-          </p>
         </div>
       </div>
     </section>

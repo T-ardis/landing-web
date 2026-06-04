@@ -1,18 +1,18 @@
 .hero {
   position: relative;
-  padding: clamp(60px, 9vw, 120px) 0 clamp(60px, 8vw, 100px);
+  padding: clamp(56px, 8vw, 110px) 0 clamp(64px, 8vw, 110px);
   overflow: hidden;
 }
 
 .grid {
   display: grid;
-  grid-template-columns: 1.1fr 1fr;
-  gap: clamp(40px, 6vw, 80px);
-  align-items: end;
+  grid-template-columns: 1.15fr 1fr;
+  gap: clamp(40px, 6vw, 88px);
+  align-items: center;
 }
 
 @media (max-width: 880px) {
-  .grid { grid-template-columns: 1fr; gap: 48px; align-items: start; }
+  .grid { grid-template-columns: 1fr; gap: 64px; }
 }
 
 .copy {
@@ -21,19 +21,16 @@
 }
 
 .headline {
-  margin-top: 28px;
-  margin-bottom: 32px;
-  font-family: var(--font-display);
-  font-weight: 400;
-  font-size: clamp(56px, 8.5vw, 144px);
-  letter-spacing: -0.025em;
-  line-height: 0.96;
-  text-wrap: balance;
+  margin-top: 26px;
+  margin-bottom: 28px;
+  font-size: clamp(40px, 5.2vw, 76px);
+  font-weight: 580;
+  letter-spacing: -0.032em;
+  line-height: 1.03;
 }
 
 .lead {
-  max-width: 52ch;
-  font-size: clamp(18px, 1.5vw, 22px);
+  max-width: 50ch;
 }
 
 .ctaRow {
@@ -41,82 +38,102 @@
   display: flex;
   gap: 14px;
   flex-wrap: wrap;
-  align-items: center;
 }
 
-.stats {
+/* ── Fact strip ── */
+.facts {
   margin-top: 48px;
+  padding: 0;
+  list-style: none;
   display: flex;
-  gap: 32px;
+  gap: 12px;
   flex-wrap: wrap;
 }
 
-.stat { min-width: 0; }
-
-.statNum {
-  font-family: var(--font-display);
-  font-size: clamp(28px, 3vw, 40px);
-  line-height: 1;
+.facts li {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--mute);
+  padding: 9px 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
 }
 
-.statUnit { color: var(--terracotta); }
-
-.statLabel { margin-top: 6px; }
-
-/* ── Photo room card ── */
-.photoCard {
-  margin: 0;
+/* ── Visual: real product screenshots ── */
+.visual {
   position: relative;
+  display: flex;
+  justify-content: center;
+  padding: 12px 0 28px;
 }
 
-.photoStack {
+.glow {
+  position: absolute;
+  inset: -10% -20%;
+  background: radial-gradient(50% 50% at 55% 42%, rgba(212, 180, 131, 0.13), transparent 70%);
+  pointer-events: none;
+}
+
+.phone {
   position: relative;
-  aspect-ratio: 4 / 5;
-  border-radius: 18px;
-  overflow: hidden;
-  border: 1px solid var(--rule);
-  background: var(--paper);
+  width: clamp(240px, 26vw, 318px);
+  border-radius: 44px;
+  border: 1px solid rgba(232, 221, 202, 0.16);
+  background: #060504;
+  padding: 10px;
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.06) inset,
+    0 30px 80px rgba(0, 0, 0, 0.55),
+    0 8px 24px rgba(0, 0, 0, 0.4);
 }
 
-.photoLayer {
+/* notch pill */
+.phone::after {
+  content: "";
   position: absolute;
-  inset: 0;
-  transition: opacity 0.8s ease;
-}
-
-.scanOverlay {
-  position: absolute;
-  inset: 0;
-}
-
-.phaseChip {
-  position: absolute;
-  top: 16px;
-  left: 16px;
-  z-index: 5;
-}
-
-.dots {
-  position: absolute;
-  bottom: 16px;
+  top: 22px;
   left: 50%;
   transform: translateX(-50%);
-  display: flex;
-  gap: 8px;
-  z-index: 5;
+  width: 84px;
+  height: 22px;
+  border-radius: 999px;
+  background: #060504;
+  z-index: 2;
 }
 
-.dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 4px;
-  background: var(--ink-mute);
-  border: 0;
-  padding: 0;
-  transition: width 0.3s, background 0.3s;
+.phoneScreen {
+  border-radius: 35px;
+  overflow: hidden;
+  background: #0B0A08;
 }
 
-.dotActive {
-  width: 28px;
-  background: var(--terracotta);
+.phoneScreen img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.floatCard {
+  position: absolute;
+  bottom: 0;
+  left: clamp(-10px, 2vw, 30px);
+  width: clamp(150px, 15vw, 196px);
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid rgba(232, 221, 202, 0.14);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6);
+  background: #0E0C0A;
+}
+
+.floatCard img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+@media (max-width: 880px) {
+  .visual { padding-bottom: 40px; }
+  .floatCard { left: 4%; bottom: 8px; }
 }

@@ -23,7 +23,9 @@ function inferSource(referrer: string): { utm_source: string; utm_medium: string
 }
 
 export async function POST(req: NextRequest) {
-  let { email, utm_source, utm_medium, utm_campaign, utm_term, utm_content, referrer } = await req.json();
+  const body = await req.json();
+  const { email, utm_campaign, utm_term, utm_content, referrer } = body;
+  let { utm_source, utm_medium } = body;
 
   // Auto-tag if no UTM params but referrer is recognisable
   if (!utm_source && referrer) {

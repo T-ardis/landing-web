@@ -1,42 +1,68 @@
-/* TARDIS — editorial landing
-   Type: Instrument Serif (display) · Inter Tight (body) · JetBrains Mono (caption)
-   Palette: warm-neutral bone + ink, terracotta + sage accents */
+/* TARDIS — brand system
+   Matches the product at app.tardis-ai.com:
+   warm near-black, champagne gold, Archivo (variable width) throughout. */
 
 :root {
-  --bone: #F5F1EA;
-  --paper: #FBFAF7;
-  --paper-warm: #FBFAF7;
-  --ink: #1A1815;
-  --ink-soft: #4A4540;
-  --ink-mute: #8A847C;
-  --rule: #E5DFD3;
-  --rule-soft: #EFEAE0;
-  --terracotta: oklch(0.62 0.12 45);
-  --sage: oklch(0.62 0.05 145);
+  /* Surfaces */
+  --black: #0B0A08;
+  --coal: #110F0C;
+  --card: #161310;
+  --card-2: #1D1915;
 
-  --font-display: 'Instrument Serif', 'Times New Roman', serif;
-  --font-body: 'Inter Tight', system-ui, -apple-system, sans-serif;
-  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+  /* Lines */
+  --line: rgba(232, 221, 202, 0.10);
+  --line-soft: rgba(232, 221, 202, 0.06);
+  --line-gold: rgba(212, 180, 131, 0.28);
 
-  --gutter: clamp(20px, 4vw, 64px);
-  --max-w: 1320px;
+  /* Text */
+  --white: #F3EEE5;
+  --grey: #ABA294;
+  --mute: #8E8576; /* ≥4.5:1 on every surface incl. --card (WCAG AA) */
 
-  /* Legacy tokens, kept for any leftover components */
-  --bg-void: var(--bone);
-  --bg-dark: var(--bone);
-  --bg-surface: var(--paper);
-  --bg-elevated: var(--paper);
-  --text-primary: var(--ink);
-  --text-secondary: var(--ink-soft);
-  --text-muted: var(--ink-mute);
-  --accent: var(--terracotta);
-  --accent-hover: var(--terracotta);
-  --accent-dim: color-mix(in oklch, var(--terracotta) 12%, transparent);
-  --border-subtle: var(--rule-soft);
-  --border-visible: var(--rule);
-  --section-py: clamp(72px, 10vw, 140px);
+  /* Accent */
+  --gold: #D2B07E;
+  --gold-bright: #E4C997;
+  --gold-deep: #A18458;
+  --gold-dim: rgba(210, 176, 126, 0.12);
+
+  /* Type */
+  --font-sans: var(--font-archivo), 'Helvetica Neue', system-ui, sans-serif;
+
+  /* Layout */
+  --gutter: clamp(20px, 4vw, 56px);
+  --max-w: 1200px;
+  --section-py: clamp(80px, 10vw, 150px);
+  --radius: 4px;
+  --radius-lg: 12px;
+
+  /* ---- Legacy aliases (older modules reference these) ---- */
+  --bone: var(--black);
+  --paper: var(--card);
+  --paper-warm: var(--card);
+  --ink: var(--white);
+  --ink-soft: var(--grey);
+  --ink-mute: var(--mute);
+  --rule: var(--line);
+  --rule-soft: var(--line-soft);
+  --terracotta: var(--gold);
+  --sage: #97A189;
+  --bg-void: var(--black);
+  --bg-dark: var(--black);
+  --bg-surface: var(--card);
+  --bg-elevated: var(--card-2);
+  --text-primary: var(--white);
+  --text-secondary: var(--grey);
+  --text-muted: var(--mute);
+  --accent: var(--gold);
+  --accent-hover: var(--gold-bright);
+  --accent-dim: var(--gold-dim);
+  --border-subtle: var(--line-soft);
+  --border-visible: var(--line);
   --container-px: var(--gutter);
-  --max-w-narrow: 860px;
+  --max-w-narrow: 820px;
+  --font-display: var(--font-sans);
+  --font-body: var(--font-sans);
+  --font-mono: var(--font-sans);
   --text-xs: 11px;
   --text-sm: 13px;
   --text-base: 16px;
@@ -44,35 +70,8 @@
   --text-xl: 22px;
   --text-2xl: 28px;
   --text-3xl: 40px;
-  --text-4xl: 64px;
-  --text-giant: clamp(80px, 12vw, 192px);
-}
-
-/* THEME: dark · warm — kept as utilities if you want to swap */
-[data-theme="dark"] {
-  --bone: #14130F;
-  --paper: #1A1815;
-  --paper-warm: #1A1815;
-  --ink: #F5F1EA;
-  --ink-soft: #C9C4BA;
-  --ink-mute: #7A746C;
-  --rule: #2A2622;
-  --rule-soft: #1F1D1A;
-  --terracotta: oklch(0.7 0.13 45);
-  --sage: oklch(0.72 0.06 145);
-}
-
-[data-theme="warm"] {
-  --bone: #ECE3D2;
-  --paper: #F4EDDC;
-  --paper-warm: #F4EDDC;
-  --ink: #2A1E12;
-  --ink-soft: #5C4632;
-  --ink-mute: #998874;
-  --rule: #D9CDB4;
-  --rule-soft: #E2D8C2;
-  --terracotta: oklch(0.55 0.14 38);
-  --sage: oklch(0.55 0.07 140);
+  --text-4xl: 60px;
+  --text-giant: clamp(72px, 11vw, 168px);
 }
 
 *, *::before, *::after {
@@ -88,19 +87,20 @@ html {
 }
 
 html, body {
-  background: var(--bone);
-  color: var(--ink);
+  background: var(--black);
+  color: var(--white);
 }
 
 body {
-  font-family: var(--font-body);
+  font-family: var(--font-sans);
   font-size: 16px;
-  line-height: 1.55;
+  line-height: 1.6;
   text-rendering: optimizeLegibility;
-  font-feature-settings: "ss01", "cv11";
+  background-image: radial-gradient(1100px 520px at 50% -120px, rgba(212, 180, 131, 0.07), transparent 65%);
+  background-repeat: no-repeat;
 }
 
-/* Prevent horizontal page scroll without breaking position:sticky on body's children */
+/* Prevent horizontal page scroll without breaking position:sticky */
 html { overflow-x: clip; }
 @supports not (overflow-x: clip) {
   html { overflow-x: hidden; }
@@ -110,7 +110,12 @@ a { color: inherit; text-decoration: none; }
 button { cursor: pointer; font-family: inherit; border: none; background: none; color: inherit; }
 img, svg { display: block; max-width: 100%; }
 
-::selection { background: var(--terracotta); color: var(--paper); }
+::selection { background: var(--gold); color: var(--black); }
+
+:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
@@ -127,74 +132,77 @@ img, svg { display: block; max-width: 100%; }
 
 /* ---------- Type ---------- */
 .display, h1, h2, h3 {
-  font-family: var(--font-display);
-  font-weight: 400;
-  letter-spacing: -0.01em;
-  line-height: 0.98;
+  font-family: var(--font-sans);
+  font-weight: 560;
+  letter-spacing: -0.03em;
+  line-height: 1.04;
   text-wrap: balance;
   margin: 0;
 }
-h1 { font-size: clamp(48px, 7.2vw, 116px); letter-spacing: -0.025em; }
-h2 { font-size: clamp(36px, 5vw, 72px); }
-h3 { font-size: clamp(24px, 2.6vw, 36px); line-height: 1.05; }
+h1 { font-size: clamp(42px, 5.6vw, 84px); }
+h2 { font-size: clamp(32px, 4vw, 56px); }
+h3 { font-size: clamp(21px, 2.2vw, 28px); line-height: 1.15; }
+
 .italic { font-style: italic; }
 
-.eyebrow {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--ink-mute);
-  font-weight: 500;
-}
-.eyebrow .dot {
-  display: inline-block;
-  width: 6px; height: 6px;
-  background: var(--terracotta);
-  border-radius: 50%;
-  margin-right: 8px;
-  vertical-align: middle;
-  transform: translateY(-1px);
+/* Champagne accent inside headlines — the app's own pattern
+   ("in your space." / "in action.") */
+.au {
+  color: var(--gold);
+  font-style: italic;
 }
 
+.eyebrow {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 600;
+}
+.eyebrow .dot { display: none; }
+
 .lead {
-  font-size: clamp(17px, 1.4vw, 21px);
-  line-height: 1.45;
-  color: var(--ink-soft);
-  max-width: 56ch;
+  font-size: clamp(16px, 1.3vw, 19px);
+  line-height: 1.6;
+  color: var(--grey);
+  max-width: 58ch;
   text-wrap: pretty;
 }
 
 .caption {
-  font-family: var(--font-mono);
+  font-family: var(--font-sans);
   font-size: 11px;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--ink-mute);
+  color: var(--mute);
+  font-weight: 500;
 }
 
 /* ---------- Buttons ---------- */
 .btn {
-  display: inline-flex; align-items: center; gap: 10px;
-  padding: 16px 26px;
-  border-radius: 999px;
-  font-size: 15px;
-  font-weight: 500;
-  letter-spacing: -0.005em;
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  padding: 15px 28px;
+  border-radius: var(--radius);
+  font-size: 13px;
+  font-weight: 650;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
   border: 1px solid transparent;
   text-decoration: none;
-  font-family: var(--font-body);
-  transition: transform 0.15s, background 0.18s, color 0.18s, border-color 0.18s;
+  font-family: var(--font-sans);
+  transition: background 0.18s, color 0.18s, border-color 0.18s, transform 0.15s;
 }
 .btn:hover { transform: translateY(-1px); }
-.btn-primary { background: var(--ink); color: var(--paper); }
-.btn-primary:hover { background: var(--terracotta); color: var(--paper); }
-.btn-ghost { background: transparent; color: var(--ink); border-color: var(--ink); }
-.btn-ghost:hover { background: var(--ink); color: var(--paper); }
-.btn .arrow { font-family: var(--font-display); font-size: 18px; transform: translateY(-1px); }
+.btn:active { transform: translateY(0); }
+.btn-primary { background: var(--gold); color: #15120D; }
+.btn-primary:hover { background: var(--gold-bright); }
+.btn-ghost { background: transparent; color: var(--gold); border-color: var(--line-gold); }
+.btn-ghost:hover { border-color: var(--gold); background: var(--gold-dim); }
+.btn .arrow { font-size: 15px; transform: translateY(-1px); }
 
 /* ---------- Sections ---------- */
-section { padding: clamp(72px, 10vw, 140px) 0; position: relative; }
+section { padding: var(--section-py) 0; position: relative; }
 .section-head {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -205,75 +213,61 @@ section { padding: clamp(72px, 10vw, 140px) 0; position: relative; }
 @media (max-width: 820px) {
   .section-head { grid-template-columns: 1fr; gap: 24px; }
 }
-.divider { height: 1px; background: var(--rule); margin: 0; border: 0; }
-.divider-thick { height: 1px; background: var(--ink); border: 0; }
+.divider { height: 1px; background: var(--line); margin: 0; border: 0; }
+.divider-thick { height: 1px; background: var(--line-gold); border: 0; }
 
 /* ---------- Cards ---------- */
 .card {
-  background: var(--paper);
-  border: 1px solid var(--rule);
-  border-radius: 18px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
   padding: 32px;
 }
 .card-flat {
   background: transparent;
-  border: 1px solid var(--rule);
-  border-radius: 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
   padding: 28px;
 }
 
 /* ---------- Chip ---------- */
 .chip {
   display: inline-flex; align-items: center; gap: 8px;
-  font-family: var(--font-mono);
+  font-family: var(--font-sans);
   font-size: 11px;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  padding: 6px 12px;
-  border: 1px solid var(--rule);
-  border-radius: 999px;
-  background: var(--paper);
-  color: var(--ink-soft);
+  font-weight: 600;
+  padding: 7px 14px;
+  border: 1px solid var(--line-gold);
+  border-radius: var(--radius);
+  background: rgba(11, 10, 8, 0.82);
+  color: var(--gold);
+  backdrop-filter: blur(6px);
 }
 .chip .led {
   width: 6px; height: 6px;
   border-radius: 50%;
-  background: var(--terracotta);
-  box-shadow: 0 0 8px var(--terracotta);
+  background: var(--gold);
+  box-shadow: 0 0 8px var(--gold);
 }
 
-/* ---------- Pulse + sweep ---------- */
 @keyframes pulse {
   0%, 100% { transform: scale(1); opacity: 0.9; }
   50% { transform: scale(1.4); opacity: 0.4; }
 }
 .pulse-dot {
-  width: 10px; height: 10px; border-radius: 50%;
-  background: var(--terracotta);
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--gold);
   animation: pulse 1.8s ease-in-out infinite;
 }
 
-@keyframes sweep {
-  0% { transform: translateY(-100%); opacity: 0; }
-  20% { opacity: 1; }
-  80% { opacity: 1; }
-  100% { transform: translateY(100%); opacity: 0; }
-}
-.scan-sweep::after {
-  content: "";
-  position: absolute; inset: 0;
-  background: linear-gradient(180deg, transparent 0%, color-mix(in oklch, var(--terracotta) 30%, transparent) 50%, transparent 100%);
-  animation: sweep 3.2s ease-in-out infinite;
-  pointer-events: none;
-  mix-blend-mode: screen;
-}
-
-/* ---------- Editorial number list ---------- */
+/* ---------- Editorial number list (kept for legacy pages) ---------- */
 ol.editorial { list-style: none; padding: 0; margin: 0; counter-reset: stepc; }
 ol.editorial li {
   counter-increment: stepc;
   padding: 32px 0;
-  border-top: 1px solid var(--rule);
+  border-top: 1px solid var(--line);
   display: grid;
   grid-template-columns: 64px 1fr 1.6fr;
   gap: 32px;
@@ -285,22 +279,10 @@ ol.editorial li {
 }
 ol.editorial li::before {
   content: counter(stepc, decimal-leading-zero);
-  font-family: var(--font-mono);
   font-size: 12px;
   letter-spacing: 0.1em;
-  color: var(--ink-mute);
+  color: var(--gold-deep);
+  font-weight: 600;
 }
 ol.editorial li h3 { font-size: clamp(22px, 2.3vw, 30px); }
-ol.editorial li .descr { color: var(--ink-soft); max-width: 50ch; }
-
-/* ---------- Keyboard ---------- */
-.kbd {
-  display: inline-block;
-  font-family: var(--font-mono);
-  font-size: 11px;
-  padding: 2px 8px;
-  border: 1px solid var(--rule);
-  border-bottom-width: 2px;
-  border-radius: 6px;
-  background: var(--paper);
-}
+ol.editorial li .descr { color: var(--grey); max-width: 50ch; }

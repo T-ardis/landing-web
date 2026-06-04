@@ -1,18 +1,23 @@
 .section {
-  background: var(--bone);
+  border-top: 1px solid var(--line-soft);
+}
+
+.head {
+  margin-bottom: clamp(40px, 5vw, 64px);
 }
 
 .heading {
-  margin-top: 16px;
+  margin-top: 18px;
 }
 
 .list {
-  max-width: 880px;
+  max-width: 860px;
+  border-top: 1px solid var(--line-gold);
 }
 
 .faq {
-  border-bottom: 1px solid var(--rule);
-  padding: 24px 0;
+  border-bottom: 1px solid var(--line);
+  padding: 26px 0;
 }
 
 .summary {
@@ -22,30 +27,36 @@
   align-items: baseline;
   justify-content: space-between;
   gap: 24px;
-  font-family: var(--font-display);
-  font-weight: 400;
-  font-size: clamp(20px, 2vw, 28px);
-  line-height: 1.15;
-  color: var(--ink);
+  font-weight: 580;
+  font-size: clamp(17px, 1.7vw, 21px);
+  letter-spacing: -0.015em;
+  line-height: 1.3;
+  color: var(--white);
+  transition: color 0.18s;
 }
+.summary:hover { color: var(--gold); }
 
 .summary::-webkit-details-marker { display: none; }
 
 .summary::after {
   content: "+";
-  font-family: var(--font-display);
-  font-size: 32px;
-  color: var(--ink-mute);
+  font-size: 24px;
+  font-weight: 400;
+  color: var(--gold-deep);
   transition: transform 0.2s;
   line-height: 0.7;
+  flex-shrink: 0;
 }
 
-.faq[open] .summary::after { content: "−"; }
+.faq[open] .summary::after {
+  transform: rotate(45deg);
+  color: var(--gold);
+}
 
 .answer {
-  color: var(--ink-soft);
-  margin: 16px 0 0;
-  font-size: 16px;
-  max-width: 70ch;
-  line-height: 1.55;
+  margin-top: 16px;
+  color: var(--grey);
+  font-size: 15px;
+  line-height: 1.7;
+  max-width: 68ch;
 }

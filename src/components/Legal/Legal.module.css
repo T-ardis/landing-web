@@ -1,0 +1,65 @@
+.main {
+  padding: clamp(56px, 8vw, 110px) 0 clamp(72px, 9vw, 130px);
+}
+
+.inner {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+.header {
+  margin-bottom: clamp(40px, 5vw, 64px);
+  padding-bottom: 32px;
+  border-bottom: 1px solid var(--line-gold);
+}
+
+.title {
+  font-size: clamp(34px, 4.4vw, 56px);
+  font-weight: 580;
+  letter-spacing: -0.03em;
+}
+
+.updated {
+  margin-top: 16px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--mute);
+}
+
+/* ── Article typography ── */
+.body {
+  color: var(--grey);
+  font-size: 15.5px;
+  line-height: 1.75;
+}
+
+.body h2 {
+  font-size: clamp(20px, 2vw, 26px);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--white);
+  margin: 44px 0 16px;
+}
+
+.body h2:first-child { margin-top: 0; }
+
+.body p { margin: 0 0 16px; }
+
+.body ul {
+  margin: 0 0 16px;
+  padding-left: 22px;
+}
+
+.body li { margin-bottom: 8px; }
+
+.body strong { color: var(--white); font-weight: 600; }
+
+.body a {
+  color: var(--gold);
+  border-bottom: 1px solid var(--line-gold);
+  transition: color 0.18s, border-color 0.18s;
+}
+.body a:hover { color: var(--gold-bright); border-color: var(--gold); }

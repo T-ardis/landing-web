@@ -50,7 +50,7 @@
 }
 
 .headline {
-  font-family: var(--font-display, 'Space Grotesk', sans-serif);
+  font-family: var(--font-sans);
   font-size: var(--text-2xl);
   font-weight: 700;
   line-height: 1.1;
@@ -72,7 +72,7 @@
   text-transform: uppercase;
   color: var(--accent);
   border: 1px solid rgba(200, 169, 126, 0.2);
-  border-radius: 100px;
+  border-radius: var(--radius);
   padding: 0.25rem 0.75rem;
 }
 
@@ -85,7 +85,7 @@
 }
 
 .body h2 {
-  font-family: var(--font-display, 'Space Grotesk', sans-serif);
+  font-family: var(--font-sans);
   font-size: var(--text-xl);
   font-weight: 700;
   letter-spacing: -0.02em;
@@ -95,7 +95,7 @@
 }
 
 .body h3 {
-  font-family: var(--font-display, 'Space Grotesk', sans-serif);
+  font-family: var(--font-sans);
   font-size: var(--text-lg);
   font-weight: 600;
   letter-spacing: -0.01em;
@@ -163,7 +163,7 @@
 }
 
 .faqHeading {
-  font-family: var(--font-display, 'Space Grotesk', sans-serif);
+  font-family: var(--font-sans);
   font-size: var(--text-xl);
   font-weight: 700;
   letter-spacing: -0.02em;
@@ -189,7 +189,7 @@
 }
 
 .faqQuestion {
-  font-family: var(--font-display, 'Space Grotesk', sans-serif);
+  font-family: var(--font-sans);
   font-size: var(--text-base);
   font-weight: 600;
   color: var(--text-primary);
@@ -212,7 +212,7 @@
 }
 
 .relatedHeading {
-  font-family: var(--font-display, 'Space Grotesk', sans-serif);
+  font-family: var(--font-sans);
   font-size: var(--text-lg);
   font-weight: 600;
   letter-spacing: -0.01em;
@@ -251,7 +251,7 @@
 }
 
 .relatedTitle {
-  font-family: var(--font-display, 'Space Grotesk', sans-serif);
+  font-family: var(--font-sans);
   font-size: var(--text-base);
   font-weight: 600;
   color: var(--text-primary);

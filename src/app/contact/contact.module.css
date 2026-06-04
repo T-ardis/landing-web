@@ -1,0 +1,115 @@
+.main {
+  padding: clamp(56px, 8vw, 110px) 0 clamp(72px, 9vw, 130px);
+}
+
+.inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+.header {
+  max-width: 640px;
+  margin-bottom: clamp(48px, 6vw, 80px);
+}
+
+.title {
+  margin-top: 22px;
+  font-size: clamp(40px, 5.6vw, 80px);
+  font-weight: 580;
+  letter-spacing: -0.032em;
+}
+
+.sub {
+  margin-top: 24px;
+}
+
+/* ── Contact channel cards ── */
+.grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: clamp(16px, 2vw, 24px);
+}
+
+@media (max-width: 880px) {
+  .grid { grid-template-columns: 1fr; }
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: clamp(24px, 2.6vw, 36px);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: var(--card);
+  transition: border-color 0.2s, transform 0.2s ease;
+}
+.card:hover {
+  border-color: var(--line-gold);
+  transform: translateY(-2px);
+}
+
+.cardLabel {
+  font-size: 12px;
+  font-weight: 650;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.cardBody {
+  color: var(--grey);
+  font-size: 14.5px;
+  line-height: 1.6;
+  flex: 1;
+}
+
+.cardEmail {
+  margin-top: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--white);
+  letter-spacing: 0.02em;
+}
+
+/* ── Founders ── */
+.founders {
+  margin-top: clamp(56px, 7vw, 88px);
+  padding-top: 40px;
+  border-top: 1px solid var(--line);
+}
+
+.foundersTitle {
+  font-size: 12px;
+  font-weight: 650;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--mute);
+  margin-bottom: 20px;
+}
+
+.foundersRow {
+  display: flex;
+  gap: clamp(24px, 4vw, 56px);
+  flex-wrap: wrap;
+}
+
+.founder {
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--white);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  transition: color 0.18s;
+}
+.founder:hover { color: var(--gold); }
+
+.founderRole {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--mute);
+}

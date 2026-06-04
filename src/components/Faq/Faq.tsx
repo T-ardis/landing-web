@@ -3,52 +3,48 @@ import styles from './Faq.module.css';
 const FAQS = [
   {
     q: 'What does TARDIS actually do?',
-    a: 'TARDIS is three connected tools. (1) Scan: turn your iPhone into a millimeter-precise 3D scanner with LiDAR. (2) Studio: AI styles your whole room across every retailer’s catalog. (3) View: see any product in your real space with AR. Everything ends in one cart at checkout.',
+    a: 'TARDIS turns a furniture product page into something you can see in your own room. Paste a product URL or upload a photo, and we generate a true-scale, interactive 3D model you can place in your space with AR — before you buy.',
   },
   {
     q: 'Do I need to download an app?',
-    a: 'No. TARDIS runs entirely in your browser — Safari on iPhone, Chrome on Android. The AR experience uses AR Quick Look on iOS and Scene Viewer / ARCore on Android.',
+    a: 'No. TARDIS runs entirely in your browser — Safari on iPhone, Chrome on Android. The AR experience uses AR Quick Look on iOS and Scene Viewer on Android.',
   },
   {
     q: 'Is it free?',
-    a: 'The scanner, AR viewer, and basic Studio designs are free with no signup. Saving multiple designs and one-cart multi-brand checkout are part of the full TARDIS experience, currently in beta with a waitlist.',
+    a: 'Yes. Generating 3D models and viewing them in your room with AR is free, with no signup. Advanced features like full-room AI styling will be part of the premium experience as the product grows.',
   },
   {
     q: 'Which retailers work?',
-    a: 'IKEA, Wayfair, CB2, Crate & Barrel, West Elm, Pottery Barn, Article, Amazon, and growing. You can also upload any product photo from anywhere — our AI handles it.',
+    a: 'Most of them. If a product has a public product page or a clear photo, TARDIS can usually build a model from it — including IKEA, Wayfair, CB2, Crate & Barrel, West Elm, Pottery Barn, Article, and Amazon.',
   },
   {
     q: 'Is TARDIS the same as Wayfair’s Tardis tool?',
-    a: 'No. Wayfair’s Tardis renders Wayfair products inside your room. TARDIS is a multi-brand AR furniture visualizer that pulls real products from IKEA, Wayfair, CB2 and other retailers into one design — with a single unified checkout across every brand.',
+    a: 'No. Wayfair’s internal tool renders Wayfair products only. TARDIS is an independent, multi-brand visualizer: it works with products from many retailers, so you can design one room with pieces from different stores.',
   },
   {
-    q: 'Which iPhones support the TARDIS furniture visualizer?',
-    a: 'TARDIS works best on iPhones with the LiDAR sensor — iPhone 12 Pro and later Pro models, plus all iPad Pro models from 2020 onwards. Non-Pro iPhones still support augmented reality furniture viewing, but the room geometry won’t be as precise.',
+    q: 'How accurate are the 3D models?',
+    a: 'Models are generated at the product’s listed dimensions, so the scale you see in AR matches the real piece. Renders are estimates of shape and material — always double-check exact specifications with the retailer before buying.',
   },
   {
-    q: 'Does TARDIS support multi-brand checkout?',
-    a: 'TARDIS supports unified checkout across IKEA, Wayfair, CB2, and more. Every item from your AR-visualized design goes into a single cart — one payment, coordinated delivery, no juggling five separate orders.',
+    q: 'What’s next for TARDIS?',
+    a: 'An iOS app with LiDAR room scanning is in development: scan your room once, let AI style the entire space across retailers, and check out in a single cart. Join the waitlist to be first in line.',
   },
 ];
+
+export { FAQS };
 
 export default function Faq() {
   return (
     <section id="faq" className={styles.section}>
       <div className="wrap">
-        <div className="section-head">
-          <div>
-            <span className="eyebrow">
-              <span className="dot" />
-              Frequently asked
-            </span>
-            <h2 className={styles.heading}>
-              Questions, <span className="italic">answered.</span>
-            </h2>
-          </div>
+        <div className={styles.head}>
+          <span className="eyebrow">FAQ</span>
+          <h2 className={styles.heading}>
+            Frequently asked questions
+          </h2>
         </div>
 
         <div className={styles.list}>
-          <hr className="divider-thick" />
           {FAQS.map((f, i) => (
             <details key={i} className={styles.faq}>
               <summary className={styles.summary}>{f.q}</summary>

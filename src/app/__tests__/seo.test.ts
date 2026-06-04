@@ -12,7 +12,7 @@ describe('layout.tsx metadata', () => {
 
   it('should define a description that front-loads the AR furniture visualizer keyword', () => {
     expect(metadata.description).toBe(
-      'The AR furniture visualizer for iPhone. Scan your room with LiDAR, see how furniture looks in your room photorealistically, and check out across IKEA, Wayfair & CB2 in one tap.',
+      'TARDIS is an AR furniture visualizer. Paste a product link from IKEA, Wayfair, CB2 or any store, get a true-scale 3D model, and see furniture in your room with AR — free, in your browser.',
     );
   });
 
@@ -57,7 +57,7 @@ describe('layout.tsx openGraph metadata', () => {
   it('should set a keyword-rich OG description', () => {
     expect(metadata.openGraph).toHaveProperty(
       'description',
-      'Scan your room with iPhone LiDAR. See how furniture looks in your room with photorealistic AR. Check out across IKEA, Wayfair & CB2 in one tap.',
+      'Paste a product link from any store, get a true-scale 3D model, and see it in your room with AR. Free, in your browser.',
     );
   });
 
@@ -68,7 +68,7 @@ describe('layout.tsx openGraph metadata', () => {
         url: '/opengraph-image',
         width: 1200,
         height: 630,
-        alt: 'TARDIS — AR furniture visualizer for iPhone',
+        alt: 'TARDIS — AR furniture visualizer',
       },
     ]);
   });
@@ -89,7 +89,7 @@ describe('layout.tsx twitter metadata', () => {
   it('should set a keyword-rich Twitter description', () => {
     expect(metadata.twitter).toHaveProperty(
       'description',
-      'AR furniture visualizer for iPhone. Scan, see, and shop furniture in your room — one cart across IKEA, Wayfair & CB2.',
+      'Paste a product link from any store, get a true-scale 3D model, and see it in your room with AR. Free, in your browser.',
     );
   });
 
@@ -140,7 +140,7 @@ describe('sitemap.ts', () => {
 
   it('should set about page priority lower than blog (secondary content)', () => {
     const result = sitemap();
-    expect(result[2].priority).toBe(0.5);
+    expect(result[2].priority).toBe(0.6);
   });
 
   it('should include blog posts with proper URLs', () => {
