@@ -43,3 +43,6 @@ next-env.d.ts
 # local debug artifacts
 .playwright-mcp/
 .claude/scheduled_tasks.lock
+
+# Claude Code -- personal settings only
+.claude/settings.local.json
