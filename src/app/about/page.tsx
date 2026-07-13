@@ -8,7 +8,7 @@ const APP_URL = process.env.NEXT_PUBLIC_APP_URL || 'https://app.tardis-ai.com/';
 export const metadata: Metadata = {
   title: 'About TARDIS — The Company Behind the AR Furniture Visualizer',
   description:
-    'TARDIS builds AI tools that let people see furniture in their homes before they buy it. Learn about the company, the product, and the founders.',
+    'TARDIS gives retailers an embeddable AR furniture visualizer — one script that lets shoppers see products at true scale in their own room. Learn about the company, the product, and the founders.',
   alternates: { canonical: 'https://www.tardis-ai.com/about' },
   openGraph: {
     type: 'website',
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     siteName: 'TARDIS',
     title: 'About TARDIS — The Company Behind the AR Furniture Visualizer',
     description:
-      'TARDIS builds AI tools that let people see furniture in their homes before they buy it. Learn about the company, the product, and the founders.',
+      'TARDIS gives retailers an embeddable AR furniture visualizer — one script that lets shoppers see products at true scale in their own room. Learn about the company, the product, and the founders.',
   },
 };
 
@@ -26,7 +26,7 @@ const aboutJsonLd = {
   url: 'https://www.tardis-ai.com/about',
   name: 'About TARDIS',
   description:
-    'TARDIS builds AI tools that let people see furniture in their homes before they buy it.',
+    'TARDIS builds an embeddable AR layer that lets retailers show shoppers furniture at true scale in their own room.',
   isPartOf: { '@id': 'https://www.tardis-ai.com/#website' },
   about: { '@id': 'https://www.tardis-ai.com/#organization' },
 };
@@ -57,17 +57,17 @@ const MILESTONES = [
   {
     year: '2025',
     title: 'The visualizer ships',
-    body: 'The web app goes live: paste a product link or photo, get a true-scale 3D model, and place it in your room with AR. Free, no download.',
+    body: 'The web viewer goes live: turn a product into a true-scale 3D model and place it in a real room with AR — in the browser, no download.',
   },
   {
     year: '2026',
-    title: 'Open early access',
-    body: 'The visualizer is free and open to everyone while we build toward the full-room experience. The waitlist gets each new feature first.',
+    title: 'The embeddable layer',
+    body: 'The viewer becomes an embeddable product: retailers add one script and offer AR on every product page. Object AR and preview-grade surface AR go live.',
   },
   {
     year: 'Next',
-    title: 'The full room',
-    body: 'An iOS app with LiDAR room scanning is in development — scan once, let AI style the whole space across retailers, and check out in one cart.',
+    title: 'Native App Clip',
+    body: 'A native App Clip with LiDAR room scanning is in development for higher-fidelity placement, building on the object and surface AR that are live today.',
   },
 ];
 
@@ -84,13 +84,14 @@ export default function AboutPage() {
           <div className={styles.inner}>
             <span className="eyebrow">About TARDIS</span>
             <h1 className={styles.headline}>
-              Buying furniture shouldn&apos;t be <span className="au">a leap of faith.</span>
+              Every product page should let you <span className="au">see it in your room.</span>
             </h1>
             <p className={`lead ${styles.sub}`}>
-              TARDIS is an AR furniture visualizer founded in 2024. We turn a
-              furniture product link into a true-scale 3D model you can see in
-              your own room, so the piece that arrives is the piece you
-              expected.
+              TARDIS is an embeddable AR furniture visualizer founded in 2024.
+              We give retailers one script that lets their shoppers see a
+              product at true scale in their own room — object AR for
+              furniture, preview-grade surface AR for wall coverings — so the
+              piece that arrives is the piece they expected.
             </p>
           </div>
         </section>
@@ -101,16 +102,16 @@ export default function AboutPage() {
               <h2 className={styles.blockTitle}>What we believe</h2>
               <div className={styles.blockBody}>
                 <p>
-                  Furniture is one of the largest purchases people make, and
-                  almost everyone makes it blind: a product photo, a tape
-                  measure, and hope. Retailer AR tools only show their own
-                  catalog; real rooms are furnished from many stores.
+                  Furniture and home goods are among the largest purchases
+                  people make, and almost everyone makes them blind: a product
+                  photo, a tape measure, and hope. Shoppers who can&apos;t
+                  picture a piece in their space hesitate, or buy and return.
                 </p>
                 <p>
-                  We&apos;re building the missing layer: one visualizer that
-                  works across stores, so you can design your actual room with
-                  the actual products you&apos;re considering, and trust what
-                  you see.
+                  We&apos;re building the missing layer: AR that lives on the
+                  product page itself, dropped in with one script, so any
+                  retailer can let shoppers see products at true scale in their
+                  own room and buy with confidence.
                 </p>
               </div>
             </div>
@@ -164,12 +165,12 @@ export default function AboutPage() {
               <div>
                 <h2 className={styles.ctaTitle}>See it for yourself.</h2>
                 <p className={styles.ctaBody}>
-                  The visualizer is live and free — paste a product link and
-                  place it in your room in under a minute.
+                  The AR viewer is live — open the demo and place a real
+                  product in a room in under a minute.
                 </p>
               </div>
               <a href={APP_URL} className="btn btn-primary">
-                Open the app <span className="arrow">→</span>
+                See the live demo <span className="arrow">→</span>
               </a>
             </div>
           </div>
