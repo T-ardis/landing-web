@@ -6,7 +6,7 @@ export default function LogoStrip() {
   return (
     <section className={styles.strip} aria-label="Compatible retailers">
       <div className="wrap">
-        <p className={styles.label}>Works with product links from</p>
+        <p className={styles.label}>Works with product pages from stores like</p>
         <ul className={styles.list}>
           {RETAILERS.map((name) => (
             <li key={name} className={styles.item}>{name}</li>

@@ -9,29 +9,30 @@ export default function Hero() {
       <div className="wrap">
         <div className={styles.grid}>
           <div className={styles.copy}>
-            <span className="eyebrow">AR furniture visualizer</span>
+            <span className="eyebrow">Embeddable AR for product pages</span>
             <h1 className={styles.headline}>
-              See any furniture <span className="au">in your room</span> before you buy it.
+              Let shoppers see it <span className="au">in their room</span> — right on your product page.
             </h1>
             <p className={`lead ${styles.lead}`}>
-              Paste a product link from IKEA, Wayfair, CB2, or almost any other
-              store. TARDIS builds a true-scale 3D model you can walk around in
-              your home with AR. Free, in your browser.
+              TARDIS is an embeddable AR furniture visualizer. Drop one script
+              onto your product pages and shoppers tap to see items at true
+              scale in their space — object AR for furniture, preview-grade
+              surface AR for rugs and wall coverings. No app, no SDK.
             </p>
 
             <div className={styles.ctaRow}>
-              <a href={APP_URL} className="btn btn-primary">
-                Try it free <span className="arrow">→</span>
+              <a href="#cta" className="btn btn-primary">
+                Book a demo <span className="arrow">→</span>
               </a>
-              <a href="#how" className="btn btn-ghost">
-                How it works
+              <a href={APP_URL} className="btn btn-ghost">
+                See it live
               </a>
             </div>
 
             <ul className={styles.facts} aria-label="Product highlights">
-              <li>True-scale 3D</li>
-              <li>Any store link</li>
-              <li>No download</li>
+              <li>One script tag</li>
+              <li>Object + surface AR</li>
+              <li>No app to install</li>
             </ul>
           </div>
 

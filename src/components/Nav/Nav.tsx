@@ -5,8 +5,6 @@ import { usePathname, useRouter } from 'next/navigation';
 import Link from 'next/link';
 import styles from './Nav.module.css';
 
-const APP_URL = process.env.NEXT_PUBLIC_APP_URL || 'https://app.tardis-ai.com/';
-
 const SECTION_LINKS = [
   { label: 'How it works', hash: '#how' },
   { label: 'Demo',         hash: '#demo' },
@@ -80,9 +78,9 @@ export default function Nav() {
             >
               Blog
             </Link>
-            <a href={APP_URL} className={styles.pill}>
-              Open the app
-            </a>
+            <Link href="/#cta" className={styles.pill}>
+              Book a demo
+            </Link>
 
             <button
               className={`${styles.menuBtn} ${isOpen ? styles.menuBtnActive : ''}`}
@@ -153,14 +151,15 @@ export default function Nav() {
             </Link>
           </nav>
 
-          <a
-            href={APP_URL}
+          <Link
+            href="/#cta"
             className={styles.overlayCta}
             style={{ transitionDelay: isOpen ? '0.42s' : '0s' }}
             tabIndex={isOpen ? 0 : -1}
+            onClick={() => setIsOpen(false)}
           >
-            Open the app →
-          </a>
+            Book a demo →
+          </Link>
         </div>
       </div>
     </>
