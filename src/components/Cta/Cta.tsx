@@ -25,11 +25,10 @@ function getUtmParams(): UtmParams {
 }
 
 const APP_URL = process.env.NEXT_PUBLIC_APP_URL || 'https://app.tardis-ai.com/';
+const CALENDLY_URL = process.env.NEXT_PUBLIC_CALENDLY_URL || '';
 
 export default function Cta() {
   const [submitted, setSubmitted] = useState(false);
-  const [loading, setLoading]     = useState(false);
-  const [error, setError]         = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
   const utmRef   = useRef<UtmParams | null>(null);
 
@@ -37,30 +36,33 @@ export default function Cta() {
     utmRef.current = getUtmParams();
   }, []);
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setLoading(true);
-    setError(false);
-    try {
-      const email = inputRef.current?.value ?? '';
-      const res = await fetch('/api/waitlist', {
-        method: 'POST',
-        body: JSON.stringify({ email, ...utmRef.current }),
-        headers: { 'Content-Type': 'application/json' },
-      });
-      if (res.ok) {
-        setSubmitted(true);
-        setTimeout(() => {
-          window.location.href = `${APP_URL}?email=${encodeURIComponent(email)}`;
-        }, 2000);
-      } else {
-        setError(true);
-      }
-    } catch {
-      setError(true);
-    } finally {
-      setLoading(false);
+    const email = inputRef.current?.value ?? '';
+
+    // Fire-and-forget the Notion lead write — we no longer wait on it.
+    const payload = JSON.stringify({ email, ...utmRef.current });
+    let sent = false;
+    if (typeof navigator !== 'undefined' && navigator.sendBeacon) {
+      const blob = new Blob([payload], { type: 'application/json' });
+      sent = navigator.sendBeacon('/api/waitlist', blob);
     }
+    if (!sent) {
+      fetch('/api/waitlist', {
+        method: 'POST',
+        body: payload,
+        headers: { 'Content-Type': 'application/json' },
+        keepalive: true,
+      }).catch(() => {});
+    }
+
+    setSubmitted(true);
+    const dest = CALENDLY_URL
+      ? `${CALENDLY_URL}${CALENDLY_URL.includes('?') ? '&' : '?'}email=${encodeURIComponent(email)}`
+      : `${APP_URL}?email=${encodeURIComponent(email)}`;
+    setTimeout(() => {
+      window.location.href = dest;
+    }, 1200);
   };
 
   return (
@@ -87,7 +89,7 @@ export default function Cta() {
                 </svg>
               </div>
               <p className={styles.successTitle}>Thanks — we&apos;ll be in touch.</p>
-              <p className={styles.successSub}>Taking you to the live demo…</p>
+              <p className={styles.successSub}>{CALENDLY_URL ? 'Opening the demo booking…' : 'Taking you to the live demo…'}</p>
             </div>
           ) : (
             <>
@@ -101,8 +103,8 @@ export default function Cta() {
                   required
                   aria-label="Email address"
                 />
-                <button type="submit" className={styles.submit} disabled={loading}>
-                  {loading ? 'Sending…' : 'Book a demo'}
+                <button type="submit" className={styles.submit}>
+                  Book a demo
                 </button>
               </form>
 
@@ -113,8 +115,6 @@ export default function Cta() {
               </div>
             </>
           )}
-
-          {error && <p className={styles.errorNote}>Something went wrong — please try again.</p>}
         </div>
       </div>
     </section>
