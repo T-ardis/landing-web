@@ -7,7 +7,7 @@ import styles from './Nav.module.css';
 
 const SECTION_LINKS = [
   { label: 'How it works', hash: '#how' },
-  { label: 'Demo',         hash: '#demo' },
+  { label: 'See it',       hash: '#showcase' },
   { label: 'FAQ',          hash: '#faq' },
 ];
 

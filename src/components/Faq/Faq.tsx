@@ -2,32 +2,32 @@ import styles from './Faq.module.css';
 
 const FAQS = [
   {
-    q: 'What does TARDIS actually do?',
-    a: 'TARDIS is an embeddable AR furniture visualizer. A retailer adds one script to their product pages, and shoppers tap a button to see an item at true scale in their own room — a generated 3D model for furniture (object AR), or a preview-grade surface for rugs and wall coverings. No app, no SDK.',
+    q: 'What is TARDIS, exactly?',
+    a: 'An embeddable AR layer for your product pages. You add one script; shoppers tap “View in your room” and see the product at true scale in their space — a generated 3D model for furniture (object AR), or a live surface preview for wall coverings (surface AR). No app for shoppers, no SDK for you.',
   },
   {
-    q: 'How do shoppers use it — do they need an app?',
-    a: 'No. It runs in the browser: AR Quick Look on iPhone, Scene Viewer on Android, and an interactive 3D fallback everywhere else. Shoppers never install anything.',
+    q: 'How hard is it to install?',
+    a: 'One script tag on your product-page template plus a data-attribute on the button — about the effort of adding an analytics snippet. It works on Shopify, Magento, BigCommerce, WooCommerce, or a custom front end. Most retailers are live the same day.',
   },
   {
-    q: 'How much does it cost?',
-    a: 'Pricing depends on your catalog size and traffic, so we scope a plan per retailer — get in touch and we’ll put one together. You can try the live demo free today.',
+    q: 'Where do the 3D models come from?',
+    a: 'We auto-generate them from your product photos, so AR can cover the whole catalogue — not just hero SKUs. That’s the difference from tools that hand-model each product: no per-SKU 3D bill and no waiting on a modelling studio.',
   },
   {
-    q: 'Which products work?',
-    a: 'Furniture and décor get a true-scale 3D model (object AR). Rugs and wall coverings use preview-grade surface AR. If a product has a public page or a clear photo, we can usually build it — across catalogs like IKEA, Wayfair, CB2, West Elm, Article, and Amazon.',
+    q: 'How is this different from Roomvo, Cylindo, or Threekit?',
+    a: 'Roomvo focuses on surfaces; Cylindo and Threekit do furniture 3D by hand, per SKU. TARDIS is the only embed that covers both object and surface from one script, with the assets generated automatically from a photo.',
   },
   {
-    q: 'Is TARDIS the same as Wayfair’s Tardis tool?',
-    a: 'No. Wayfair’s internal tool renders Wayfair products on Wayfair. TARDIS is an independent, embeddable AR layer any retailer can add to their own product pages, for their own catalog.',
+    q: 'What does it cost?',
+    a: 'Pricing scales with catalogue size and traffic, and the two modes — object and surface — are the tiers: one integration, pay for the capability you use. Book a demo and we’ll scope a plan.',
   },
   {
-    q: 'How accurate are the 3D models?',
-    a: 'Object models are generated at each product’s listed dimensions, so the scale a shopper sees in AR matches the real piece. Surface AR is preview-grade — a realistic in-room preview, not a measured render. Always confirm exact specifications before purchase.',
+    q: 'How accurate is the AR, honestly?',
+    a: 'Object AR is high-fidelity and true-to-scale — built to each product’s listed dimensions, using native AR Quick Look on iOS and Scene Viewer on Android. Surface AR is preview-grade on the web (accurate colour and pattern, not a measured render), with native-grade fidelity via the iOS App Clip tier.',
   },
   {
-    q: 'What’s next for TARDIS?',
-    a: 'Object AR and preview-grade surface AR are live on the web today. A native App Clip with LiDAR room scanning is in development for higher-fidelity placement. Book a demo to see the current product and the roadmap.',
+    q: 'Will it touch my shoppers’ data or slow my page?',
+    a: 'The widget is a tiny script that lazy-loads its heavy code, and the shopper hot path is served from the edge/CDN — it never touches your backend. It records only anonymous AR-interaction analytics (opens and views), scoped to your account.',
   },
 ];
 

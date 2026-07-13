@@ -12,7 +12,7 @@ export default function FromBlog() {
           <div>
             <span className="eyebrow">From the blog</span>
             <h2 className={styles.heading}>
-              Guides on AR furniture shopping.
+              Guides for retailers adding AR.
             </h2>
           </div>
           <Link href="/blog" className={styles.all}>

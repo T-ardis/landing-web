@@ -1,9 +1,12 @@
 import Nav from '@/components/Nav/Nav';
 import Hero from '@/components/Hero/Hero';
-import LogoStrip from '@/components/LogoStrip/LogoStrip';
+import ProofBand from '@/components/ProofBand/ProofBand';
+import Problem from '@/components/Problem/Problem';
 import HowItWorks from '@/components/HowItWorks/HowItWorks';
-import Demo from '@/components/Demo/Demo';
+import Modes from '@/components/Modes/Modes';
 import Why from '@/components/Why/Why';
+import Showcase from '@/components/Showcase/Showcase';
+import ForYourStack from '@/components/ForYourStack/ForYourStack';
 import Faq, { FAQS } from '@/components/Faq/Faq';
 import FromBlog from '@/components/FromBlog/FromBlog';
 import Cta from '@/components/Cta/Cta';
@@ -96,10 +99,13 @@ export default function Home() {
       <Nav />
       <main>
         <Hero />
-        <LogoStrip />
+        <ProofBand />
+        <Problem />
         <HowItWorks />
-        <Demo />
+        <Modes />
         <Why />
+        <Showcase />
+        <ForYourStack />
         <Faq />
         <FromBlog />
         <Cta />

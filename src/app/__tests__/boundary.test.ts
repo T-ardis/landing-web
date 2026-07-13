@@ -4,10 +4,13 @@ import { resolve } from 'path';
 // Marketing surfaces whose visible copy makes public product claims.
 const FILES = [
   '../../components/Hero/Hero.tsx',
+  '../../components/ProofBand/ProofBand.tsx',
+  '../../components/Problem/Problem.tsx',
   '../../components/HowItWorks/HowItWorks.tsx',
+  '../../components/Modes/Modes.tsx',
   '../../components/Why/Why.tsx',
-  '../../components/Demo/Demo.tsx',
-  '../../components/LogoStrip/LogoStrip.tsx',
+  '../../components/Showcase/Showcase.tsx',
+  '../../components/ForYourStack/ForYourStack.tsx',
   '../../components/Nav/Nav.tsx',
   '../../components/Footer/Footer.tsx',
   '../../components/Faq/Faq.tsx',

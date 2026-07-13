@@ -8,7 +8,7 @@ import styles from './page.module.css';
 export const metadata: Metadata = {
   title: 'Blog',
   description:
-    'Tips on home renovation, AI interior design, LiDAR room scanning, and smart furniture shopping — from the TARDIS team.',
+    'AR commerce in practice — the returns and conversion economics of 3D/AR, how to add “view in your room” to your product pages, and where the 3D assets come from. From the TARDIS team.',
   alternates: {
     canonical: 'https://www.tardis-ai.com/blog',
   },
@@ -51,8 +51,9 @@ export default function BlogPage() {
             <span className={styles.eyebrow}>Blog</span>
             <h1 className={styles.headline}>Ideas &amp; Insights</h1>
             <p className={styles.sub}>
-              On home renovation, AI design, and building the future of how
-              people furnish their spaces.
+              AR commerce, in practice — the returns and conversion economics,
+              how to add it to your product pages, and where the 3D assets come
+              from.
             </p>
           </header>
 
