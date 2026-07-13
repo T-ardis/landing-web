@@ -25,7 +25,8 @@ function getUtmParams(): UtmParams {
 }
 
 const APP_URL = process.env.NEXT_PUBLIC_APP_URL || 'https://app.tardis-ai.com/';
-const CALENDLY_URL = process.env.NEXT_PUBLIC_CALENDLY_URL || '';
+const CALENDLY_URL =
+  process.env.NEXT_PUBLIC_CALENDLY_URL || 'https://calendly.com/founders-tardis-ai/30min';
 
 export default function Cta() {
   const [submitted, setSubmitted] = useState(false);
