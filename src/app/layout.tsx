@@ -74,7 +74,7 @@ export const metadata: Metadata = {
     siteName: 'TARDIS',
     title: 'AR Furniture Visualizer — See Furniture in Your Room | TARDIS',
     description:
-      'Paste a product link from any store, get a true-scale 3D model, and see it in your room with AR. Free, in your browser.',
+      'Add an AR furniture visualizer to your product pages with one script. Shoppers see items in their room at true scale — object AR plus preview-grade surface AR.',
     images: [
       {
         url: '/opengraph-image',
@@ -89,7 +89,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'AR Furniture Visualizer — See Furniture in Your Room | TARDIS',
     description:
-      'Paste a product link from any store, get a true-scale 3D model, and see it in your room with AR. Free, in your browser.',
+      'Add an AR furniture visualizer to your product pages with one script. Shoppers see items in their room at true scale — object AR plus preview-grade surface AR.',
     images: ['/opengraph-image'],
     creator: '@tardisapp',
   },

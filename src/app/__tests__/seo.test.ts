@@ -54,10 +54,10 @@ describe('layout.tsx openGraph metadata', () => {
     );
   });
 
-  it('should set a keyword-rich OG description', () => {
+  it('should set a keyword-rich, B2B-inclusive OG description', () => {
     expect(metadata.openGraph).toHaveProperty(
       'description',
-      'Paste a product link from any store, get a true-scale 3D model, and see it in your room with AR. Free, in your browser.',
+      'Add an AR furniture visualizer to your product pages with one script. Shoppers see items in their room at true scale — object AR plus preview-grade surface AR.',
     );
   });
 
@@ -86,10 +86,10 @@ describe('layout.tsx twitter metadata', () => {
     );
   });
 
-  it('should set a keyword-rich Twitter description', () => {
+  it('should set a keyword-rich, B2B-inclusive Twitter description', () => {
     expect(metadata.twitter).toHaveProperty(
       'description',
-      'Paste a product link from any store, get a true-scale 3D model, and see it in your room with AR. Free, in your browser.',
+      'Add an AR furniture visualizer to your product pages with one script. Shoppers see items in their room at true scale — object AR plus preview-grade surface AR.',
     );
   });
 
