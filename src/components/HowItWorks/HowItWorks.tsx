@@ -1,34 +1,32 @@
 import Image from 'next/image';
 import styles from './HowItWorks.module.css';
 
-const APP_URL = process.env.NEXT_PUBLIC_APP_URL || 'https://app.tardis-ai.com/';
-
 const STEPS = [
   {
     num: '01',
-    label: 'Paste',
-    title: 'Drop in a product link.',
-    body: 'Found a sofa on IKEA, Wayfair, or almost anywhere else? Paste the URL, or upload a photo. No account needed.',
+    label: 'Embed',
+    title: 'Drop in one script tag.',
+    body: 'Add a single <script> to your product-page template. No SDK, no rebuild, and no new dependencies on the page — the widget stays isolated and fail-safe.',
     image: '/screens/app-home.png',
-    alt: 'TARDIS app screen for pasting a product link or uploading a photo',
+    alt: 'A product page with the TARDIS AR button embedded',
     position: 'top center',
   },
   {
     num: '02',
-    label: 'Generate',
-    title: 'Get a true-scale 3D model.',
-    body: 'Our AI reads the product and builds an interactive 3D model with exact dimensions: width, height, depth.',
+    label: 'Map',
+    title: 'Point it at your catalog.',
+    body: 'Match each product to a generated true-scale 3D model (furniture) or a preview-grade surface (rugs, wall coverings), managed from your dashboard.',
     image: '/screens/app-product.png',
-    alt: 'TARDIS product card showing a sofa with exact dimensions',
+    alt: 'A product mapped to a true-scale 3D model with exact dimensions',
     position: 'top center',
   },
   {
     num: '03',
-    label: 'Place',
-    title: 'See it in your room with AR.',
-    body: 'Walk around it at real size, in your real light, in your actual room, on iPhone or Android — right from the browser.',
+    label: 'Shoppers see it',
+    title: 'Shoppers view it in their room.',
+    body: 'A shopper taps the AR button and sees the item at real size in their space — object AR for furniture, preview-grade surface AR for wall coverings. Native AR on iPhone and Android, right in the browser.',
     image: '/screens/app-viewer.png',
-    alt: 'Interactive 3D sofa model in the TARDIS viewer',
+    alt: 'A shopper viewing a true-scale 3D model in AR through the browser',
     position: 'center 58%',
   },
 ];
@@ -40,10 +38,11 @@ export default function HowItWorks() {
         <div className={styles.head}>
           <span className="eyebrow">How it works</span>
           <h2 className={styles.heading}>
-            Three steps to see furniture in your room.
+            Three steps to AR on every product page.
           </h2>
           <p className={`lead ${styles.headLead}`}>
-            From product page to your living room in under a minute.
+            From one script tag to shoppers placing your products in their
+            own room.
           </p>
         </div>
 
@@ -71,10 +70,10 @@ export default function HowItWorks() {
         </div>
 
         <div className={styles.foot}>
-          <a href={APP_URL} className="btn btn-primary">
-            Try it yourself <span className="arrow">→</span>
+          <a href="#cta" className="btn btn-primary">
+            Book a demo <span className="arrow">→</span>
           </a>
-          <p className={styles.footNote}>Free · no signup · the screenshots above are the actual product</p>
+          <p className={styles.footNote}>Object AR is live · surface AR is preview-grade · see it running in the demo</p>
         </div>
       </div>
     </section>
