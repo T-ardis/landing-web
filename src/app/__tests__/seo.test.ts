@@ -3,41 +3,38 @@ import robots from '../robots';
 import sitemap from '../sitemap';
 
 describe('layout.tsx metadata', () => {
-  it('should define a keyword-led title for AR furniture visualizer SERPs', () => {
+  it('should define a keyword-led B2B title for embeddable-AR SERPs', () => {
     expect(metadata.title).toEqual({
-      default: 'AR Furniture Visualizer — See Furniture in Your Room | TARDIS',
+      default: 'Embeddable AR for Product Pages — See It in Your Room | TARDIS',
       template: '%s | TARDIS',
     });
   });
 
-  it('should define a description that front-loads the AR furniture visualizer keyword', () => {
+  it('should define a description that front-loads the embeddable-AR B2B keyword', () => {
     expect(metadata.description).toBe(
-      'TARDIS is an AR furniture visualizer. Paste a product link from IKEA, Wayfair, CB2 or any store, get a true-scale 3D model, and see furniture in your room with AR — free, in your browser.',
+      'TARDIS adds embeddable AR to your product pages with one script. Shoppers see furniture and surfaces in their room at true scale — object AR plus preview-grade surface AR. We generate the 3D model from a product photo — no app, no SDK, no per-SKU 3D bill.',
     );
   });
 
-  it('should include the top-volume Search Console keywords', () => {
+  it('should include the B2B commercial-intent keywords', () => {
     const keywords = metadata.keywords as string[];
-    // Head terms straight from Google Search Console (highest impressions)
-    expect(keywords).toContain('AR furniture visualizer');
-    expect(keywords).toContain('furniture visualizer');
-    expect(keywords).toContain('furniture visualiser');
-    expect(keywords).toContain('augmented reality furniture viewer');
-    expect(keywords).toContain('3d augmented reality furniture');
-    expect(keywords).toContain('AR furniture try-on');
-    expect(keywords).toContain('furniture in room visualizer');
-    // Long-tail intent variants
-    expect(keywords).toContain('see furniture in your room');
-    expect(keywords).toContain('visualize furniture in room');
-    expect(keywords).toContain('view furniture in room');
-    // Brand-defensive
-    expect(keywords).toContain('wayfair tardis alternative');
-    // Original commercial-intent kept for breadth
-    expect(keywords).toContain('home renovation app');
-    expect(keywords).toContain('AI interior design');
-    expect(keywords).toContain('LiDAR room scanner');
-    expect(keywords).toContain('best room scanner app iPhone');
-    expect(keywords).toContain('try furniture before you buy');
+    // Head terms for the B2B embeddable-AR category
+    expect(keywords).toContain('embeddable AR');
+    expect(keywords).toContain('AR for product pages');
+    expect(keywords).toContain('AR ecommerce widget');
+    expect(keywords).toContain('3D product visualization');
+    expect(keywords).toContain('AR product visualization');
+    // Buyer intent + platform
+    expect(keywords).toContain('AR for Shopify');
+    expect(keywords).toContain('view in your room widget');
+    expect(keywords).toContain('reduce ecommerce returns with AR');
+    // Competitor / brand-defensive
+    expect(keywords).toContain('Roomvo alternative');
+    expect(keywords).toContain('Cylindo alternative');
+    expect(keywords).toContain('Threekit alternative');
+    // Product differentiators
+    expect(keywords).toContain('3D model generation from photo');
+    expect(keywords).toContain('object AR and surface AR');
     expect(keywords.length).toBeGreaterThanOrEqual(20);
   });
 });
@@ -50,14 +47,14 @@ describe('layout.tsx openGraph metadata', () => {
   it('should set a keyword-led OG title', () => {
     expect(metadata.openGraph).toHaveProperty(
       'title',
-      'AR Furniture Visualizer — See Furniture in Your Room | TARDIS',
+      'Embeddable AR for Product Pages — See It in Your Room | TARDIS',
     );
   });
 
-  it('should set a keyword-rich, B2B-inclusive OG description', () => {
+  it('should set a keyword-rich B2B OG description', () => {
     expect(metadata.openGraph).toHaveProperty(
       'description',
-      'Add an AR furniture visualizer to your product pages with one script. Shoppers see items in their room at true scale — object AR plus preview-grade surface AR.',
+      'Add embeddable AR to your product pages with one script. Shoppers see furniture and surfaces in their room at true scale — object AR plus preview-grade surface AR.',
     );
   });
 
@@ -68,7 +65,7 @@ describe('layout.tsx openGraph metadata', () => {
         url: '/opengraph-image',
         width: 1200,
         height: 630,
-        alt: 'TARDIS — AR furniture visualizer',
+        alt: 'TARDIS — embeddable AR for product pages',
       },
     ]);
   });
@@ -82,14 +79,14 @@ describe('layout.tsx twitter metadata', () => {
   it('should set a keyword-led Twitter title', () => {
     expect(metadata.twitter).toHaveProperty(
       'title',
-      'AR Furniture Visualizer — See Furniture in Your Room | TARDIS',
+      'Embeddable AR for Product Pages — See It in Your Room | TARDIS',
     );
   });
 
-  it('should set a keyword-rich, B2B-inclusive Twitter description', () => {
+  it('should set a keyword-rich B2B Twitter description', () => {
     expect(metadata.twitter).toHaveProperty(
       'description',
-      'Add an AR furniture visualizer to your product pages with one script. Shoppers see items in their room at true scale — object AR plus preview-grade surface AR.',
+      'Add embeddable AR to your product pages with one script. Shoppers see furniture and surfaces in their room at true scale — object AR plus preview-grade surface AR.',
     );
   });
 
