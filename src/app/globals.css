@@ -262,6 +262,84 @@ section { padding: var(--section-py) 0; position: relative; }
   animation: pulse 1.8s ease-in-out infinite;
 }
 
+/* ---------- Stat figures (proof band, ROI, why) ---------- */
+.statnum {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  font-size: clamp(38px, 5.4vw, 64px);
+  color: var(--gold);
+  font-variant-numeric: tabular-nums;
+}
+.statlab {
+  margin-top: 10px;
+  font-size: 13px;
+  line-height: 1.45;
+  letter-spacing: 0.01em;
+  color: var(--grey);
+}
+
+/* ---------- Device / browser mock frames (Mockup* + section visuals) ---------- */
+.frame {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: var(--card);
+  overflow: hidden;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5), 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+.frameBar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 14px;
+  border-bottom: 1px solid var(--line);
+  background: var(--coal);
+}
+.dots {
+  display: inline-flex;
+  gap: 6px;
+  flex: none;
+}
+.dots i {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--line);
+  display: block;
+}
+.urlbar {
+  flex: 1;
+  min-width: 0;
+  font-size: 11px;
+  letter-spacing: 0.03em;
+  color: var(--mute);
+  background: var(--black);
+  border: 1px solid var(--line-soft);
+  border-radius: 999px;
+  padding: 5px 12px;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Champagne "View in your room" pill used inside PDP mockups */
+.arpill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 16px;
+  border-radius: var(--radius);
+  border: 1px solid var(--line-gold);
+  background: var(--gold-dim);
+  color: var(--gold);
+  font-size: 12px;
+  font-weight: 650;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
 /* ---------- Editorial number list (kept for legacy pages) ---------- */
 ol.editorial { list-style: none; padding: 0; margin: 0; counter-reset: stepc; }
 ol.editorial li {
