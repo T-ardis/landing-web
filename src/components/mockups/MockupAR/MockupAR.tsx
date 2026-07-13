@@ -1,37 +1,27 @@
+import Image from 'next/image';
 import styles from './MockupAR.module.css';
 
 type Props = {
   variant?: 'object' | 'surface';
 };
 
+// Real capture of the TARDIS AR viewer showing the product's generated 3D model.
 export default function MockupAR({ variant = 'object' }: Props) {
-  const isObject = variant === 'object';
-
   return (
     <figure className={styles.phone}>
       <div className={styles.screen}>
-        {isObject ? (
-          <div className={`${styles.scene} ${styles.room}`} aria-hidden="true">
-            <span className={styles.floor} />
-            <span className={styles.sofa}>
-              <span className={styles.back} />
-              <span className={styles.seat} />
-              <span className={styles.armL} />
-              <span className={styles.armR} />
-            </span>
-            <span className={styles.shadow} />
-            <span className={styles.reticle} />
-          </div>
-        ) : (
-          <div className={`${styles.scene} ${styles.wall}`} aria-hidden="true">
-            <span className={styles.pattern} />
-            <span className={styles.seam} />
-          </div>
-        )}
-
+        <Image
+          className={styles.shot}
+          src="/mockups/ar.png"
+          width={557}
+          height={820}
+          alt="The product shown at true scale in the shopper’s space through the AR viewer"
+          sizes="(max-width: 880px) 62vw, 300px"
+          priority
+        />
         <span className={styles.badge} aria-hidden="true">AR</span>
         <span className={`chip ${styles.chip}`}>
-          {isObject ? 'True to scale' : 'Preview-grade'}
+          {variant === 'surface' ? 'Preview-grade' : 'True to scale'}
         </span>
       </div>
     </figure>

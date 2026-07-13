@@ -17,7 +17,7 @@
 .phone::after {
   content: '';
   position: absolute;
-  top: 22px;
+  top: 20px;
   left: 50%;
   transform: translateX(-50%);
   width: 84px;
@@ -31,130 +31,15 @@
   position: relative;
   border-radius: 35px;
   overflow: hidden;
-  background: var(--black);
-  aspect-ratio: 9 / 19;
+  background: #050403;
 }
 
-.scene {
-  position: absolute;
-  inset: 0;
+.shot {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
-/* ── Object variant: room ── */
-.room {
-  background:
-    radial-gradient(66% 42% at 50% 20%, rgba(210, 176, 126, 0.20), transparent 66%),
-    linear-gradient(180deg, #2A241D 0%, #1A1611 54%, #0C0A08 100%);
-}
-
-.floor {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 40%;
-  background: linear-gradient(180deg, rgba(58, 49, 38, 0.55), rgba(0, 0, 0, 0.5));
-  border-top: 1px solid rgba(210, 176, 126, 0.16);
-}
-
-.sofa {
-  position: absolute;
-  left: 50%;
-  bottom: 25%;
-  transform: translateX(-50%);
-  width: 70%;
-  height: 27%;
-  filter: drop-shadow(0 8px 14px rgba(0, 0, 0, 0.5));
-}
-
-.back {
-  position: absolute;
-  left: 8%;
-  right: 8%;
-  top: 0;
-  height: 56%;
-  border-radius: 12px 12px 4px 4px;
-  background: linear-gradient(165deg, #9C8E76, #6E6250);
-  border: 1px solid rgba(232, 221, 202, 0.14);
-  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.10) inset;
-}
-
-.seat {
-  position: absolute;
-  left: 4%;
-  right: 4%;
-  bottom: 0;
-  height: 54%;
-  border-radius: 7px;
-  background: linear-gradient(165deg, #AA9C82, #7C6F5A);
-  border: 1px solid rgba(232, 221, 202, 0.14);
-  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.12) inset;
-}
-
-.armL,
-.armR {
-  position: absolute;
-  bottom: 0;
-  width: 13%;
-  height: 66%;
-  border-radius: 9px;
-  background: linear-gradient(165deg, #93856D, #66593F);
-  border: 1px solid rgba(232, 221, 202, 0.14);
-  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.09) inset;
-}
-
-.armL { left: 0; }
-.armR { right: 0; }
-
-.shadow {
-  position: absolute;
-  left: 50%;
-  bottom: 24%;
-  transform: translateX(-50%);
-  width: 60%;
-  height: 5%;
-  border-radius: 50%;
-  background: radial-gradient(50% 50% at 50% 50%, rgba(0, 0, 0, 0.55), transparent 72%);
-}
-
-.reticle {
-  position: absolute;
-  left: 50%;
-  bottom: 22%;
-  transform: translate(-50%, 50%);
-  width: 46%;
-  aspect-ratio: 2 / 1;
-  border: 1px solid var(--line-gold);
-  border-radius: 50%;
-  background: radial-gradient(60% 60% at 50% 50%, var(--gold-dim), transparent 75%);
-}
-
-/* ── Surface variant: wall ── */
-.wall {
-  background:
-    linear-gradient(180deg, var(--card-2) 0%, var(--coal) 100%);
-}
-
-.pattern {
-  position: absolute;
-  inset: 0;
-  opacity: 0.5;
-  background-image:
-    linear-gradient(rgba(210, 176, 126, 0.10) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(210, 176, 126, 0.10) 1px, transparent 1px);
-  background-size: 30px 30px;
-}
-
-.seam {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 50%;
-  width: 1px;
-  background: linear-gradient(180deg, transparent, rgba(210, 176, 126, 0.20), transparent);
-}
-
-/* ── Overlays ── */
 .badge {
   position: absolute;
   top: 16px;
@@ -174,7 +59,7 @@
 .chip {
   position: absolute;
   left: 50%;
-  bottom: 20px;
+  bottom: 18px;
   transform: translateX(-50%);
   z-index: 2;
   white-space: nowrap;
