@@ -67,15 +67,15 @@ export default function Cta() {
     <section id="cta" className={styles.section}>
       <div className="wrap">
         <div className={styles.inner}>
-          <span className="eyebrow">Early access</span>
+          <span className="eyebrow">Book a demo</span>
 
           <h2 className={styles.headline}>
-            Stop guessing. <span className="au">Start placing.</span>
+            See it on <span className="au">your product pages.</span>
           </h2>
 
           <p className={`lead ${styles.sub}`}>
-            The visualizer is free today. Join the waitlist to get room
-            scanning and full-room AI styling as they ship.
+            Add TARDIS to your store and let shoppers see items in their room.
+            Drop your email and we&apos;ll set up a demo on your catalog.
           </p>
 
           {submitted ? (
@@ -86,8 +86,8 @@ export default function Cta() {
                   <path d="M8.5 14.5l4 4 7-8" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
               </div>
-              <p className={styles.successTitle}>You&apos;re on the list.</p>
-              <p className={styles.successSub}>Redirecting you to the app…</p>
+              <p className={styles.successTitle}>Thanks — we&apos;ll be in touch.</p>
+              <p className={styles.successSub}>Taking you to the live demo…</p>
             </div>
           ) : (
             <>
@@ -102,13 +102,13 @@ export default function Cta() {
                   aria-label="Email address"
                 />
                 <button type="submit" className={styles.submit} disabled={loading}>
-                  {loading ? 'Sending…' : 'Get early access'}
+                  {loading ? 'Sending…' : 'Book a demo'}
                 </button>
               </form>
 
               <div className={styles.altRow}>
                 <a href={APP_URL} className={styles.altLink}>
-                  Or try the visualizer free — no signup
+                  Or open the live demo →
                 </a>
               </div>
             </>

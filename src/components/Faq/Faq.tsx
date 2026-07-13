@@ -3,31 +3,31 @@ import styles from './Faq.module.css';
 const FAQS = [
   {
     q: 'What does TARDIS actually do?',
-    a: 'TARDIS turns a furniture product page into something you can see in your own room. Paste a product URL or upload a photo, and we generate a true-scale, interactive 3D model you can place in your space with AR — before you buy.',
+    a: 'TARDIS is an embeddable AR furniture visualizer. A retailer adds one script to their product pages, and shoppers tap a button to see an item at true scale in their own room — a generated 3D model for furniture (object AR), or a preview-grade surface for rugs and wall coverings. No app, no SDK.',
   },
   {
-    q: 'Do I need to download an app?',
-    a: 'No. TARDIS runs entirely in your browser — Safari on iPhone, Chrome on Android. The AR experience uses AR Quick Look on iOS and Scene Viewer on Android.',
+    q: 'How do shoppers use it — do they need an app?',
+    a: 'No. It runs in the browser: AR Quick Look on iPhone, Scene Viewer on Android, and an interactive 3D fallback everywhere else. Shoppers never install anything.',
   },
   {
-    q: 'Is it free?',
-    a: 'Yes. Generating 3D models and viewing them in your room with AR is free, with no signup. Advanced features like full-room AI styling will be part of the premium experience as the product grows.',
+    q: 'How much does it cost?',
+    a: 'Pricing depends on your catalog size and traffic, so we scope a plan per retailer — get in touch and we’ll put one together. You can try the live demo free today.',
   },
   {
-    q: 'Which retailers work?',
-    a: 'Most of them. If a product has a public product page or a clear photo, TARDIS can usually build a model from it — including IKEA, Wayfair, CB2, Crate & Barrel, West Elm, Pottery Barn, Article, and Amazon.',
+    q: 'Which products work?',
+    a: 'Furniture and décor get a true-scale 3D model (object AR). Rugs and wall coverings use preview-grade surface AR. If a product has a public page or a clear photo, we can usually build it — across catalogs like IKEA, Wayfair, CB2, West Elm, Article, and Amazon.',
   },
   {
     q: 'Is TARDIS the same as Wayfair’s Tardis tool?',
-    a: 'No. Wayfair’s internal tool renders Wayfair products only. TARDIS is an independent, multi-brand visualizer: it works with products from many retailers, so you can design one room with pieces from different stores.',
+    a: 'No. Wayfair’s internal tool renders Wayfair products on Wayfair. TARDIS is an independent, embeddable AR layer any retailer can add to their own product pages, for their own catalog.',
   },
   {
     q: 'How accurate are the 3D models?',
-    a: 'Models are generated at the product’s listed dimensions, so the scale you see in AR matches the real piece. Renders are estimates of shape and material — always double-check exact specifications with the retailer before buying.',
+    a: 'Object models are generated at each product’s listed dimensions, so the scale a shopper sees in AR matches the real piece. Surface AR is preview-grade — a realistic in-room preview, not a measured render. Always confirm exact specifications before purchase.',
   },
   {
     q: 'What’s next for TARDIS?',
-    a: 'An iOS app with LiDAR room scanning is in development: scan your room once, let AI style the entire space across retailers, and check out in a single cart. Join the waitlist to be first in line.',
+    a: 'Object AR and preview-grade surface AR are live on the web today. A native App Clip with LiDAR room scanning is in development for higher-fidelity placement. Book a demo to see the current product and the roadmap.',
   },
 ];
 
