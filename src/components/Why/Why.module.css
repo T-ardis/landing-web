@@ -2,15 +2,8 @@
   position: relative;
 }
 
-.grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: clamp(48px, 6vw, 96px);
-  align-items: start;
-}
-
-@media (max-width: 880px) {
-  .grid { grid-template-columns: 1fr; gap: 56px; }
+.intro {
+  max-width: 760px;
 }
 
 .heading {
@@ -21,74 +14,32 @@
   margin-top: 24px;
 }
 
-/* ── Numbered value points ── */
+/* ── Differentiator cards ── */
 .points {
-  display: flex;
-  flex-direction: column;
+  margin-top: clamp(48px, 6vw, 72px);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(20px, 2.5vw, 28px);
+}
+
+@media (max-width: 820px) {
+  .points { grid-template-columns: 1fr; gap: 18px; }
 }
 
 .point {
-  display: grid;
-  grid-template-columns: 48px 1fr;
-  gap: 18px;
-  padding: 28px 0;
-  border-top: 1px solid var(--line);
-}
-.point:last-child {
-  border-bottom: 1px solid var(--line);
-}
-
-.pointNum {
-  font-size: 13px;
-  font-weight: 650;
-  letter-spacing: 0.08em;
-  color: var(--gold);
-  padding-top: 4px;
+  display: flex;
+  flex-direction: column;
 }
 
 .pointTitle {
   font-size: 19px;
   font-weight: 600;
   letter-spacing: -0.015em;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
 }
 
 .pointBody {
   color: var(--grey);
   font-size: 15px;
   line-height: 1.6;
-  max-width: 48ch;
-}
-
-/* ── Roadmap note ── */
-.roadmap {
-  margin-top: clamp(56px, 7vw, 88px);
-  border: 1px solid var(--line-gold);
-  border-radius: var(--radius-lg);
-  background: linear-gradient(180deg, rgba(212, 180, 131, 0.06), rgba(212, 180, 131, 0.02));
-  padding: clamp(24px, 3vw, 36px) clamp(24px, 3.5vw, 44px);
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: clamp(20px, 4vw, 56px);
-  align-items: center;
-}
-
-@media (max-width: 720px) {
-  .roadmap { grid-template-columns: 1fr; gap: 14px; }
-}
-
-.roadmapLabel {
-  font-size: 11px;
-  font-weight: 650;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--gold);
-  white-space: nowrap;
-}
-
-.roadmapText {
-  color: var(--grey);
-  font-size: 15px;
-  line-height: 1.65;
-  max-width: 72ch;
 }

@@ -2,16 +2,16 @@ import styles from './Why.module.css';
 
 const POINTS = [
   {
-    title: 'One script, any page',
-    body: 'Drop a single tag onto your existing product pages. No SDK, no rebuild, and no page dependencies — the widget stays isolated and fail-safe.',
+    title: 'Auto-generated assets',
+    body: '3D from a photo, not a modelling studio — catalogue-wide, not just hero SKUs.',
   },
   {
-    title: 'True to scale',
-    body: 'Models carry each product’s real dimensions, so the piece a shopper places is the piece that ships — width, height, and depth.',
+    title: 'Object + surface in one',
+    body: 'Furniture and wall coverings from a single embed and key.',
   },
   {
-    title: 'Object and surface AR',
-    body: 'Object AR for furniture and décor is live today; preview-grade surface AR previews rugs and wall coverings in the room. Native AR on iPhone and Android, right in the browser — no app required.',
+    title: 'No app, no SDK',
+    body: 'One script for you; nothing to install for the shopper.',
   },
 ];
 
@@ -19,41 +19,28 @@ export default function Why() {
   return (
     <section id="why" className={styles.section}>
       <div className="wrap">
-        <div className={styles.grid}>
-          <div className={styles.intro}>
-            <span className="eyebrow">Why TARDIS</span>
-            <h2 className={styles.heading}>
-              Shoppers buy with confidence when they can see it in their room.
-            </h2>
-            <p className={`lead ${styles.lead}`}>
-              Furniture and home goods are among the biggest purchases people
-              make without trying them first — and a product photo can&apos;t
-              tell them whether a piece fits. AR that lives on your product
-              page, not in a separate app, builds confidence and cuts returns,
-              without asking shoppers to download anything.
-            </p>
-          </div>
-
-          <div className={styles.points}>
-            {POINTS.map((p, i) => (
-              <div key={p.title} className={styles.point}>
-                <span className={styles.pointNum}>{String(i + 1).padStart(2, '0')}</span>
-                <div>
-                  <h3 className={styles.pointTitle}>{p.title}</h3>
-                  <p className={styles.pointBody}>{p.body}</p>
-                </div>
-              </div>
-            ))}
-          </div>
+        <div className={styles.intro}>
+          <span className="eyebrow">Why TARDIS</span>
+          <h2 className={styles.heading}>
+            The AR is easy. The <span className="au">assets</span> are the hard part.
+          </h2>
+          <p className={`lead ${styles.lead}`}>
+            Roomvo covers surfaces. Cylindo and Threekit make beautiful
+            furniture 3D — by hand, per SKU. That manual pipeline is why AR
+            usually stops at your hero products. TARDIS generates the asset
+            straight from a product photo, so AR reaches the whole catalogue —
+            and it&apos;s the only embed that does object <span className="au">and</span> surface
+            from one script.
+          </p>
         </div>
 
-        <div className={styles.roadmap}>
-          <span className={styles.roadmapLabel}>On the roadmap</span>
-          <p className={styles.roadmapText}>
-            A native App Clip with LiDAR room scanning is in development for
-            even higher-fidelity placement. Object AR and preview-grade
-            surface AR are live on the web today.
-          </p>
+        <div className={styles.points}>
+          {POINTS.map((p) => (
+            <div key={p.title} className={`card-flat ${styles.point}`}>
+              <h3 className={styles.pointTitle}>{p.title}</h3>
+              <p className={styles.pointBody}>{p.body}</p>
+            </div>
+          ))}
         </div>
       </div>
     </section>

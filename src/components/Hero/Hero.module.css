@@ -61,7 +61,7 @@
   border-radius: var(--radius);
 }
 
-/* ── Visual: real product screenshots ── */
+/* ── Visual: AR mockup ── */
 .visual {
   position: relative;
   display: flex;
@@ -76,64 +76,6 @@
   pointer-events: none;
 }
 
-.phone {
-  position: relative;
-  width: clamp(240px, 26vw, 318px);
-  border-radius: 44px;
-  border: 1px solid rgba(232, 221, 202, 0.16);
-  background: #060504;
-  padding: 10px;
-  box-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.06) inset,
-    0 30px 80px rgba(0, 0, 0, 0.55),
-    0 8px 24px rgba(0, 0, 0, 0.4);
-}
-
-/* notch pill */
-.phone::after {
-  content: "";
-  position: absolute;
-  top: 22px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 84px;
-  height: 22px;
-  border-radius: 999px;
-  background: #060504;
-  z-index: 2;
-}
-
-.phoneScreen {
-  border-radius: 35px;
-  overflow: hidden;
-  background: #0B0A08;
-}
-
-.phoneScreen img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-.floatCard {
-  position: absolute;
-  bottom: 0;
-  left: clamp(-10px, 2vw, 30px);
-  width: clamp(150px, 15vw, 196px);
-  border-radius: 14px;
-  overflow: hidden;
-  border: 1px solid rgba(232, 221, 202, 0.14);
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6);
-  background: #0E0C0A;
-}
-
-.floatCard img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
 @media (max-width: 880px) {
   .visual { padding-bottom: 40px; }
-  .floatCard { left: 4%; bottom: 8px; }
 }

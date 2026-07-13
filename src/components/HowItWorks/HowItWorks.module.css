@@ -15,37 +15,30 @@
   margin-top: 18px;
 }
 
-.steps {
+/* ── Steps beside the PDP mockup ── */
+.body {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: clamp(24px, 3vw, 40px);
+  grid-template-columns: 1fr 1.05fr;
+  gap: clamp(40px, 6vw, 80px);
+  align-items: center;
 }
 
 @media (max-width: 880px) {
-  .steps { grid-template-columns: 1fr; gap: 56px; }
+  .body { grid-template-columns: 1fr; gap: 56px; }
+}
+
+.steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(32px, 4vw, 44px);
 }
 
 .step {
   display: flex;
   flex-direction: column;
-}
-
-/* ── Real screenshot window ── */
-.shot {
-  position: relative;
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  border: 1px solid var(--line);
-  background: var(--coal);
-  aspect-ratio: 4 / 4.6;
-  margin-bottom: 28px;
-}
-
-.shot img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: top center;
 }
 
 .stepHead {
@@ -81,7 +74,21 @@
   color: var(--grey);
   font-size: 15px;
   line-height: 1.6;
-  max-width: 40ch;
+  max-width: 44ch;
+}
+
+/* ── PDP mockup column ── */
+.visual {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.glow {
+  position: absolute;
+  inset: -12% -16%;
+  background: radial-gradient(50% 50% at 55% 42%, rgba(212, 180, 131, 0.12), transparent 70%);
+  pointer-events: none;
 }
 
 /* ── Footer CTA row ── */

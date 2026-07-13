@@ -1,33 +1,24 @@
-import Image from 'next/image';
+import MockupPDP from '@/components/mockups/MockupPDP/MockupPDP';
 import styles from './HowItWorks.module.css';
 
 const STEPS = [
   {
     num: '01',
     label: 'Embed',
-    title: 'Drop in one script tag.',
-    body: 'Add a single <script> to your product-page template. No SDK, no rebuild, and no new dependencies on the page — the widget stays isolated and fail-safe.',
-    image: '/screens/app-home.png',
-    alt: 'A product page with the TARDIS AR button embedded',
-    position: 'top center',
+    title: 'Drop in one script.',
+    body: 'Paste a single <script> tag into your product-page template. No SDK, no rebuild, nothing for shoppers to install.',
   },
   {
     num: '02',
     label: 'Map',
     title: 'Point it at your catalog.',
-    body: 'Match each product to a generated true-scale 3D model (furniture) or a preview-grade surface (rugs, wall coverings), managed from your dashboard.',
-    image: '/screens/app-product.png',
-    alt: 'A product mapped to a true-scale 3D model with exact dimensions',
-    position: 'top center',
+    body: 'We auto-generate a 3D model from each product photo — object AR for furniture, surface AR for wall coverings. No manual per-SKU modelling.',
   },
   {
     num: '03',
     label: 'Shoppers see it',
     title: 'Shoppers view it in their room.',
-    body: 'A shopper taps the AR button and sees the item at real size in their space — object AR for furniture, preview-grade surface AR for wall coverings. Native AR on iPhone and Android, right in the browser.',
-    image: '/screens/app-viewer.png',
-    alt: 'A shopper viewing a true-scale 3D model in AR through the browser',
-    position: 'center 58%',
+    body: 'A “View in your room” button appears in the buy box. Tap it and the product is there, at true scale, right in the browser.',
   },
 ];
 
@@ -38,35 +29,32 @@ export default function HowItWorks() {
         <div className={styles.head}>
           <span className="eyebrow">How it works</span>
           <h2 className={styles.heading}>
-            Three steps to AR on every product page.
+            Live in an afternoon, not a quarter.
           </h2>
           <p className={`lead ${styles.headLead}`}>
-            From one script tag to shoppers placing your products in their
-            own room.
+            One script tag, your existing catalog, and a button in the buy box —
+            no rebuild, no per-SKU modelling.
           </p>
         </div>
 
-        <div className={styles.steps}>
-          {STEPS.map((s) => (
-            <article key={s.num} className={styles.step}>
-              <div className={styles.shot}>
-                <Image
-                  src={s.image}
-                  alt={s.alt}
-                  width={390}
-                  height={s.image.includes('product') ? 478 : 844}
-                  sizes="(max-width: 880px) 90vw, 360px"
-                  style={{ objectPosition: s.position }}
-                />
-              </div>
-              <div className={styles.stepHead}>
-                <span className={styles.num}>{s.num}</span>
-                <span className={styles.stepLabel}>{s.label}</span>
-              </div>
-              <h3 className={styles.stepTitle}>{s.title}</h3>
-              <p className={styles.stepBody}>{s.body}</p>
-            </article>
-          ))}
+        <div className={styles.body}>
+          <ol className={styles.steps}>
+            {STEPS.map((s) => (
+              <li key={s.num} className={styles.step}>
+                <div className={styles.stepHead}>
+                  <span className={styles.num}>{s.num}</span>
+                  <span className={styles.stepLabel}>{s.label}</span>
+                </div>
+                <h3 className={styles.stepTitle}>{s.title}</h3>
+                <p className={styles.stepBody}>{s.body}</p>
+              </li>
+            ))}
+          </ol>
+
+          <div className={styles.visual}>
+            <div className={styles.glow} aria-hidden="true" />
+            <MockupPDP />
+          </div>
         </div>
 
         <div className={styles.foot}>

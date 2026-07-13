@@ -1,7 +1,5 @@
-import Image from 'next/image';
+import MockupAR from '@/components/mockups/MockupAR/MockupAR';
 import styles from './Hero.module.css';
-
-const APP_URL = process.env.NEXT_PUBLIC_APP_URL || 'https://app.tardis-ai.com/';
 
 export default function Hero() {
   return (
@@ -11,20 +9,22 @@ export default function Hero() {
           <div className={styles.copy}>
             <span className="eyebrow">Embeddable AR for product pages</span>
             <h1 className={styles.headline}>
-              Let shoppers see it <span className="au">in their room</span> — right on your product page.
+              Shoppers buy what they can{' '}
+              <span className="au">see in their room.</span>
             </h1>
             <p className={`lead ${styles.lead}`}>
-              TARDIS is an embeddable AR furniture visualizer. Drop one script
-              onto your product pages and shoppers tap to see items at true
-              scale in their space — object AR for furniture, preview-grade
-              surface AR for rugs and wall coverings. No app, no SDK.
+              TARDIS adds true-to-scale AR to every product page with one
+              script. Shoppers tap, point their phone, and see your furniture —
+              or your wallpaper, live on their wall — in their own space. We
+              generate the 3D model from a photo. No app. No SDK. No per-SKU 3D
+              bill.
             </p>
 
             <div className={styles.ctaRow}>
               <a href="#cta" className="btn btn-primary">
                 Book a demo <span className="arrow">→</span>
               </a>
-              <a href={APP_URL} className="btn btn-ghost">
+              <a href="#showcase" className="btn btn-ghost">
                 See it live
               </a>
             </div>
@@ -38,29 +38,7 @@ export default function Hero() {
 
           <div className={styles.visual}>
             <div className={styles.glow} aria-hidden="true" />
-
-            <figure className={styles.phone}>
-              <div className={styles.phoneScreen}>
-                <Image
-                  src="/screens/app-viewer.png"
-                  alt="The TARDIS app showing an interactive 3D model of a sofa"
-                  width={390}
-                  height={844}
-                  priority
-                  sizes="(max-width: 880px) 78vw, 320px"
-                />
-              </div>
-            </figure>
-
-            <figure className={styles.floatCard}>
-              <Image
-                src="/screens/app-product.png"
-                alt="A product card in TARDIS with exact sofa dimensions"
-                width={375}
-                height={478}
-                sizes="(max-width: 880px) 44vw, 200px"
-              />
-            </figure>
+            <MockupAR variant="object" />
           </div>
         </div>
       </div>

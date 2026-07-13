@@ -1,0 +1,64 @@
+.section {
+  border-top: 1px solid var(--line-soft);
+}
+
+.head {
+  max-width: 680px;
+  margin-bottom: clamp(36px, 4.5vw, 56px);
+}
+
+.heading {
+  margin-top: 18px;
+}
+
+.lead {
+  margin-top: 20px;
+}
+
+/* ── Install snippet ── */
+.codeCard {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: var(--coal);
+  overflow: hidden;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45), 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+.code {
+  margin: 0;
+  padding: clamp(20px, 2.5vw, 28px);
+  overflow-x: auto;
+  font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas,
+    'Liberation Mono', monospace;
+  font-size: 13px;
+  line-height: 1.9;
+  color: var(--grey);
+  -webkit-font-smoothing: auto;
+}
+
+.code code {
+  display: block;
+  min-width: max-content;
+}
+
+.line {
+  display: block;
+  white-space: pre;
+}
+
+/* Tokenised-ish colouring — tokens only */
+.pun { color: var(--mute); }
+.tag { color: var(--white); }
+.attr { color: var(--gold); }
+.str { color: var(--gold-bright); }
+.txt { color: var(--white); }
+
+/* ── Platform pills ── */
+.platforms {
+  margin-top: clamp(24px, 3vw, 32px);
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
