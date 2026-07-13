@@ -19,7 +19,7 @@ const jsonLd = {
       name: 'TARDIS',
       alternateName: ['TARDIS AI', 'TARDIS Furniture Visualizer'],
       description:
-        'AI furniture visualizer. Paste a product link from IKEA, Wayfair, CB2 or any store, get a true-scale 3D model, and see it in your room with AR.',
+        'Embeddable AR furniture visualizer. Retailers add one script to their product pages so shoppers see items in their room at true scale — object AR for furniture plus preview-grade surface AR for wall coverings.',
       inLanguage: 'en-US',
     },
     {
@@ -31,21 +31,21 @@ const jsonLd = {
       applicationSubCategory: 'AR Furniture Visualizer',
       operatingSystem: 'Web, iOS, Android',
       description:
-        'TARDIS is an AI furniture visualizer. Paste a furniture product link or upload a photo, get a true-scale interactive 3D model, and place it in your room with AR — in the browser, no download required.',
+        'TARDIS is an embeddable AR furniture visualizer. Retailers add one script to their product pages, and shoppers see a true-scale interactive 3D model in their room with AR — object AR for furniture plus preview-grade surface AR — in the browser, no app required.',
       url: 'https://app.tardis-ai.com',
       offers: {
         '@type': 'Offer',
         price: '0',
         priceCurrency: 'USD',
-        description: 'Free AR furniture visualizer',
+        description: 'Free live demo — try the AR furniture visualizer in your browser',
       },
       featureList: [
-        'AR furniture visualizer — see furniture in your room at true scale',
-        'Generate an interactive 3D model from any product URL or photo',
-        'Works with products from IKEA, Wayfair, CB2, West Elm, Article, Amazon and more',
-        'True-to-scale placement using listed product dimensions',
+        'Embeddable AR furniture visualizer — add it to any product page with one script',
+        'Object AR: shoppers see furniture at true scale in their room',
+        'Preview-grade surface AR for rugs and wall coverings',
+        'True-to-scale placement using each product’s listed dimensions',
         'Runs in the browser — AR Quick Look on iOS, Scene Viewer on Android',
-        'No download, no signup required',
+        'No app and no SDK for shoppers',
       ],
     },
     {
@@ -73,7 +73,7 @@ const jsonLd = {
         },
       ],
       description:
-        'TARDIS builds AI tools that let people see furniture in their homes before they buy it — from a single product link today to full-room scanning and styling next.',
+        'TARDIS builds an embeddable AR layer that lets retailers show shoppers furniture at true scale in their own room — object AR and preview-grade surface AR on the web today, with a native App Clip in development.',
     },
     {
       '@type': 'FAQPage',

@@ -58,7 +58,7 @@ export default function OgImage() {
             fontWeight: 600,
           }}
         >
-          AI Furniture Visualizer
+          Embeddable AR for retailers
         </div>
 
         {/* Headline */}
@@ -74,9 +74,9 @@ export default function OgImage() {
             marginBottom: 32,
           }}
         >
-          <span>See any furniture</span>
-          <span style={{ color: '#D2B07E' }}>in your room</span>
-          <span>before you buy it.</span>
+          <span>Add AR to your</span>
+          <span style={{ color: '#D2B07E' }}>product pages</span>
+          <span>in one script.</span>
         </div>
 
         {/* Description */}
@@ -90,7 +90,7 @@ export default function OgImage() {
             marginBottom: 48,
           }}
         >
-          Paste a product link → true-scale 3D model → AR in your room. Free, in your browser.
+          Shoppers see furniture in their room at true scale — object AR plus preview-grade surface AR.
         </div>
 
         {/* Footer row */}
