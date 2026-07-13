@@ -14,267 +14,457 @@ export interface BlogPost {
 
 export const posts: BlogPost[] = [
   {
-    slug: 'how-to-scan-your-room-with-iphone-lidar',
-    title: 'How to Scan Your Room with iPhone LiDAR: A Complete Guide',
-    description:
-      'Learn how iPhone LiDAR creates millimeter-precise 3D room maps in under 60 seconds — and why it matters for home design.',
-    date: '2026-03-15',
-    readTime: '6 min read',
-    tags: ['LiDAR', 'iPhone', 'Room Scanning', '3D Mapping'],
-    keyword: 'iPhone LiDAR room scanner',
+    slug: "ar-reduces-furniture-returns",
+    title: "How AR Cuts Furniture Returns by Up to 40%",
+    description: "Reduce furniture returns with AR: how in-room previews close the expectation gap driving a $30B/yr problem, and what to measure to prove it.",
+    date: '2026-07-13',
+    readTime: "7 min read",
+    tags: ["furniture returns","augmented reality","ecommerce conversion","product experience","retail AR"],
+    keyword: "reduce furniture returns AR",
     faqs: [
-      { question: 'Which iPhones have LiDAR for room scanning?', answer: 'iPhone 12 Pro and later Pro models, plus all iPad Pro models from 2020 onwards, include a LiDAR scanner capable of 3D room mapping.' },
-      { question: 'How long does a LiDAR room scan take?', answer: 'A typical room scan takes 30–60 seconds. Walk slowly around the room while pointing your device at walls, floors, and ceilings.' },
-      { question: 'Is LiDAR more accurate than a tape measure?', answer: 'Yes. LiDAR captures millimeter-precise 3D geometry of your entire room in one pass, including alcoves, windows, and ceiling height — details a tape measure easily misses.' },
+      { question: "How much can AR actually reduce furniture returns?", answer: "Published retailer results range from roughly 20% to 43% fewer returns. IKEA reported a 20% reduction with its Place app, Wayfair reported 43% fewer returns on items viewed in its 'View in Room' AR, and Snap/Publicis research (2025, n=4,028) found 66% of AR shoppers are less likely to return a purchase. Your own result depends on category, baseline return rate, and how many shoppers actually use the AR view." },
+      { question: "Why do so many furniture returns happen in the first place?", answer: "The single most common reason is that the item 'looked different in person' - a mismatch between the product photo and the real room. That covers scale (too big or small for the space), color and finish under the shopper's actual lighting, and how the piece relates to existing furniture. Static photos and even 360 spins can't resolve those questions, so uncertainty gets settled after delivery, as a return." },
+      { question: "What should I measure to prove AR is reducing returns?", answer: "Track return rate by SKU, split between shoppers who used AR and those who didn't, and watch the mix of return reasons - specifically 'fit/size,' 'looked different,' and 'color' codes. Those are the reasons AR directly attacks. Pair that with AR engagement rate and conversion on AR-enabled pages so you can tie the returns change back to actual usage rather than seasonality." },
     ],
     content: `
-## What is LiDAR and Why Does It Matter for Home Design?
+Furniture is the hardest thing to sell online and the easiest thing to send back. A sofa that looked perfect on a white studio backdrop arrives too big for the wall, a shade off from the rug, or simply wrong for the room. The customer isn't being difficult - they were asked to make a spatial decision from a flat photo, and the photo couldn't answer the question they actually had: *will this work in my space?*
 
-LiDAR (Light Detection and Ranging) is a sensor that fires thousands of infrared light pulses per second, measuring how long each takes to bounce back. The result: a precise 3D point cloud of your surroundings — accurate to within a few millimeters.
+That gap between expectation and reality is expensive. US furniture and home returns run to roughly **$30 billion a year**, and unlike apparel, a returned sofa is costly to ship, hard to restock, and frequently liquidated below cost. If you run a home or furniture catalog, returns aren't a customer-service line item - they're one of the largest controllable drains on your margin.
 
-Apple introduced LiDAR on the iPhone 12 Pro in 2020. Since then, every Pro-tier iPhone and iPad Pro has included one. But most people never use it beyond faster autofocus in low light. That's a missed opportunity.
+Augmented reality attacks the returns problem at its root cause. This piece breaks down the economics of why, what the published numbers actually say, and what you should measure to prove it on your own catalog.
 
-When it comes to home renovation, LiDAR changes everything. Instead of measuring rooms with a tape measure (and inevitably getting something wrong), you can capture an entire space — walls, windows, alcoves, ceiling height — in a single scan.
+## Why furniture gets returned: the expectation-reality gap
 
-## Which iPhones Have LiDAR?
+Dig into return-reason data for large furniture items and the same theme dominates: *it looked different in person.* That single phrase bundles three distinct failures of the product page.
 
-Not every iPhone has the sensor. Here's the complete list:
+- **Scale.** Dimensions are printed on the page, but almost no one translates "84 inches wide" into how much of their living-room wall that eats. Undersized and oversized are both return triggers.
+- **Color and finish.** Studio lighting flatters. A "warm oak" or "sage green" reads differently under a shopper's north-facing window at 6pm than it did in a photography booth.
+- **Fit with the room.** A piece doesn't live in isolation. It sits next to an existing rug, curtains, and the sofa they're not replacing. Photos can't show that relationship.
 
-- **iPhone 12 Pro / Pro Max** (2020)
-- **iPhone 13 Pro / Pro Max** (2021)
-- **iPhone 14 Pro / Pro Max** (2022)
-- **iPhone 15 Pro / Pro Max** (2023)
-- **iPhone 16 Pro / Pro Max** (2024)
-- **All iPad Pro models** from 2020 onwards
+Static images, zoom, and even 360-degree spins improve *understanding of the product*. They do nothing for *understanding of the product in the customer's actual space*. So the uncertainty doesn't get resolved before checkout - it gets resolved after delivery, as a return. AR moves that moment of truth to before the "Buy" click, which is exactly where you want it.
 
-If you own any of these devices, you already have a professional-grade room scanner in your pocket.
+## What the numbers say
 
-## How a LiDAR Room Scan Works
+The returns case for AR isn't hypothetical, and it isn't ours - TARDIS is early, and we don't invent case studies. But the retailers who deployed AR at scale have published results worth taking seriously.
 
-A typical room scan takes 30–60 seconds. Here's what happens:
+- **Wayfair's "View in Room"** AR reported **43% fewer returns**, alongside a 92% lift in conversion and a 28% higher average order value.
+- **IKEA Place**, one of the earliest room-scale AR apps, reported a **20% reduction in returns**, a 189% conversion lift, and 98% size accuracy in placement.
+- **Snap and Publicis** (2025, n=4,028) found that **66% of shoppers who use AR are less likely to return** a purchase, and 80% feel more confident buying.
 
-1. **Point your phone around the room.** Walk slowly, sweeping the device across walls, floors, and ceilings. The LiDAR sensor captures depth data while the camera records color and texture.
+Industry-wide, analysts put the returns reduction from AR and 3D at **up to 40%**. Shopify's widely cited figure of roughly **+94% conversion** on products with 3D/AR speaks to the same underlying mechanism: when shoppers can resolve their own doubts, they buy more *and* send back less. The AR-commerce market is projected to grow from about **$6.62B in 2024 to roughly $139B by 2034**, and Gartner has noted that a majority of retail brands are adopting AR. This is becoming table stakes, not an experiment.
 
-2. **The software builds a mesh.** Thousands of depth points are stitched together into a 3D mesh — a digital twin of your room with accurate dimensions.
+Two caveats on honesty. These are the named retailers' results under their own conditions, not a guarantee for your catalog. And the size of the effect scales with *adoption* - AR only reduces returns for the shoppers who actually use it, which is why frictionless, on-page AR (no app download) matters so much.
 
-3. **Surfaces are classified.** Modern apps use machine learning to identify walls, floors, windows, doors, and furniture. This means the software understands *what* it's looking at, not just the shape.
+## How on-page AR closes the gap
 
-4. **You get a usable floor plan.** The scan converts into measurements you can work with: room dimensions, window placements, door swing directions, and open floor area.
+The mechanism is simple: let the shopper see the real item, at true scale, in their own room, under their own light, before they commit.
 
-## Why Tape Measures Fall Short
+Modern AR places a 3D model of the piece through the phone's camera using **AR Quick Look on iOS and Scene Viewer on Android** - no app install, launched straight from the product page. The shopper walks around the sofa, checks it against the actual wall, sees whether the "warm oak" reads warm in their living room. Every one of the three failure modes above - scale, color, fit-with-the-room - gets tested against reality while return-free correction is still free: not buying the wrong thing.
 
-The traditional approach to measuring a room involves a tape measure, a notepad, and a lot of back-and-forth:
+The catch, historically, has been supply. Getting AR on a product page has meant commissioning a manual 3D model per SKU - the Cylindo/Threekit approach - at a cost that only pencils out for hero products. A returns problem that lives across the *entire catalog* can't be solved by AR that only covers your top 40 items. The long tail is where uncertainty, and returns, quietly accumulate.
 
-- **Human error is inevitable.** Off-by-an-inch measurements compound. A sofa that "should fit" doesn't. A shelf unit blocks a window by 3 cm. These mistakes cost time and money.
-- **You can't capture the full picture.** A tape measure gives you length × width. It doesn't capture alcoves, irregular walls, ceiling slopes, or the exact position of outlets and radiators.
-- **Sharing is painful.** A hand-drawn sketch doesn't translate well when you're shopping online or working with a designer.
+## What to measure
 
-LiDAR eliminates all three problems. The scan is precise, comprehensive, and instantly shareable as a 3D model.
+Treat AR as a returns intervention and instrument it like one. Recommended metrics:
 
-## What Can You Do with a Room Scan?
+1. **Return rate by SKU**, segmented by AR-used vs. not-used. This is the headline number and the cleanest read on impact.
+2. **Return-reason mix.** Watch the codes AR directly targets - "fit/size," "looked different," "color/finish." A drop concentrated in those reasons is strong evidence the mechanism is working, not seasonality.
+3. **AR engagement rate** - the share of product-page visitors who launch the AR view. Returns impact is bounded by this; a low engagement rate caps your ceiling.
+4. **Conversion on AR-enabled pages**, so you can confirm you're reducing returns without suppressing sales - the failure mode you don't want.
 
-Once you have a 3D model of your room, the possibilities open up:
+Run it as a proper before/after or a holdout by SKU cohort, and give it enough volume to clear the noise. The retailers above didn't get their numbers from a two-week pilot on three products.
 
-- **Try furniture before you buy.** Place photorealistic 3D models of real products in your scanned room. See exactly how a specific IKEA bookshelf or CB2 sofa looks in your space — not in a showroom.
-- **Experiment with layouts.** Move furniture around digitally until you find the perfect arrangement. No heavy lifting required.
-- **Get accurate measurements.** Know the exact distance between any two points in your room. No more "will it fit?" anxiety.
-- **Share with contractors.** Send a 3D model to a painter, electrician, or interior designer. They'll understand your space instantly.
+## Where TARDIS fits
 
-## Tips for a Better Room Scan
+TARDIS is an embeddable AR layer for product pages - one script tag, covering both **object AR** (furniture and decor as a placeable 3D model) and **surface AR** (wall coverings, paint, tile, previewed live in-camera). The difference that matters for returns is coverage: TARDIS **auto-generates the 3D asset from a standard product photo**, so AR can run across the whole catalog, not just the hero SKUs where manual 3D modeling pays off. Returns live in the long tail, and that's precisely the part legacy per-SKU AR leaves uncovered.
 
-- **Good lighting helps.** LiDAR works in any lighting, but the RGB camera needs decent light for accurate textures.
-- **Move slowly.** Fast movements cause tracking loss. Steady, deliberate sweeps produce the best results.
-- **Cover every surface.** Don't forget the ceiling, corners, and behind doors. The more complete your scan, the more useful it is.
-- **Clear the floor.** Shoes, bags, and clutter create noise in the scan. A tidy room produces a cleaner 3D model.
+One honest note on surfaces: web-based surface AR is *preview-grade* - color and pattern are accurate, but lighting and edge fidelity sit below native, which is reserved for a premium iOS App Clip tier. For furniture object AR, placement runs through the same native AR Quick Look and Scene Viewer pipelines the big retailers use.
 
-## The Bottom Line
-
-Your iPhone's LiDAR sensor is the most underused tool in your renovation toolkit. A 60-second scan gives you more spatial data than an hour with a tape measure — and it's accurate enough for real purchasing decisions.
-
-The technology is there. The question is what you do with the scan. That's where AI-powered design tools come in, turning your raw room data into actionable design choices.
+If furniture returns are eroding your margin and you want to see catalog-wide AR running on your own products, we'd be glad to show you a live demo and walk through what to measure. No pressure - just a look at whether closing the expectation gap moves your numbers the way it moved theirs.
     `,
   },
   {
-    slug: '5-ways-ai-is-changing-interior-design',
-    title: '5 Ways AI Is Changing Interior Design in 2026',
-    description:
-      'From mood-board generation to photorealistic room staging, AI tools are making professional interior design accessible to everyone.',
-    date: '2026-03-10',
-    readTime: '5 min read',
-    tags: ['AI', 'Interior Design', 'Home Renovation', 'Technology'],
-    keyword: 'AI interior design app',
+    slug: "roi-of-ar-on-product-pages",
+    title: "The ROI of 3D/AR on a Product Page: The Real Math",
+    description: "AR product visualization ROI, worked out: incremental revenue from conversion uplift and AOV, plus returns savings — with honest caveats and the manual-3D cost trap.",
+    date: '2026-07-11',
+    readTime: "7 min read",
+    tags: ["AR commerce","conversion optimization","product returns","ecommerce ROI","3D product visualization"],
+    keyword: "AR product visualization ROI",
     faqs: [
-      { question: 'Can AI replace an interior designer?', answer: 'AI doesn\'t replace designers — it makes good design accessible to the 95% of people who were never going to hire one. AI handles layout optimization, style matching, and photorealistic rendering at a fraction of the cost.' },
-      { question: 'How does AI furniture placement work?', answer: 'AI analyzes your room dimensions via a 3D scan, then suggests furniture arrangements optimized for traffic flow, proportions, natural light, and aesthetics — rendering each option photorealistically in your actual space.' },
+      { question: "Do the +94% conversion and -40% returns figures apply to my store?", answer: "Treat them as category benchmarks, not guarantees. The +94% conversion figure is widely cited from Shopify across merchants using 3D/AR; the up-to-40% returns reduction is an industry range. Your actual lift depends on category, price point, baseline product-page quality, and how many shoppers engage the AR view. Model a conservative fraction of the benchmark, run it on a segment of SKUs, and measure your own delta before extrapolating catalog-wide." },
+      { question: "Why is manual per-SKU 3D such a big cost factor in AR ROI?", answer: "Traditional AR vendors like Cylindo or Threekit produce furniture 3D by modeling each SKU by hand — often tens to hundreds of dollars per item and days of turnaround. On a 5,000-SKU catalog that becomes a large upfront bill and a permanent bottleneck as products refresh, which is what keeps AR pinned to a handful of hero products. TARDIS auto-generates the asset from an existing product photo, which is what makes covering the whole catalog economically realistic." },
+      { question: "Is web-based surface AR accurate enough to drive sales?", answer: "For colour and pattern, yes — web surface AR is preview-grade: shoppers see the true colour and repeat of a wallpaper, tile, or paint live on their own wall, which is the decisive factor for those categories. Lighting and edge precision sit below a native experience. When you need native-grade fidelity, that comes through the premium iOS App Clip tier rather than the standard web embed." },
     ],
     content: `
-## Interior Design Is Being Democratized
+Adding AR to a product page is usually pitched with a single eye-popping stat and a lot of hand-waving. That is not a business case. If you run ecommerce, the question is narrower and more useful: what does an AR "View in your room" button do to *your* revenue and returns, and does that beat what it costs to put there? Here is the actual math, the caveats that matter, and the one cost line most vendors hope you never scrutinize.
 
-Hiring an interior designer costs \$2,000–\$12,000 for a single room. Most people can't justify that, so they wing it — browsing Pinterest for hours, buying furniture that "looked good online," and ending up with rooms that don't quite work.
+## The two levers AR pulls
 
-AI is collapsing the gap between DIY guesswork and professional design. Here are five concrete ways it's happening right now.
+AR visualization moves money in two directions at once.
 
-## 1. AI-Generated Room Layouts
+**More completed purchases and bigger baskets.** When a shopper can see a sofa in their living room or a tile on their own wall, uncertainty drops and they buy more, and more confidently. The published category numbers are strong: Shopify reports products with 3D/AR convert around **94% better** than those without. Wayfair's "View in Room" reported a **+92% conversion** lift, **+28% AOV**, and **-43% returns**. IKEA Place reported **+189% conversion** and 98% size accuracy. These are the named companies' own results, not TARDIS's — but they establish the effect is real and large.
 
-The hardest part of interior design isn't picking a couch — it's knowing *where to put it*. Traffic flow, focal points, natural light, and proportions all matter. Professional designers spend years developing this intuition.
+**Fewer returns.** Returns are where AR quietly earns its keep, especially in furniture, where returns are a roughly **$30B/year problem** in the US alone. Industry studies put AR/3D returns reduction at **up to 40%**. A Snap/Publicis 2025 study (n=4,028) found **80%** of AR shoppers feel more confident and **66%** say they are less likely to return. Every avoided return saves the full reverse-logistics cost — shipping both ways, inspection, restocking, write-downs on damaged goods — which for bulky items often exceeds the item's margin.
 
-AI layout generators analyze your room dimensions and suggest arrangements optimized for flow, function, and aesthetics. They factor in things most people overlook: the distance between a dining table and the wall (you need at least 90 cm for chairs to pull out), sightlines from the main seating area, and how natural light falls at different times of day.
+## A worked model (illustrative — plug in your own numbers)
 
-The result? Layouts that feel intentional, not accidental.
+Let's build the case with round numbers. **These are illustrative, not a forecast.** Use them as a template, then substitute your analytics.
 
-## 2. Photorealistic Virtual Staging
+Take one product category page cluster:
 
-This is the biggest leap. Instead of imagining how furniture might look in your space, AI can render it photorealistically — matching your room's lighting, shadows, and perspective.
+- **Monthly sessions:** 100,000
+- **Baseline conversion:** 2.0%
+- **Average order value:** $400
+- **Return rate:** 20%
+- **Contribution margin per order (before returns):** $120
+- **Cost per return (reverse logistics + write-down):** $90
 
-The technology combines 3D room scanning (often via LiDAR) with neural rendering. You see an actual IKEA KALLAX shelf in *your* living room, under *your* lighting, at the correct scale. Not a generic product shot. Not a showroom photo. Your room, with that specific product, rendered to look indistinguishable from a photograph.
+Baseline: 100,000 × 2.0% = **2,000 orders/month** → $800,000 revenue.
 
-This matters because the #1 reason people return furniture is "it looked different in person." Virtual staging eliminates that disconnect.
+Now apply AR — **conservatively**. The category studies show ~+94% conversion, but you should never bank the headline. Assume AR is engaged by a portion of shoppers and lifts conversion by a discounted **+20%** (roughly a fifth of the benchmark), and AOV by **+10%** (against the +28% Wayfair saw).
 
-## 3. Style Matching and Recommendations
+- New conversion: 2.0% × 1.20 = 2.4% → **2,400 orders**
+- New AOV: $400 × 1.10 = **$440**
+- New revenue: 2,400 × $440 = **$1,056,000**
 
-Describe your style in plain language — "warm minimalist with wood tones" or "mid-century modern but not too retro" — and AI can recommend specific products that match.
+That is **+$256,000/month** in top-line revenue, or about +$3.07M/year from this cluster.
 
-More importantly, it can ensure *consistency*. One of the most common design mistakes is mixing too many styles. A Scandinavian coffee table next to a traditional leather armchair next to a modern glass lamp creates visual noise. AI recommends pieces that complement each other, not just individual items that look good in isolation.
+**Returns savings.** Assume AR cuts returns by a discounted **-20%** (versus the up-to-40% range), so return rate falls from 20% to 16%. On 2,400 orders:
 
-Some tools go further: upload a photo of a room you like, and AI identifies the style elements — color palette, material mix, furniture proportions — and finds equivalent products within your budget.
+- Returns before AR-effect: 2,400 × 20% = 480
+- Returns after: 2,400 × 16% = 384
+- Avoided returns: **96/month** × $90 = **~$8,640/month** saved, plus the recovered margin on orders that now stick.
 
-## 4. Multi-Retailer Price Comparison
+Even on deliberately deflated assumptions, the incremental-revenue line dwarfs the returns line — but returns savings are pure margin, so they often decide the ROI on thin-margin, high-return categories.
 
-This is less glamorous but hugely practical. When AI suggests a mid-century walnut dining table, it can search across IKEA, Wayfair, CB2, West Elm, and dozens of other retailers simultaneously. You see the same style at different price points.
+**The general formula:**
 
-Traditionally, shopping for furniture means opening 15 browser tabs and comparing products that aren't quite the same. AI normalizes the comparison: same style, same dimensions, same material category, different price.
+*Incremental annual value = (Traffic × ΔConversion × New AOV × Margin%) + (Avoided returns × Cost per return)*
 
-The best implementations go a step further: unified checkout. One cart, multiple brands, one payment. No juggling five different shipping timelines and return policies.
+Run it twice — once optimistic, once pessimistic — and make the decision on the pessimistic case.
 
-## 5. Iterative Design Refinement
+## Build vs. buy vs. the hidden cost line
 
-The old workflow: hire a designer, wait for mockups, give feedback, wait for revisions, repeat. Each cycle takes days.
+Now the cost side, where most AR business cases quietly fall apart.
 
-With AI, refinement is instant. Don't like the color? Swap it. Want the sofa 30 cm to the left? Drag it. Prefer a different material on the dining chairs? One tap. The rendering updates in real time, so you can iterate through dozens of options in minutes instead of weeks.
+**Building in-house** means owning 3D asset generation, an AR web viewer, AR Quick Look / Scene Viewer integration, and ongoing maintenance across devices. For most retailers that is a multi-quarter engineering commitment competing with everything else on the roadmap. Rarely the right call unless AR is core IP.
 
-This speed changes how people make decisions. Instead of committing to one vision and hoping it works, you explore freely. The cost of trying a bad idea is zero — you just undo it.
+**Buying** is usually right — but *what* you buy determines whether the model above ever materializes at catalog scale. This is the line to interrogate.
 
-## What This Means for You
+Incumbent furniture-AR vendors (Cylindo, Threekit) produce photoreal 3D by **modeling each SKU manually**. That is real craft, and it is expensive and slow — commonly tens to hundreds of dollars per SKU and days of turnaround. On a 5,000-SKU catalog, manual 3D is a large upfront bill and a permanent bottleneck: every seasonal refresh re-triggers the cost. The predictable result is that AR gets deployed on a dozen hero products, and a dozen products cannot move a catalog-wide conversion number. Your ROI model assumed traffic across the *category* — manual 3D quietly shrinks that to a rounding error.
 
-AI isn't replacing interior designers. It's making good design accessible to the 95% of people who were never going to hire one. The tools are getting remarkably good, remarkably fast.
+Surface vendors (Roomvo) do wall/floor coverings well but **only surfaces** — no furniture — so you are buying two tools, or leaving object categories uncovered.
 
-If you're planning a renovation or simply want to refresh a room, the barrier to "seeing before you buy" has effectively disappeared. Scan your room, let AI suggest what works, visualize it photorealistically, and buy with confidence.
+**Auto-generated assets change the unit economics.** TARDIS generates the 3D model or surface texture directly from an existing product photo, so the marginal cost of adding a SKU collapses. That is the difference between "AR on 12 products" and "AR across the catalog" — and only the second version produces the traffic-wide lift the math depends on. One embed covers **both** object AR (furniture, decor → generated 3D placed via AR Quick Look / Scene Viewer) and **surface AR** (paint, tile, wallpaper → live in-camera retexture).
 
-The era of expensive design mistakes is ending.
+One honest caveat: web surface AR is **preview-grade** — colour and pattern are accurate, which is what drives the wallpaper/tile/paint decision, while lighting and edge precision sit below native. Native-grade surface fidelity comes via the premium iOS App Clip tier. For object AR, the placed 3D model runs through the platform-native AR viewers shoppers already trust.
+
+## How to de-risk the decision
+
+You do not have to believe the benchmarks to justify a test. Instrument it:
+
+1. **Pick a bounded segment** — one or two categories with high AOV and high return rates, where AR has the most to prove.
+2. **Measure engaged-session conversion**, not just sitewide averages, so the signal isn't diluted by shoppers who never opened AR.
+3. **Track returns on AR-engaged orders** over a full return window before you extrapolate.
+4. **Model catalog-wide rollout only on auto-generated economics** — because manual per-SKU pricing rarely survives contact with a real catalog.
+
+The headline stats tell you the ceiling. Your own segmented test tells you the floor. Decide on the floor, and let auto-generation decide whether the ceiling is even reachable.
+
+If you want to pressure-test this model against your own traffic, AOV, and return rates, we're happy to walk through it with you and show TARDIS running on a few of your SKUs. Book a demo — bring your numbers, and we'll do the math together.
     `,
   },
   {
-    slug: 'renovate-your-home-without-hiring-a-designer',
-    title: 'How to Renovate Your Home Without Hiring a Designer',
-    description:
-      'A practical, step-by-step guide to planning and executing a home renovation using free tools, smart shopping, and your own good taste.',
-    date: '2026-03-05',
-    readTime: '7 min read',
-    tags: ['Home Renovation', 'DIY', 'Interior Design', 'Tips'],
-    keyword: 'DIY home renovation guide',
+    slug: "add-view-in-your-room-to-shopify-pdp",
+    title: "How to Add \"View in Your Room\" AR to Your Shopify Product Page",
+    description: "Add AR to your Shopify product page with one embed: how \"View in your room\" works, the install flow, what you need, and object vs surface AR pitfalls.",
+    date: '2026-07-09',
+    readTime: "7 min read",
+    tags: ["AR commerce","Shopify","product pages","conversion","how-to"],
+    keyword: "add AR to Shopify product page",
     faqs: [
-      { question: 'How much does it cost to renovate a room without a designer?', answer: 'A single-room DIY renovation typically costs $2,000–$8,000 for furniture and decor, compared to $4,000–$20,000 when hiring a professional interior designer. Smart shopping and AI design tools close the quality gap.' },
-      { question: 'What order should I renovate rooms in?', answer: 'Work from infrastructure to aesthetics: demolition, electrical/plumbing, painting, flooring, large furniture, lighting, textiles, then accessories. Each layer is chosen in context of the previous one.' },
+      { question: "How do I add AR to a Shopify product page?", answer: "Add a single loader <script> tag to your product template (main-product.liquid or a product section), include a publishable key, allow-list your store's domain, and pass the current product's ID or image (via Liquid's {{ product.id }}) so the embed resolves to the right asset. You edit one shared template and every product page inherits the \"View in your room\" button — no per-SKU 3D modeling and no app install required for the basic embed." },
+      { question: "Do I need 3D models made for each product?", answer: "No. Embeddable AR auto-generates the asset from a product photo you already have — a 3D model for furniture (Object AR) or a live surface texture for wall coverings and tile (Surface AR). That's the difference from per-SKU studio pipelines: you can run AR across the whole catalog instead of a few hero products, because there's no manual modeling step." },
+      { question: "Is web-based Surface AR as accurate as native AR?", answer: "For color and pattern, yes — Surface AR on the web is preview-grade and reproduces the actual color and pattern accurately. Lighting and edge precision sit below a fully native experience; native-grade surface rendering is reserved for the premium iOS App Clip tier. Object AR, by contrast, uses the phone's native AR (AR Quick Look and Scene Viewer) for true-to-scale placement." },
     ],
     content: `
-## You Don't Need a Designer. You Need a System.
+Shoppers can't touch what they buy online. That gap is why the average furniture and home retailer eats returns that add up to a ~$30B/year problem in the US alone — and why "does this actually fit / match my room?" is the question that kills carts before checkout. AR closes that gap by letting a shopper see the product in their own space, from their own phone, before they buy. This guide walks through how to **add AR to your Shopify product page** — what "embeddable AR" really means, the install flow, what you need on hand, and the pitfalls worth knowing before you ship.
 
-Most home renovations fail not because of bad taste, but because of bad process. People start buying furniture before measuring. They pick colors from tiny paint chips. They renovate room by room with no plan for how the spaces connect.
+## Why AR on the PDP moves the numbers
 
-Here's a step-by-step system that handles the logistics, so you can focus on the creative decisions.
+The category has a track record, and the numbers come from the retailers who built AR in-house — not from us:
 
-## Step 1: Document What You Have
+- Shopify reports products with 3D/AR content convert at roughly **+94%** versus those without.
+- Wayfair's "View in Room" is credited with **+92% conversion, +28% AOV, and -43% returns**.
+- IKEA Place drove **+189% conversion, -20% returns**, and reported 98% placement size accuracy.
+- A 2025 Snap/Publicis study (n=4,028) found **80% of AR shoppers feel more confident** in a purchase and **66% are less likely to return** it.
 
-Before changing anything, capture your current state:
+Across the industry, AR/3D previews are associated with **up to -40% returns**, and Gartner has projected the majority of retail brands adopting some form of AR. TARDIS is early and doesn't have its own case studies to cite yet — but the direction of the category is not in doubt.
 
-- **Measure every room.** Length, width, ceiling height, window positions, door swing direction. Better yet, use your iPhone's LiDAR to create a 3D scan in 60 seconds — it captures everything a tape measure can and more.
-- **Photograph everything.** Take wide shots from each corner and close-ups of details you want to keep or replace. Good photos are invaluable when you're shopping and need to remember "wait, what color is my floor again?"
-- **List what stays and what goes.** Not everything needs replacing. That solid wood dining table might just need refinishing. The couch might need reupholstering, not replacing. Be honest about what works.
+## What "embeddable AR" actually means
 
-## Step 2: Define Your Constraints First
+Historically, AR meant a per-SKU 3D modeling project: send each product to a studio, wait weeks, pay per model, repeat. That's how incumbents like Cylindo and Threekit work for furniture, and it's why AR stayed a luxury for hero products only.
 
-Constraints are your friend. Without them, you'll spend months drowning in options.
+Embeddable AR flips the model. Instead of a bespoke build per product, you drop **one script tag on your PDP template** and point it at your catalog. The asset — a 3D model for furniture, or a surface texture for wall coverings — is generated automatically from a product photo you already have. One embed, catalog-wide, cheap enough to run across every SKU rather than a curated few.
 
-- **Budget.** Be specific. Not "around \$5,000" — exactly \$5,000. Include a 15% buffer for surprises.
-- **Timeline.** When do you need the room functional? Working backward from a deadline forces prioritization.
-- **Non-negotiables.** What absolutely must happen? A bigger dining table for family dinners? A home office that actually closes off from the living room? Identifying these prevents scope creep.
+Concretely, adding AR to your product page is four moving parts:
 
-## Step 3: Steal Shamelessly (Then Adapt)
+1. **A loader script.** A single \`<script>\` tag, loaded once on the product-detail template. It's a small async loader — think of it as the shape of a one-line include that pulls in the AR runtime and mounts a "View in your room" button. No per-page code, no framework lock-in.
+2. **A publishable key.** A public, client-side key that identifies your store to the service. It's safe to ship in your page source (like a Stripe *publishable* key or a Maps API key) — it's not a secret.
+3. **Origin allow-listing.** You register the domains the key is allowed to run on (e.g. \`www.yourstore.com\`). That's what stops someone from lifting your key and running it elsewhere — the key only works from origins you approve.
+4. **A catalog pointer.** The embed needs to know *which* product a given PDP is showing. In practice you pass the product ID / SKU (or a product image URL) as a data attribute or config value, so the button resolves to the right asset.
 
-Professional designers don't create from scratch. They reference. You should too.
+That's the whole mental model: **loader + key + allow-list + catalog reference.** No manual 3D pipeline to staff.
 
-- **Save 20–30 room photos you love.** Pinterest, Instagram, design magazines — wherever you find them. After you've collected enough, look for patterns. You'll notice you keep gravitating toward certain elements: warm wood tones, or clean white walls, or specific furniture styles.
-- **Identify the 3 common elements.** Maybe it's always wood + white + plants. Or dark walls + brass accents + low furniture. These patterns *are* your style — you just haven't named it yet.
-- **Adapt to your space.** That stunning loft apartment on Pinterest has 4-meter ceilings and floor-to-ceiling windows. Your apartment doesn't. Take the *principles* (color palette, material mix, furniture proportions), not the specific layout.
+## The install flow — Shopify, Magento, or custom
 
-## Step 4: Start with the Largest Pieces
+The install is deliberately platform-agnostic, because it's just one snippet on the PDP template. The only thing that changes per platform is *where* that template lives.
 
-A common mistake: buying accessories first because they're fun and affordable, then trying to find a sofa that matches the throw pillows you already bought.
+**Shopify.** Edit your theme and open the product template (\`main-product.liquid\` or a product section in \`sections/\`). Paste the loader \`<script>\` once, and expose the current product's identifier to it — Shopify's Liquid gives you \`{{ product.id }}\`, the SKU, or the featured image URL to pass along. Save, and every product page inherits the button. No app-store install required for the basic embed; it's theme-level.
 
-Work from large to small:
+**Magento / Adobe Commerce.** Add the snippet to the product view template (the \`catalog_product_view\` layout / \`view.phtml\`), passing the product ID or image from the template context. Same one-snippet principle.
 
-1. **Flooring** (if changing it)
-2. **Wall color / treatment**
-3. **Largest furniture** (sofa, bed, dining table)
-4. **Secondary furniture** (side tables, shelving, desk)
-5. **Lighting** (overhead, task, accent)
-6. **Textiles** (rugs, curtains, cushions)
-7. **Accessories** (art, plants, objects)
+**Custom / headless.** Include the loader in your PDP component and pass the product reference as a prop or data attribute. Because it's a plain script plus a public key, there's nothing framework-specific to wire up.
 
-Each layer should be chosen in the context of what came before it. The rug complements the sofa, not the other way around.
+In all three cases you do the work **once** on the shared template, and it fans out across your entire catalog.
 
-## Step 5: Visualize Before You Buy
+## What you need before you start
 
-This is where most DIY renovations go wrong. People buy based on product photos taken in a professional studio with perfect lighting. The product arrives and looks completely different in their space.
+- **Product photos, or a catalog feed.** The asset is generated from imagery you already have. Clean, well-lit, straight-on product shots produce the best results — the same photos that make a good PDP make a good AR asset.
+- **A publishable key** for your store.
+- **Your PDP domain(s)** to allow-list.
 
-Modern tools solve this:
+No 3D artists, no scanning rigs, no per-SKU modeling budget.
 
-- **AR furniture apps** let you place 3D models of real products in your room through your phone camera. The scale is accurate, so you'll know immediately if that dining table is too big.
-- **AI room design tools** go further — they render furniture photorealistically in your actual space, matching lighting and shadows. It looks like a photograph of your finished room.
-- **3D room planners** let you build a top-down layout and experiment with different arrangements before committing.
+## Object AR vs Surface AR
 
-The 30 minutes you spend visualizing saves the 30 days (and return shipping costs) of buying the wrong thing.
+TARDIS covers two modes in one embed, and it's worth knowing which applies to your catalog:
 
-## Step 6: Shop Smart, Not Fast
+- **Object AR** — for furniture and decor. TARDIS generates a 3D model from the product photo, and the shopper places it in their room at true scale using the phone's native AR (AR Quick Look on iOS, Scene Viewer on Android). This is the "walk around the sofa in your living room" experience.
+- **Surface AR** — for wall coverings, paint, and tile. Instead of a discrete object, TARDIS retextures a surface live in the camera feed, so a shopper can see their actual wall repainted or re-tiled.
 
-Furniture shopping is where budgets die. Here's how to protect yours:
+One embed decides which mode to use based on the product; you don't maintain two integrations.
 
-- **Compare across retailers.** The same style of mid-century coffee table can range from \$150 (IKEA) to \$1,500 (Design Within Reach). Unless you can tell the difference in person — and most people can't — go with the affordable option.
-- **Mix price tiers.** Invest in pieces you touch every day (sofa, mattress, dining chairs) and save on everything else. A \$2,000 sofa with \$50 side tables looks better than five \$400 pieces.
-- **Check dimensions twice.** Read the product dimensions. Then read them again. Then check them against your room measurements. "It looked smaller online" is the furniture buyer's eternal lament.
-- **Factor in shipping.** Free delivery vs. \$200 white-glove delivery can flip which retailer is actually cheaper.
+## Pitfalls worth knowing (told straight)
 
-## Step 7: Execute in the Right Order
+**Asset quality tracks input quality.** A generated 3D model is only as good as the source photo. Odd angles, heavy props, or cluttered backgrounds degrade the result. Feed it clean catalog imagery.
 
-Once you've planned and purchased, the execution order matters:
+**Mobile AR support varies.** Native placement relies on AR Quick Look (iOS) and Scene Viewer (Android). Most modern phones are covered, but older or unsupported devices should fall back gracefully to a 3D viewer rather than a broken button. Plan for the fallback.
 
-1. **Demolition and prep** (removing old fixtures, patching walls)
-2. **Electrical and plumbing** (if needed — always hire licensed professionals for this)
-3. **Painting** (always before new furniture arrives)
-4. **Flooring** (before furniture placement)
-5. **Large furniture delivery**
-6. **Lighting installation**
-7. **Small furniture and accessories**
+**Surface AR fidelity is honest, not magic.** On the web, Surface AR is **preview-grade**: colour and pattern are accurate, but lighting and edge precision sit below a fully native experience. Native-grade surface rendering is reserved for the premium iOS App Clip tier. Set expectations with your merchandising team accordingly — preview-grade is still a huge step up from a flat swatch, but call it what it is.
 
-Painting after furniture delivery means covering everything in drop cloths. Flooring after furniture means moving everything twice. The right sequence saves hours of unnecessary work.
+## Start small, then go catalog-wide
 
-## Step 8: Live With It Before Accessorizing
+The pragmatic rollout: ship the embed on one high-traffic category first, confirm the assets look right and the button behaves on real devices, then let the same snippet cover the rest of your catalog. Because the cost model is generation-based rather than per-SKU-studio, expanding coverage is a config change, not a new project.
 
-After the major pieces are in, resist the urge to immediately fill every surface with accessories. Live in the room for a week. You'll notice things:
+Want to see "View in your room" running on one of your own products? Bring a product photo and we'll walk you through a live embed on a test PDP — no studio pipeline, no per-SKU quote. [Book a demo](#) and see how your catalog looks in a shopper's room.
+    `,
+  },
+  {
+    slug: "roomvo-alternative-object-and-surface-ar",
+    title: "Roomvo Alternative: Object + Surface AR in One Embed",
+    description: "A Roomvo alternative for retailers who need both object and surface AR: how Roomvo, Cylindo, and Threekit compare — and where auto-generated, catalog-wide AR fits.",
+    date: '2026-07-07',
+    readTime: "7 min read",
+    tags: ["AR commerce","Roomvo alternative","ecommerce","product visualization","retail technology"],
+    keyword: "Roomvo alternative",
+    faqs: [
+      { question: "Is TARDIS a direct Roomvo alternative?", answer: "Partly. Roomvo is a surface-visualization specialist — flooring, tile, and wallpaper — and it's excellent at that, live on 6,000+ sites. TARDIS overlaps on surfaces (paint, tile, wall coverings via in-camera retexturing) but also adds object AR for furniture and decor in the same embed. So it's a Roomvo alternative specifically for retailers whose catalog spans both objects and surfaces, or who want AR across the whole catalog rather than a curated set of prepared assets." },
+      { question: "How is TARDIS different from Cylindo or Threekit for furniture AR?", answer: "Cylindo and Threekit build photorealistic 3D models and configurators, typically hand-modeled per SKU — category-leading fidelity, but with a per-product asset cost that suits a few hundred hero products. TARDIS auto-generates the 3D asset from a product photo, which lowers cost per SKU enough to cover a full catalog, and it also handles surface products in the same integration. If maximum single-model fidelity on a small hero set is the goal, the manual-3D vendors are strong; if catalog-wide coverage across objects and surfaces is the goal, that's TARDIS's focus." },
+      { question: "Is TARDIS surface AR as accurate as a native app?", answer: "On the web it's preview-grade: color and pattern are accurate, so shoppers see the correct product in the correct place, but lighting and edge precision are below native app quality. Native-grade surface rendering is reserved for a premium iOS App Clip tier. Object AR uses the phone's native AR (AR Quick Look and Scene Viewer), which renders at true scale in the room." },
+    ],
+    content: `
+If you sell things people put in rooms — sofas, rugs, paint, flooring, tile, wallpaper — you have probably already looked at AR for your product pages. The pitch is easy to believe because the numbers are real: Shopify reports products with 3D/AR content convert about **94% higher**, and the case studies are hard to ignore. Wayfair's "View in Room" drove **+92% conversion, +28% AOV, and -43% returns**. IKEA Place reported **+189% conversion, -20% returns, and 98% size accuracy**. A 2025 Snap/Publicis study (n=4,028) found **80% of AR shoppers feel more confident** and **66% are less likely to return** an item they previewed.
 
-- "I need a light next to that reading chair."
-- "This corner feels empty — a tall plant would work."
-- "The wall behind the sofa needs something, but I'll wait until I find the right piece."
+So the question is rarely "should we do AR." It is "which platform, and what does it actually cover." If your shortlist starts with Roomvo, this is an honest map of the category — where Roomvo is strong, where the furniture-3D vendors fit, and the gap that a **Roomvo alternative** like TARDIS is built to close.
 
-Accessories chosen in response to living in the space always feel more intentional than accessories bought all at once on day one.
+## What Roomvo is actually great at
 
-## The Real Secret
+Roomvo is a surface-visualization specialist, and a good one. It is the default in flooring, tile, and wallpaper retail, live on **6,000+ sites**, and shoppers know the interaction: upload a photo of your room, and the floor or wall re-textures with the product you're browsing. For a flooring retailer, that is exactly the decision the shopper is trying to make — "does this plank look right in my space" — and Roomvo answers it cleanly.
 
-The difference between a room that looks "designed" and one that looks "decorated" usually isn't money. It's restraint. Fewer things, chosen carefully, arranged with breathing room.
+The trade-off is scope and asset economics. Roomvo covers **surfaces**: things that tile across a plane — flooring, wall coverings, rugs, countertops. It does not place a discrete 3D object (a chair, a lamp, a bookshelf) into your room. And the visual assets are **produced per product** — the pattern/material has to be prepared to render correctly. For a curated surface catalog that is manageable. For a broad, fast-moving catalog it becomes a content-operations line item.
 
-A spare room with three well-chosen pieces looks better than a room stuffed with fifteen "good deals." Edit ruthlessly. When in doubt, leave it out.
+## What Cylindo and Threekit are actually great at
 
-Your home isn't a showroom. It's the place you live. Design it for your life, not for a photograph.
+On the other side of the category sit the furniture-3D and product-configurator platforms — **Cylindo** and **Threekit** are the names you'll hear. These are strong where Roomvo isn't: **objects**. A photorealistic 3D sofa you can spin, reconfigure (fabric, legs, modules), and — via AR — drop into your living room at true scale. If you sell configurable furniture, this is category-leading tooling, and the configurator itself lifts conversion independent of AR.
+
+The trade-off here is also asset economics, in a different form. Those 3D models are typically **built manually, per SKU** — modeled, textured, and QA'd by a 3D team or an outsourced pipeline. The output is beautiful; the input is time and money per product. That math works for a hero catalog of a few hundred configurable pieces. It gets expensive when you want AR across thousands of SKUs, or across a catalog that turns over every season.
+
+## The gap in the middle
+
+Line those up and a pattern appears. Roomvo does surfaces well but not objects. Cylindo and Threekit do objects well but not surfaces. And **both rely on manual, per-product asset creation** — a specialist team preparing each material or modeling each SKU.
+
+That leaves two real problems for a retailer whose catalog spans *both* categories — say a home store selling furniture *and* wallpaper, or paint *and* accent chairs:
+
+- **Scope:** you end up buying (and integrating, and paying for) two different tools to cover one product page experience.
+- **Asset cost:** whichever tool you choose, coverage is gated by how many assets a human can prepare. AR ends up on your top SKUs, not your catalog — which is exactly the long tail where shoppers are least sure and returns are highest.
+
+Furniture returns alone are roughly a **$30B/year problem in the US**, and "up to -40% returns with AR/3D" is a widely cited industry figure. The value of AR scales with *coverage*. A tool that can only economically cover your top 5% of SKUs leaves most of that value on the table.
+
+## Where TARDIS fits
+
+TARDIS is a newer, earlier-stage entrant, and we'll be straight about that — we don't have a wall of retail logos yet. What's different is the approach to the two problems above: **scope** and **asset economics**.
+
+**One embed, both modes.** TARDIS is a single \`<script>\` you drop on a product page. Shoppers tap "View in your room" and get the right experience for the product:
+
+- **Object AR** for furniture and decor — a 3D model placed in the room at real scale using the phone's native AR (AR Quick Look on iOS, Scene Viewer on Android).
+- **Surface AR** for paint, tile, and wall coverings — live, in-camera retexturing of the wall or surface in front of the shopper.
+
+**Auto-generated assets.** Instead of a 3D artist modeling each SKU or a team preparing each material, TARDIS **generates the 3D/surface asset from a product photo you already have**. That is the economic unlock: the cost per SKU drops far enough that AR across a *catalog* — not just hero products — becomes realistic. The comparison isn't "our 3D looks better than Threekit's hand-built models." It's "you can cover the whole catalog instead of the top 200, and cover surfaces and objects with one integration."
+
+**An honest note on surface fidelity.** On the web, TARDIS Surface AR is **preview-grade**: color and pattern are accurate — the shopper sees the *right* tile in the *right* place — but lighting and edge precision sit below what a native app delivers. Native-grade surface rendering is reserved for a premium iOS App Clip tier. We flag that plainly because "accurate enough to decide" is the honest claim for the web experience, and you should evaluate it on those terms.
+
+## How to choose
+
+A fair way to think about it:
+
+1. **Surfaces only, curated catalog?** Roomvo is the proven category default; there's a reason it's on 6,000+ sites.
+2. **A few hundred hero configurable furniture SKUs, fidelity above all?** Cylindo/Threekit's manual 3D is category-leading.
+3. **Both objects and surfaces, and you want AR across the catalog rather than the top slice?** That's the specific gap TARDIS is built for — one embed, both modes, assets generated from photos instead of hand-built per SKU.
+
+Gartner expects a majority of retail brands to be using AR, and the AR-commerce market is projected to grow from **~$6.62B in 2024 to ~$139B by 2034**. This stops being a differentiator and starts being table stakes. The question is coverage: whose AR reaches your whole catalog, and at what asset cost.
+
+If you're weighing a Roomvo alternative because your catalog spans both objects and surfaces — or because per-SKU asset costs are capping how much of your catalog AR can reach — we'd love to show you TARDIS on your own products. Send us a few product URLs and we'll generate a live "View in your room" preview so you can judge the object and surface modes against your real catalog, not a demo. Book a walkthrough and see where it fits.
+    `,
+  },
+  {
+    slug: "object-vs-surface-ar-explained",
+    title: "Object vs. Surface AR, Explained (for Retailers)",
+    description: "Object vs surface AR: which one fits furniture vs. paint, tile and wallpaper, what fidelity to promise shoppers, and how to map AR modes to SKUs.",
+    date: '2026-07-05',
+    readTime: "7 min read",
+    tags: ["augmented reality","ecommerce","product pages","conversion","retail tech"],
+    keyword: "object vs surface AR",
+    faqs: [
+      { question: "What is the difference between object AR and surface AR?", answer: "Object AR places a 3D model of a product — a sofa, a lamp, a planter — into the shopper's room at true scale using the phone's native AR viewer. Surface AR instead retextures a surface the shopper already has: it repaints their wall, retiles their floor, or hangs their chosen wallpaper live in the camera feed. Object AR answers 'will this thing fit and look right here?'; surface AR answers 'what would my wall look like in this colour or pattern?'" },
+      { question: "Which products need object AR versus surface AR?", answer: "Discrete, movable items with a defined footprint — furniture, lighting, rugs, decor, appliances — belong in object AR. Materials sold by area that cover a plane — paint, wallpaper, tile, flooring, panelling — belong in surface AR. If a shopper would ask 'how big is it and where does it go?', use object AR. If they'd ask 'what would this look like across my whole wall or floor?', use surface AR." },
+      { question: "How accurate is web-based surface AR?", answer: "Web surface AR is preview-grade: colour and pattern are accurate and true to the product, which is what most colour and material decisions hinge on. Lighting response and edge precision around trim, sockets and corners are below what a native app delivers. For near-native fidelity, surface AR runs through a premium iOS App Clip tier. Being explicit about this — 'accurate colour preview' rather than 'photorealistic' — sets the right shopper expectation." },
+    ],
+    content: `
+Augmented reality on product pages is no longer a novelty budget line. The data behind it is now hard to argue with: Shopify reports products with 3D or AR content convert at roughly **+94%** versus those without. Wayfair's "View in Room" has driven **+92% conversion, +28% AOV and -43% returns**; IKEA Place has reported **+189% conversion, -20% returns and 98% size accuracy**. A 2025 Snap/Publicis study (n=4,028) found **80% of AR shoppers feel more confident** in a purchase and **66% are less likely to return** it. Independent estimates put AR-driven returns reduction at up to **-40%**, and the AR-commerce market at roughly **$6.62B in 2024, projected toward ~$139B by 2034**.
+
+But "add AR" is not one decision. There are two fundamentally different AR experiences, they suit different products, and they carry different fidelity promises. Getting **object vs surface AR** right per SKU is the difference between AR that lifts conversion and AR that quietly disappoints. Here's the practical breakdown.
+
+## Object AR: put the thing in the room
+
+Object AR takes a 3D model of your product and drops it into the shopper's actual space at true scale. They point their phone at the floor, the model anchors, and they can walk around it, view it from any angle, and check whether the sofa clears the bay window.
+
+Critically, this is a **solved problem**. On iOS it runs through Apple's **AR Quick Look**; on Android through Google's **Scene Viewer**. These are native, OS-level AR frameworks — the same technology that powers Apple's and Google's own shopping demos. Tracking is stable, scale is accurate, occlusion and lighting are handled by the platform. From the shopper's side it feels premium and reliable because the heavy lifting happens in hardware and OS, not in a fragile web hack.
+
+Object AR is the right mode for discrete, movable items with a defined footprint:
+
+- Furniture — sofas, tables, chairs, beds, shelving
+- Lighting — floor and table lamps, pendants
+- Decor — planters, vases, mirrors, sculptures
+- Rugs, appliances, and other freestanding goods
+
+The shopper question object AR answers is **"how big is it, and where does it go?"** That question maps directly onto the two biggest problems in furniture ecommerce: fit anxiety and returns. Furniture returns alone are a roughly **$30B/year problem in the US**, much of it driven by "it was bigger than I thought" and "it looked different in my room." Letting someone see the piece at scale, in their space, before they buy attacks that directly.
+
+The historical catch with object AR has been asset production. High-quality 3D models were built manually, per SKU, by specialist studios — the model behind incumbents like Cylindo and Threekit. That's accurate and beautiful, but it's slow and expensive, which is why manual 3D never scaled past hero products. The shift that makes object AR viable catalogue-wide is **auto-generating the 3D model from a standard product photo** — cheap enough to run across the whole catalogue instead of a curated dozen.
+
+## Surface AR: retexture the wall the shopper already has
+
+Surface AR is a different job. Instead of adding an object, it changes a surface the shopper already has. Point the camera at a wall and it repaints it in your chosen colour; point at the floor and it retiles it; hold it up and it hangs your wallpaper pattern live in the frame.
+
+This is the right mode for materials sold by area that cover a plane:
+
+- Paint and wall colour
+- Wallpaper and wall coverings
+- Tile and flooring
+- Panelling and cladding
+
+The shopper question here is **"what would this look like across my whole wall or floor?"** — a question object AR literally cannot answer, because there's no discrete object to place. This is the category Roomvo built its business on, and it's genuinely valuable: colour and pattern choices are high-anxiety and high-return.
+
+But surface AR is **technically harder than object AR**, and honesty about fidelity matters. Retexturing a live camera feed means detecting the wall or floor plane, respecting real-world lighting, and cleanly handling edges around trim, sockets, corners and furniture — all in real time, on the web, without a native framework doing the heavy lifting.
+
+So here's the fidelity promise we hold to:
+
+- **On the web, surface AR is preview-grade.** Colour and pattern are accurate and true to the product — which is exactly what most material decisions turn on. Lighting response and edge precision are below native quality. The right words to a shopper are "accurate colour preview," not "photorealistic."
+- **Native-grade surface AR runs through a premium iOS App Clip tier.** An App Clip is a lightweight, install-free slice of a native app that launches on demand, giving surface AR access to the same native rendering that makes object AR feel so solid. This is the path to near-native surface fidelity.
+
+Promising photorealism on the web and delivering preview-grade is how you erode trust. Promising an accurate colour preview and delivering exactly that is how you build it.
+
+## Mapping SKUs — and pricing tiers — to the two modes
+
+The clean way to think about your catalogue:
+
+1. **Does the shopper place it, or spread it?** Discrete objects with a footprint → object AR. Materials that cover a surface → surface AR. This one question resolves the vast majority of SKUs.
+2. **What fidelity can you truthfully promise?** Object AR: native, high-quality, place-in-room, on both iOS and Android. Surface AR on web: accurate colour and pattern, preview-grade lighting. Surface AR via the App Clip tier: near-native.
+
+The two modes also map naturally onto **pricing tiers**, because they represent different capability levels. Object AR and web surface AR cover the broad, catalogue-wide case at accessible cost. The native iOS App Clip surface tier is a premium step-up for retailers whose materials business justifies the highest fidelity. You buy the mode your products actually need rather than one monolithic package.
+
+The reason TARDIS exists is that most retailers sell **both** kinds of product — a furniture catalogue that also lists rugs and wall art, or a flooring brand that also sells trim and fixtures — and historically that meant stitching together a furniture-3D vendor and a separate surfaces vendor, each with per-SKU manual work. TARDIS auto-generates the asset from a product photo and covers both object and surface AR from a **single embed** — one \`<script>\` on your product pages.
+
+## The takeaway
+
+Object AR is the mature, native, place-in-room experience for furniture and decor — promise high fidelity with confidence. Surface AR is the harder, retexture-the-room experience for paint, tile and wallpaper — promise accurate colour preview on web, reserve "near-native" for the App Clip tier. Match each SKU to the mode the shopper's actual question demands, be precise about what you promise, and the conversion and returns numbers above stop being other people's case studies and start being yours.
+
+If you'd like to see both modes running on your own products — object and surface, from a single embed — we'd be glad to walk you through a short demo with a handful of your SKUs.
+    `,
+  },
+  {
+    slug: "generate-3d-models-from-a-photo",
+    title: "Auto-Generated 3D Models From a Single Photo",
+    description: "How photo-to-3D generation (Hunyuan3D-class models on serverless GPU) makes catalog-wide AR economically possible for ecommerce, plus honest quality limits.",
+    date: '2026-07-03',
+    readTime: "6 min read",
+    tags: ["3D models","augmented reality","ecommerce","product visualization","asset generation"],
+    keyword: "generate 3D model from photo ecommerce",
+    faqs: [
+      { question: "Can you really generate a usable 3D model from a single product photo?", answer: "Yes, for the common ecommerce case. Hunyuan3D-class image-to-3D models turn a clean, well-lit product shot into a textured 3D mesh automatically, with no manual modelling. Quality is strongest for solid objects with readable form (sofas, lamps, tables) and holds up well for the in-room placement decision. Transparent, reflective, or very intricate items are harder from one photo and are best routed to human QA or traditional modelling." },
+      { question: "How is auto-generated 3D cheaper than traditional per-SKU modelling?", answer: "Manual studio modelling costs roughly tens to hundreds of dollars per SKU and takes days, so cost scales linearly with catalog size. Running generative models on serverless GPU produces a mesh in minutes at a fraction of the cost, turning what was a six-figure, multi-month project for a large catalog into a batch job. That collapse in marginal cost is what makes AR on the whole catalog, rather than just hero products, economically viable." },
+      { question: "Do AR product previews actually reduce returns and lift conversion?", answer: "Industry data is strong, though these figures come from the named retailers and platforms, not from TARDIS. Shopify reports about +94% conversion for products with 3D/AR. Wayfair's View in Room saw +92% conversion and -43% returns; IKEA Place saw +189% conversion. Snap/Publicis (2025) found 66% of AR shoppers are less likely to return. Up to 40% of returns can be avoided with AR and 3D, which matters given US furniture returns run about $30B a year." },
+    ],
+    content: `
+Ask any ecommerce lead why augmented reality lives on three hero products and not the whole catalog, and the honest answer is never "shoppers don't want it." It's the asset. Every "View in your room" button sits on top of a 3D model that someone had to build, and building those models is where the economics fall apart.
+
+This is the asset-economics story: why catalog-wide AR has been priced out of reach, and how photo-to-3D generation changes the math.
+
+## The bottleneck was never demand
+
+The demand case for AR is settled. Shopify reports products with 3D or AR content convert at roughly **+94%** versus flat images. Wayfair's "View in Room" drove **+92% conversion, +28% AOV, and -43% returns**. IKEA Place saw **+189% conversion** with 98% reported size accuracy. Snap and Publicis (2025, n=4,028) found **80% of AR shoppers feel more confident** and **66% say they're less likely to return**. The AR-commerce market sat near **$6.62B in 2024** and is projected toward **$139B by 2034**, and Gartner expects a majority of retail brands to be using AR.
+
+Shoppers respond. The problem is supply.
+
+## Why manual 3D keeps AR small
+
+Incumbent 3D pipelines are built around manual, per-SKU modelling. For each product, an artist builds geometry, unwraps UVs, authors materials, and bakes textures — typically a studio job costing somewhere from tens to a few hundred dollars per SKU and taking days to turn around. Vendors like Cylindo and Threekit do this well for furniture, but the model is inherently linear: more SKUs mean proportionally more artist-hours and more cost.
+
+Do the arithmetic on a real catalog. A 5,000-SKU furniture retailer facing even a conservative $150 per model is looking at $750,000 and a queue measured in months — before a single refresh when products change. So AR gets rationed. It goes on the ten best-sellers, the campaign hero, the flagship sofa. The long tail — where a shopper is most uncertain and most likely to either bounce or over-order-and-return — stays flat 2D.
+
+That rationing is the actual ceiling on AR's impact. Furniture returns alone are a roughly **$30B/year problem in the US**, and up to **-40% of returns** can be avoided with AR and 3D. But you only capture that across the catalog if the catalog is actually covered. Hero-product AR leaves most of the return risk untouched.
+
+## Photo-to-3D flips the cost curve
+
+The shift underway is generative. A new class of models — Hunyuan3D-class image-to-3D systems — takes a single product photo and produces a textured 3D mesh automatically. No manual sculpting, no hand-authored UVs. You feed in the same catalog image you already have on the product page; you get back a mesh with baked textures, ready to place in a room via AR Quick Look on iOS or Scene Viewer on Android.
+
+Run those models on serverless GPU and the economics invert. Generation happens in minutes, not days, and cost drops by orders of magnitude — from studio pricing per SKU to something closer to a compute line-item you could run across an entire catalog. The curve stops being linear in artist-hours. Covering 5,000 SKUs stops being a six-figure project and becomes a batch job.
+
+That is the unlock. Cheap generation is not a nicer way to make the same ten models — it's what makes *catalog-wide* AR economically possible at all. When the marginal cost of one more model approaches the cost of the GPU time to generate it, the rationing logic disappears. You stop asking "which products deserve AR?" and start putting it on everything.
+
+## Honest limits: what generation does well, and where it strains
+
+Being straight about quality matters more than the pitch. Photo-to-3D is strongest exactly where ecommerce lives: a clean, well-lit product shot on a plain background, of a solid object with readable form — a sofa, a lamp, a planter, a side table. Given that input, current models produce results that hold up well for the "does it fit and does it look right in my room" decision that drives the conversion and returns numbers.
+
+Quality degrades in predictable ways. Transparent and reflective materials — glass, clear acrylic, chrome, mirror — are genuinely hard, because a single photo carries little reliable information about what's behind or reflected in the surface. Thin, intricate geometry (wireframe chairs, fine lattice, delicate hardware) can lose detail. Busy backgrounds or heavy occlusion confuse the reconstruction. And a single photo only sees the sides it sees; the unseen back is inferred, not observed.
+
+The practical answer is not to pretend otherwise. Generate catalog-wide, treat output as reviewable, and route the hard categories — glass, high-gloss, hero pieces where a flaw is unacceptable — to human QA or traditional modelling. Generation raises the floor across thousands of SKUs; it doesn't have to be the ceiling on your best twenty.
+
+## Where surfaces fit
+
+Not every product is an object. Wall coverings, paint, and tile are surface decisions, and there the relevant preview isn't a placed 3D model but live in-camera retexture — showing the pattern or colour mapped onto the shopper's actual wall. On the web, that surface preview is *preview-grade*: colour and pattern render accurately, while lighting and edge precision sit below native quality. It reaches native fidelity through a premium iOS App Clip tier. Both matter, because a real catalog mixes objects and surfaces, and covering both from one embed is the point.
+
+## What this means for a retailer
+
+The strategic read is simple. AR's conversion and returns benefits are proven; the constraint has always been the cost of assets. Auto-generation removes that constraint, which moves AR from a hero-product feature to a catalog-wide default. The retailers who benefit most are exactly those with large catalogs and long tails — the ones for whom per-SKU modelling was never going to pencil out.
+
+TARDIS is built on this thesis: auto-generate the 3D or surface asset from a product photo, cover both object and surface AR from a single embeddable script, and price it so the whole catalog is in scope rather than a handful of flagships. We're early, and we'd rather show you than tell you.
+
+If you're weighing AR for your product pages, book a demo — bring a few of your real catalog photos, including a tricky one, and see what comes back.
+
+## FAQ
+
+*(see structured FAQs)*
     `,
   },
   {
@@ -339,358 +529,6 @@ Not all AR experiences are equal:
 ## The Bottom Line
 
 Product photos show you furniture at its best. AR shows you furniture at its most honest — in your space, at your scale, under your conditions. The technology is ready. The question is whether you want to keep guessing or start seeing.
-    `,
-  },
-  {
-    slug: 'color-psychology-in-interior-design',
-    title: 'Color Psychology in Interior Design: What Your Walls Are Telling You',
-    description:
-      'Why certain room colors make you feel calm, energized, or uneasy — and how to pick palettes that actually work for how you live.',
-    date: '2026-03-12',
-    readTime: '6 min read',
-    tags: ['Interior Design', 'Color Theory', 'Home Renovation', 'Psychology'],
-    keyword: 'best paint colors for rooms',
-    faqs: [
-      { question: 'What is the most calming bedroom color?', answer: 'Soft blues and blue-greys are consistently rated the most calming colors in research. A muted slate blue or dusty blue-grey creates a sense of quiet without feeling cold.' },
-      { question: 'What is the 60-30-10 rule in interior design?', answer: '60% dominant color (walls, large furniture), 30% secondary color (upholstery, curtains), 10% accent color (cushions, art). This creates visual hierarchy and prevents chaos.' },
-    ],
-    content: `
-## Color Isn't Decoration. It's Infrastructure.
-
-Most people pick wall colors the same way they pick ice cream flavors — whatever looks good in the moment. But color does more than look good. It shapes how a room *feels*, how long you want to stay in it, and even how well you sleep or focus.
-
-Interior designers have known this for decades. Research backs it up. The right palette doesn't just make a room prettier — it makes it work better for its purpose.
-
-## The Science (Briefly)
-
-Color affects us through two channels:
-
-- **Physiological.** Warm colors (reds, oranges, saturated yellows) raise heart rate and blood pressure slightly. Cool colors (blues, greens, muted purples) lower them. This isn't mysticism — it's been measured in controlled studies since the 1940s.
-- **Cultural association.** White means "clean" in Western contexts and "mourning" in parts of East Asia. These associations are learned, but they're powerful. Your brain processes color meaning faster than language.
-
-The practical takeaway: choose colors based on what you want to *do* in the room, not just what you want it to look like.
-
-## Room-by-Room Guide
-
-### Bedroom: Favor Cool, Muted Tones
-
-Your bedroom's job is to help you wind down. Colors that support this:
-
-- **Soft blues and blue-greys.** Consistently rated as the most calming colors in research. A muted slate blue or dusty blue-grey creates a sense of quiet without feeling cold.
-- **Warm neutrals.** Greige (grey-beige), warm taupe, or soft sand tones feel cocooning without competing with your bedding.
-- **Deep, dark tones.** Contrary to the "small rooms need light colors" rule, a dark navy or charcoal bedroom can feel incredibly restful — like a cocoon. The key is committing: dark walls, dark ceiling, warm lighting.
-
-Avoid: bright whites (too clinical for sleep), saturated reds or oranges (stimulating), yellow-greens (most people find them subtly unsettling in large doses).
-
-### Kitchen: Warm, Appetite-Friendly Colors
-
-Kitchens are social, active spaces. They benefit from warmth:
-
-- **Warm whites and creams.** Not stark hospital white — think the color of good parchment. Warm enough to feel inviting under both natural and artificial light.
-- **Sage green.** Natural, fresh, pairs well with wood and stone. It's the "timeless" kitchen color choice that replaced grey.
-- **Terracotta accents.** Too much is overwhelming, but a terracotta backsplash or accent wall adds warmth that makes the space feel lived-in.
-
-### Home Office: Focus Without Fatigue
-
-You need to concentrate here, but also spend hours without feeling drained:
-
-- **Desaturated greens.** Green is the easiest color for the eye to process, which reduces visual fatigue. Think olive, sage, or eucalyptus — not neon.
-- **Soft warm greys.** Neutral enough not to distract, warm enough not to feel institutional.
-- **Blue accents.** Studies link blue environments to higher creative output. A blue accent wall or blue furniture pieces can add focus without painting the whole room.
-
-### Living Room: The Versatile Space
-
-Living rooms serve too many functions for a single prescription. The guiding principle: pick a neutral base and add personality through accents.
-
-- **Base:** Warm whites, soft greys, greige, or light taupe.
-- **Personality:** Introduce color through a single accent wall, furniture, textiles, or art — not all four. One strong color element in a neutral room creates a focal point. Four create chaos.
-
-## The 60-30-10 Rule
-
-If color theory feels overwhelming, use this time-tested formula:
-
-- **60% dominant color** — walls, large furniture, rugs. This is your neutral base.
-- **30% secondary color** — upholstery, curtains, accent furniture. This adds depth.
-- **10% accent color** — cushions, art, decorative objects. This adds punch.
-
-The percentages don't need to be exact. The point is hierarchy: one color dominates, one supports, one pops.
-
-## Common Mistakes
-
-- **Testing paint from a chip.** A 2 × 2 cm paint chip tells you almost nothing. Buy sample pots and paint large swatches (at least 60 × 60 cm) on the actual wall. View them at different times of day — morning light and evening lamplight change colors dramatically.
-- **Ignoring undertones.** "Grey" can lean blue, green, purple, or pink depending on the undertone. That "perfect grey" on Pinterest might be a blue-grey that clashes with your warm wood floors. Always compare greys against pure white to reveal their lean.
-- **Matching everything.** A room where the cushions match the curtains match the rug match the artwork feels like a hotel lobby. Coordination is good. Exact matching is lifeless. Let things be *related*, not identical.
-- **Forgetting the ceiling.** Painting the ceiling the same white as the trim is a missed opportunity. A ceiling one shade darker than the walls adds subtle warmth and makes the room feel more intentional. A dark ceiling in a tall room adds drama and intimacy.
-
-## How to Decide When You're Stuck
-
-If you've been staring at paint swatches for weeks:
-
-1. Look at your existing furniture and textiles — what colors are already working?
-2. Identify the one thing in the room you love most. Pull a color from it.
-3. Use a tool that lets you visualize the color in your actual room before committing. AI room design tools can render different wall colors photorealistically in seconds.
-4. When in doubt, go one shade lighter and one shade warmer than you think you want. Rooms always feel darker and cooler than the swatch suggests.
-
-Color is the cheapest, highest-impact change you can make in any room. A \$40 gallon of paint transforms a space faster than a \$4,000 sofa. Get it right, and everything else falls into place.
-    `,
-  },
-  {
-    slug: 'small-space-design-tricks-that-actually-work',
-    title: 'Small-Space Design Tricks That Actually Work (Not the Pinterest Ones)',
-    description:
-      'Forget "use mirrors to make it look bigger." Here are the space-saving strategies that genuinely change how a small room functions.',
-    date: '2026-03-02',
-    readTime: '5 min read',
-    tags: ['Small Spaces', 'Interior Design', 'Tips', 'Apartment Living'],
-    keyword: 'small apartment design ideas',
-    faqs: [
-      { question: 'How do you make a small room look bigger?', answer: 'Focus on function, not illusion. Use fewer but larger furniture pieces, maximize vertical storage, ensure 60cm clearances for movement, and layer warm lighting at multiple heights instead of one overhead fixture.' },
-      { question: 'What furniture works best in small spaces?', answer: 'Dual-purpose pieces: storage ottomans, beds with drawers, drop-leaf wall tables, and console tables that serve as room dividers. Every item should serve at least two functions.' },
-    ],
-    content: `
-## The Mirror Myth and Other Lies
-
-Every "small space tips" article tells you to hang a big mirror. Mirrors don't add square footage. They add the *illusion* of depth, which your brain sees through in about three seconds. You still can't fit a dining table in a 10-square-meter living room just because there's a mirror on the wall.
-
-Here's what actually helps: strategies that change how the room *works*, not how it *looks* in a photograph.
-
-## 1. Measure Clearances, Not Just Furniture
-
-Most small-space mistakes happen because people buy furniture that technically fits but leaves no room to move. The piece fits against the wall — but now you can't open the closet, or the chair can't pull out from the desk, or you're squeezing sideways to reach the bed.
-
-The fix: measure clearances, not just dimensions.
-
-- **Dining chairs:** Need 75 cm behind the chair when someone is seated and pushed back.
-- **Walking paths:** Minimum 60 cm for comfortable passage. 45 cm is the bare minimum.
-- **Bed access:** At least 60 cm on the sides you use for getting in. Pushing one side against a wall is fine if you're solo — and it frees up significant floor area.
-- **Doors and drawers:** Full swing arc plus 10 cm. A nightstand with drawers that can't fully open is just a shelf.
-
-Use your phone's LiDAR scanner to capture the room in 3D, then place virtual furniture to check clearances before buying. This single step prevents most "it doesn't fit" disasters.
-
-## 2. Go Vertical, But Strategically
-
-"Use vertical space" is common advice, but most people do it wrong — adding floating shelves everywhere until the room looks like a library storage unit.
-
-The strategic approach:
-
-- **One tall storage piece beats three short ones.** A single floor-to-ceiling bookshelf stores more than three waist-height units, and it takes up one-third the wall space.
-- **Store rarely-used items high.** Seasonal items, extra bedding, rarely-read books — anything above eye level should be things you reach for monthly, not daily.
-- **Keep eye-level clear.** The zone between 120 and 180 cm from the floor is your visual field. Keeping this zone relatively open (fewer objects, more negative space) makes the room feel larger than adding storage at that height.
-- **Consider vertical furniture.** A wall-mounted drop-leaf table folds flat when not in use. A murphy bed reclaims an entire room. These aren't compromises — they're better uses of space.
-
-## 3. Fewer, Larger Pieces Beat Many Small Ones
-
-This is counterintuitive. In a small room, you'd think small furniture makes sense. But a room with eight small pieces of furniture — tiny side table, small bookshelf, narrow desk, compact chair, mini dresser — looks cluttered even when tidy.
-
-Instead:
-
-- **One substantial sofa** looks more intentional than a loveseat plus two chairs.
-- **One large rug** anchors the room. Two small rugs create visual fragmentation.
-- **One good lamp** beats three tiny ones scattered around.
-
-The principle: fewer items, each one earning its place. Every piece in a small room is noticeable, so each one needs to justify its presence.
-
-## 4. Dual-Purpose Everything
-
-In a small space, single-purpose furniture is a luxury. Every piece should do two things:
-
-- **Storage ottoman** — seating plus hidden storage for blankets and pillows.
-- **Bed with drawers** — eliminates the need for a separate dresser entirely.
-- **Dining table as desk** — if you eat at home and work from home, one good table serves both purposes. Just invest in a comfortable chair.
-- **Console table behind sofa** — serves as a room divider, a surface for lamps, and a narrow storage shelf.
-
-The best dual-purpose pieces don't look like compromises. They look like normal furniture that happens to be smarter than usual.
-
-## 5. Light the Room in Layers
-
-A single overhead light in a small room creates flat, unflattering illumination that highlights every flaw. Layered lighting creates depth:
-
-- **Ambient:** One warm overhead light (or recessed fixtures) at a dimmable level.
-- **Task:** A desk lamp, reading lamp, or under-cabinet light aimed at where you actually do things.
-- **Accent:** LED strip behind a shelf, a table lamp on a console, or uplighting in a corner. This is what separates "small room" from "cozy room."
-
-Warm color temperatures (2700K–3000K) are essential. Cool white light in a small space feels like a hospital examination room.
-
-## 6. Edit Ruthlessly
-
-The single most effective small-space strategy has nothing to do with design: own less stuff.
-
-Every object in a small room is visible. There's nowhere to hide clutter, no spare closet to absorb overflow. If you haven't used something in six months and it doesn't bring you genuine joy, remove it.
-
-A small room with 20 carefully chosen items feels luxurious. The same room with 60 items feels like a storage unit. The difference isn't square meters — it's editing.
-
-## The Real Truth About Small Spaces
-
-Small spaces aren't a problem to solve. They're a constraint that forces better decisions. Every choice matters more. Every piece of furniture has to earn its place. There's no room for "maybe I'll use this someday."
-
-That constraint, applied honestly, produces rooms that feel more intentional than spaces three times their size. The best small apartments aren't small rooms trying to look big — they're small rooms that work perfectly at their actual size.
-    `,
-  },
-  {
-    slug: 'best-room-scanner-app-iphone-2026',
-    title: 'Best Room Scanner Apps for iPhone in 2026: Compared and Ranked',
-    description:
-      'We tested every major iPhone room scanner app — from free to pro. Here\'s which ones actually deliver accurate 3D floor plans you can design with.',
-    date: '2026-03-20',
-    readTime: '8 min read',
-    tags: ['Room Scanner', 'iPhone App', 'LiDAR', 'App Review', '2026'],
-    keyword: 'best room scanner app iPhone',
-    faqs: [
-      { question: 'What is the best free room scanner app for iPhone?', answer: 'For basic measurements, Apple\'s built-in Measure app works. For full 3D room scanning with furniture placement and design capabilities, TARDIS offers the most complete free experience on LiDAR-equipped iPhones.' },
-      { question: 'Do I need LiDAR to scan a room with my iPhone?', answer: 'LiDAR (available on iPhone 12 Pro and later Pro models) delivers millimeter-accurate scans. Some apps work without LiDAR using photogrammetry, but accuracy drops significantly — especially for furniture fitting decisions.' },
-      { question: 'Can I get a floor plan from an iPhone scan?', answer: 'Yes. LiDAR room scanner apps generate accurate 2D floor plans and 3D models from a 30–60 second scan, including wall dimensions, window positions, and door placements.' },
-    ],
-    content: `
-## Why Room Scanner Apps Matter in 2026
-
-Three years ago, scanning a room meant hiring a surveyor or spending an afternoon with a tape measure and graph paper. Today, your iPhone does it in under a minute.
-
-But not all scanner apps are equal. Some give you a basic floor plan. Others build a full 3D model you can design with — placing real furniture, checking clearances, even ordering directly. The gap between the best and worst is enormous.
-
-We tested the major options on an iPhone 15 Pro across five rooms of different sizes and complexity. Here's what we found.
-
-## What We Tested
-
-Every app was scored on five criteria:
-
-- **Scan accuracy** — how closely measurements matched manual laser verification
-- **Speed** — time from opening the app to having a usable scan
-- **3D model quality** — detail level, surface detection, export options
-- **Design integration** — can you actually place furniture in the scanned room?
-- **Price** — what you get for free vs. what costs extra
-
-## Category 1: Basic Measurement Apps
-
-### Apple Measure (Free, built-in)
-
-Apple's built-in Measure app uses LiDAR for point-to-point measurements. It's reliable for checking if a specific piece of furniture fits in a specific spot.
-
-**Strengths:** Already on your phone. Fast for single measurements. Accurate to ±1 cm.
-
-**Weaknesses:** No room scanning. No floor plans. No 3D model. You're measuring one thing at a time, same as a tape measure — just faster.
-
-**Verdict:** Good for quick checks, useless for room-level planning.
-
-## Category 2: Floor Plan Generators
-
-Several apps convert LiDAR scans into 2D floor plans. They detect walls, doors, and windows and output a dimensioned drawing.
-
-**Strengths:** Useful for renovation planning, sharing with contractors, and basic furniture layout. Most produce PDF or CAD exports.
-
-**Weaknesses:** 2D only. You get dimensions but no sense of how things *look*. A floor plan tells you a sofa fits; it doesn't tell you it blocks the window or makes the room feel cramped.
-
-**Best for:** People working with contractors who need technical drawings, not visual design.
-
-## Category 3: Full 3D Scanning + Design
-
-This is where it gets interesting. A few apps scan your room in 3D and then let you design within that scan — placing real furniture, swapping styles, checking proportions in a photorealistic view of *your actual room*.
-
-**What sets these apart:**
-
-- **Real product catalogs.** Not generic 3D shapes — actual IKEA, Wayfair, CB2 products with correct dimensions, materials, and colors.
-- **Photorealistic rendering.** The furniture looks like it's really in your room, matching your lighting and shadows.
-- **Multi-brand checkout.** Find a sofa from one brand and a coffee table from another, add both to one cart, and check out in a single transaction.
-- **AI layout suggestions.** Tell the AI your priorities (more seating, home office area, maximizing floor space) and it generates arrangements to try.
-
-This category is where the real time and money savings happen. You're not just measuring — you're making design decisions with full visual context before spending a dollar.
-
-## What to Actually Look For
-
-When choosing a room scanner app, the features that matter most depend on your goal:
-
-**If you're renovating:** You need accurate measurements + the ability to visualize the finished room. A floor plan alone won't prevent a bad furniture purchase.
-
-**If you're moving into a new space:** You need fast scanning + a product catalog. The goal is to plan what to buy before move-in day, not measure for contractors.
-
-**If you're redecorating:** You need design tools above all — style matching, layout suggestions, and the ability to swap and compare options visually.
-
-## Our Recommendation
-
-For pure measurement, Apple's Measure app is fine. For serious room planning — where you're going to spend money on furniture and want to get it right — look for an app that combines LiDAR accuracy with real product placement and multi-brand shopping.
-
-The best room scanner app isn't the one with the most precise scan. It's the one that turns your scan into better decisions.
-    `,
-  },
-  {
-    slug: 'best-ai-interior-design-apps-2026',
-    title: 'Best AI Interior Design Apps in 2026: Free and Paid Options Reviewed',
-    description:
-      'A hands-on comparison of the top AI interior design apps. Which ones actually help you design a room — and which are just glorified mood boards?',
-    date: '2026-03-17',
-    readTime: '7 min read',
-    tags: ['AI Design', 'Interior Design App', 'App Review', 'Home Renovation', '2026'],
-    keyword: 'best AI interior design app',
-    faqs: [
-      { question: 'Is there a free AI interior design app?', answer: 'Yes. Several apps offer free tiers for basic AI room design. TARDIS provides free LiDAR room scanning and AI furniture placement. Paid tiers typically unlock premium product catalogs and advanced rendering.' },
-      { question: 'Can AI design my room for me?', answer: 'AI can generate complete room layouts based on your room dimensions, style preferences, and budget. It handles furniture arrangement, color coordination, and product sourcing — you approve the final design and purchase directly.' },
-      { question: 'What is the most accurate AI room design app?', answer: 'Apps that use iPhone LiDAR for room scanning produce the most accurate results. The 3D scan captures exact room geometry, allowing AI to place furniture at true scale with correct proportions and clearances.' },
-    ],
-    content: `
-## The AI Interior Design Landscape in 2026
-
-Two years ago, "AI interior design" meant uploading a photo and getting a Pinterest-style mood board back. Today, the best tools scan your room in 3D, generate photorealistic designs with real purchasable products, and let you buy everything in one checkout.
-
-But most apps still fall short of that promise. We tested the major players to separate the genuinely useful from the overhyped.
-
-## What Makes an AI Design Tool Actually Useful
-
-Before the comparison, let's define what "useful" means. A good AI interior design app should:
-
-1. **Understand your actual room** — not a generic rectangle. Real rooms have alcoves, windows at specific heights, radiators, uneven walls, and existing furniture you're keeping.
-2. **Suggest real products** — not just "a mid-century sofa" but a specific SKU from a specific retailer with a real price and real delivery timeline.
-3. **Show you how it looks** — in your room, not a generic render. Photorealistic visualization in your actual space is the difference between "that could work" and "I'm buying this today."
-4. **Let you iterate quickly** — swap the sofa, change the rug color, try a different layout. Each change should render in seconds, not minutes.
-
-## Tier 1: Photo-Based Redesign Tools
-
-These apps ask you to upload a photo of your room, then use generative AI to produce redesigned versions in different styles.
-
-**How they work:** You snap a photo, pick a style ("scandinavian," "industrial," "japandi"), and the AI generates an image of your room redesigned in that style.
-
-**Strengths:** Fast, fun, and inspiring. Good for exploring general directions — "do I like mid-century or not?"
-
-**Weaknesses:** The output is an AI-generated image, not a design plan. You can't identify specific products. Dimensions are approximate. There's no way to buy what you see. It's a mood board generator, not a design tool.
-
-**Verdict:** Great for inspiration. Useless for execution.
-
-## Tier 2: 2D Room Planners with AI Suggestions
-
-Several apps let you draw a 2D floor plan (or import one) and then use AI to suggest furniture arrangements.
-
-**How they work:** Input room dimensions, mark doors and windows, and the AI fills the space with furniture. Some offer style preferences and budget constraints.
-
-**Strengths:** Better than manual planning. The AI considers traffic flow and furniture spacing rules that most people don't know. Good for layout decisions.
-
-**Weaknesses:** 2D is fundamentally limited. A top-down view tells you *where* things go but not how they *look*. A 2D plan can't show you that the bookshelf blocks the window or that the dining table dominates the room visually. You're designing blind above waist height.
-
-**Verdict:** Useful for layout planning. Insufficient for the full picture.
-
-## Tier 3: 3D Scan + AI Design + Real Products
-
-The most advanced category. These apps scan your room in 3D using your phone's sensors, then let AI design within that accurate digital twin using real products from real retailers.
-
-**How they work:** You scan your room with LiDAR (30–60 seconds), the app builds a 3D model, and AI populates it with furniture that matches your style, fits your dimensions, and comes from stores you can actually buy from. The rendering is photorealistic — it looks like a photograph of your finished room.
-
-**Why this tier wins:**
-
-- **No guessing on fit.** The AI knows your room is 3.4m × 4.1m with a 72cm window ledge and a radiator on the north wall. Every suggestion accounts for real constraints.
-- **Real purchasing path.** See an AI-suggested sofa you like? It's a real product from IKEA or Wayfair or CB2 with a real price. Add to cart and check out.
-- **Iteration is instant.** Don't like the coffee table? Swap it. Want the sofa in leather instead of fabric? One tap. The rendering updates in seconds.
-- **Multi-brand shopping.** The AI pulls from dozens of retailers simultaneously. You get the best product at the best price, not just what one store carries.
-
-## What to Prioritize When Choosing
-
-**If you want quick inspiration:** A Tier 1 photo-based tool is enough. Upload, generate, browse.
-
-**If you're planning a layout:** A Tier 2 planner with AI suggestions handles basic arrangement. Good enough for deciding where the sofa goes.
-
-**If you're spending real money on furniture:** You need Tier 3. The combination of accurate room geometry + real products + photorealistic rendering is the only way to buy with confidence. Everything else is guessing with extra steps.
-
-## The Bottom Line
-
-The gap between AI design tiers is not incremental — it's categorical. Tier 1 gives you pictures. Tier 2 gives you plans. Tier 3 gives you a purchasing-ready, photorealistic preview of your finished room populated with real products you can buy today.
-
-If you're serious about getting your next room right, skip the mood boards and use a tool that actually understands your space.
     `,
   },
   {
