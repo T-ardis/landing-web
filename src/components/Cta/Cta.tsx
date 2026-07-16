@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import { appLink } from '@/lib/app-url';
 import styles from './Cta.module.css';
 
 interface UtmParams {
@@ -110,7 +111,7 @@ export default function Cta() {
               </form>
 
               <div className={styles.altRow}>
-                <a href={`${APP_URL}demo`} className={styles.altLink}>
+                <a href={appLink('demo')} className={styles.altLink}>
                   Or open the live demo →
                 </a>
               </div>

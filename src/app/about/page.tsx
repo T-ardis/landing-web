@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
 import Nav from '@/components/Nav/Nav';
 import Footer from '@/components/Footer/Footer';
+import { appLink } from '@/lib/app-url';
 import styles from './about.module.css';
 
-const APP_URL = process.env.NEXT_PUBLIC_APP_URL || 'https://app.tardis-ai.com/';
 
 export const metadata: Metadata = {
   title: 'About TARDIS — The Company Behind the AR Furniture Visualizer',
@@ -168,7 +168,7 @@ export default function AboutPage() {
                   product in a room in under a minute.
                 </p>
               </div>
-              <a href={`${APP_URL}demo`} className="btn btn-primary">
+              <a href={appLink('demo')} className="btn btn-primary">
                 See the live demo <span className="arrow">→</span>
               </a>
             </div>

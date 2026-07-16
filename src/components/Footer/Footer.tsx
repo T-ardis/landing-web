@@ -1,7 +1,7 @@
 import Link from 'next/link';
+import { appLink } from '@/lib/app-url';
 import styles from './Footer.module.css';
 
-const APP_URL = process.env.NEXT_PUBLIC_APP_URL || 'https://app.tardis-ai.com/';
 const CONTACT_EMAIL = 'founders@tardis-ai.com';
 
 export default function Footer() {
@@ -27,7 +27,7 @@ export default function Footer() {
           <div className={styles.col}>
             <h4 className={styles.h4}>Product</h4>
             <Link href="/#cta" className={styles.link}>Book a demo</Link>
-            <a href={`${APP_URL}demo`} className={styles.link}>See the live demo</a>
+            <a href={appLink('demo')} className={styles.link}>See the live demo</a>
             <Link href="/#how" className={styles.link}>How it works</Link>
             <Link href="/#faq" className={styles.link}>FAQ</Link>
           </div>
