@@ -12,7 +12,7 @@ const STEPS = [
     num: '02',
     label: 'Map',
     title: 'Point it at your catalog.',
-    body: 'We auto-generate a 3D model from each product photo — object AR for furniture, surface AR for wall coverings. No manual per-SKU modelling.',
+    body: 'We auto-generate a 3D model from each product photo — the whole catalog, not just your hero SKUs. No manual per-SKU modelling.',
   },
   {
     num: '03',
@@ -61,7 +61,7 @@ export default function HowItWorks() {
           <a href="#cta" className="btn btn-primary">
             Book a demo <span className="arrow">→</span>
           </a>
-          <p className={styles.footNote}>Object AR is live · surface AR is preview-grade · see it running in the demo</p>
+          <p className={styles.footNote}>Live today · true to scale on iOS and Android · see it running in the demo</p>
         </div>
       </div>
     </section>

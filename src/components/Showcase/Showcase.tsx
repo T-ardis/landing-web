@@ -27,7 +27,7 @@ export default function Showcase() {
 
           <figure className={styles.item}>
             <div className={styles.stage}>
-              <MockupAR variant="object" />
+              <MockupAR />
             </div>
             <figcaption className={styles.caption}>
               In the shopper&apos;s space — true-scale AR, right in the browser.

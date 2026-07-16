@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     template: '%s | TARDIS',
   },
   description:
-    'TARDIS adds embeddable AR to your product pages with one script. Shoppers see furniture and surfaces in their room at true scale — object AR plus preview-grade surface AR. We generate the 3D model from a product photo — no app, no SDK, no per-SKU 3D bill.',
+    'TARDIS adds embeddable AR to your product pages with one script. Shoppers see furniture in their room at true scale, on iOS and Android. We generate the 3D model from a product photo — no app, no SDK, no per-SKU 3D bill.',
   keywords: [
     'embeddable AR',
     'AR for product pages',
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     'Cylindo alternative',
     'Threekit alternative',
     'furniture AR for retailers',
-    'surface AR wall visualizer',
+    'AR furniture visualizer',
     'AR for Shopify',
     'AR for product detail pages',
     '3D model generation from photo',
@@ -48,8 +48,8 @@ export const metadata: Metadata = {
     'see it in your room',
     'AR for furniture retailers',
     'AR for home goods',
-    'AR for wall coverings',
-    'object AR and surface AR',
+    '3D furniture model from photo',
+    'object AR for furniture',
     'one script AR',
     'no-app AR viewer',
     'AR visual commerce',
@@ -70,7 +70,7 @@ export const metadata: Metadata = {
     siteName: 'TARDIS',
     title: 'Embeddable AR for Product Pages — See It in Your Room | TARDIS',
     description:
-      'Add embeddable AR to your product pages with one script. Shoppers see furniture and surfaces in their room at true scale — object AR plus preview-grade surface AR.',
+      'Add embeddable AR to your product pages with one script. Shoppers see furniture in their room at true scale — with the 3D model generated from a product photo.',
     images: [
       {
         url: '/opengraph-image',
@@ -85,7 +85,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Embeddable AR for Product Pages — See It in Your Room | TARDIS',
     description:
-      'Add embeddable AR to your product pages with one script. Shoppers see furniture and surfaces in their room at true scale — object AR plus preview-grade surface AR.',
+      'Add embeddable AR to your product pages with one script. Shoppers see furniture in their room at true scale — with the 3D model generated from a product photo.',
     images: ['/opengraph-image'],
     creator: '@tardisapp',
   },

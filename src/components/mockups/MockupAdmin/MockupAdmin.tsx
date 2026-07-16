@@ -2,9 +2,9 @@ import Image from 'next/image';
 import styles from './MockupAdmin.module.css';
 
 const ROWS = [
-  { sku: 'HAL-3S-OAT', product: 'Halden Sofa', mode: 'Object', thumb: '/mockups/thumb-sofa.webp' },
-  { sku: 'ARLO-SAGE', product: 'Arlo Wallpaper', mode: 'Surface', thumb: '/mockups/thumb-wallpaper.png' },
-  { sku: 'MARIN-ZEL', product: 'Marin Tile', mode: 'Surface', thumb: '/mockups/thumb-tile.png' },
+  { sku: 'HAL-SEC-OAT', product: 'Halden Sectional', thumb: '/mockups/thumb-sofa.webp' },
+  { sku: 'HAL-3S-OAT', product: 'Halden Sofa', thumb: '/mockups/thumb-sofa.webp' },
+  { sku: 'HAL-LOV-OAT', product: 'Halden Loveseat', thumb: '/mockups/thumb-sofa.webp' },
 ];
 
 // Stylised control-plane view: the product→model catalog with live AR analytics
@@ -38,7 +38,7 @@ export default function MockupAdmin() {
                 <Image className={styles.thumb} src={r.thumb} width={40} height={40} alt="" sizes="40px" />
                 <span className={styles.pinfo}>
                   <span className={styles.pname}>{r.product}</span>
-                  <span className={styles.meta}>{r.mode} · {r.sku}</span>
+                  <span className={styles.meta}>{r.sku}</span>
                 </span>
                 <span className={styles.status}>
                   <i aria-hidden="true" />

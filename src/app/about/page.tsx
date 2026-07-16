@@ -62,12 +62,12 @@ const MILESTONES = [
   {
     year: '2026',
     title: 'The embeddable layer',
-    body: 'The viewer becomes an embeddable product: retailers add one script and offer AR on every product page. Object AR and preview-grade surface AR go live.',
+    body: 'The viewer becomes an embeddable product: retailers add one script and offer AR on every product page, with the 3D models generated straight from product photos.',
   },
   {
     year: 'Next',
     title: 'Native App Clip',
-    body: 'A native App Clip with LiDAR room scanning is in development for higher-fidelity placement, building on the object and surface AR that are live today.',
+    body: 'A native App Clip with LiDAR room scanning is in development for higher-fidelity placement, building on the object AR that is live today.',
   },
 ];
 
@@ -89,9 +89,8 @@ export default function AboutPage() {
             <p className={`lead ${styles.sub}`}>
               TARDIS is an embeddable AR furniture visualizer founded in 2024.
               We give retailers one script that lets their shoppers see a
-              product at true scale in their own room — object AR for
-              furniture, preview-grade surface AR for wall coverings — so the
-              piece that arrives is the piece they expected.
+              product at true scale in their own room — so the piece that
+              arrives is the piece they expected.
             </p>
           </div>
         </section>
@@ -169,7 +168,7 @@ export default function AboutPage() {
                   product in a room in under a minute.
                 </p>
               </div>
-              <a href={APP_URL} className="btn btn-primary">
+              <a href={`${APP_URL}demo`} className="btn btn-primary">
                 See the live demo <span className="arrow">→</span>
               </a>
             </div>

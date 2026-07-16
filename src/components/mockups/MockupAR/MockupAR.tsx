@@ -1,12 +1,8 @@
 import Image from 'next/image';
 import styles from './MockupAR.module.css';
 
-type Props = {
-  variant?: 'object' | 'surface';
-};
-
 // Real capture of the TARDIS AR viewer showing the product's generated 3D model.
-export default function MockupAR({ variant = 'object' }: Props) {
+export default function MockupAR() {
   return (
     <figure className={styles.phone}>
       <div className={styles.screen}>
@@ -20,9 +16,7 @@ export default function MockupAR({ variant = 'object' }: Props) {
           priority
         />
         <span className={styles.badge} aria-hidden="true">AR</span>
-        <span className={`chip ${styles.chip}`}>
-          {variant === 'surface' ? 'Preview-grade' : 'True to scale'}
-        </span>
+        <span className={`chip ${styles.chip}`}>True to scale</span>
       </div>
     </figure>
   );

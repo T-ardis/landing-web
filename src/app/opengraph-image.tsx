@@ -90,7 +90,7 @@ export default function OgImage() {
             marginBottom: 48,
           }}
         >
-          Shoppers see furniture in their room at true scale — object AR plus preview-grade surface AR.
+          Shoppers see furniture in their room at true scale — from one script on your product page.
         </div>
 
         {/* Footer row */}

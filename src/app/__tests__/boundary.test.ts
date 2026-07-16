@@ -7,7 +7,6 @@ const FILES = [
   '../../components/ProofBand/ProofBand.tsx',
   '../../components/Problem/Problem.tsx',
   '../../components/HowItWorks/HowItWorks.tsx',
-  '../../components/Modes/Modes.tsx',
   '../../components/Why/Why.tsx',
   '../../components/Showcase/Showcase.tsx',
   '../../components/ForYourStack/ForYourStack.tsx',
@@ -15,6 +14,10 @@ const FILES = [
   '../../components/Footer/Footer.tsx',
   '../../components/Faq/Faq.tsx',
   '../../components/Cta/Cta.tsx',
+  '../../components/mockups/MockupAR/MockupAR.tsx',
+  '../../components/mockups/MockupPDP/MockupPDP.tsx',
+  '../../components/mockups/MockupAdmin/MockupAdmin.tsx',
+  '../layout.tsx',
   '../page.tsx',
   '../about/page.tsx',
   '../opengraph-image.tsx',
@@ -41,8 +44,15 @@ describe('public claims match the core product boundary', () => {
     expect(copy).not.toContain('start your free trial');
   });
 
-  it('should label surface AR as preview-grade where it is claimed', () => {
-    expect(copy).toContain('preview-grade');
+  // The embed ships furniture (object AR) only. "surfaces" as a bare word is
+  // allowed; the banned terms are the ones that claim a surface product.
+  it.each([
+    ['wallpaper', 'wall coverings are out of scope'],
+    ['wall covering', 'wall coverings are out of scope'],
+    ['surface ar', 'the surface mode is not part of the product'],
+    ['preview-grade', 'preview-grade only ever qualified surface AR'],
+  ])('should never claim %s (%s)', (term) => {
+    expect(copy).not.toContain(term);
   });
 
   it('should position the product as an embeddable one-script layer', () => {

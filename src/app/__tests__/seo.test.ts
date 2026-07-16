@@ -12,7 +12,7 @@ describe('layout.tsx metadata', () => {
 
   it('should define a description that front-loads the embeddable-AR B2B keyword', () => {
     expect(metadata.description).toBe(
-      'TARDIS adds embeddable AR to your product pages with one script. Shoppers see furniture and surfaces in their room at true scale — object AR plus preview-grade surface AR. We generate the 3D model from a product photo — no app, no SDK, no per-SKU 3D bill.',
+      'TARDIS adds embeddable AR to your product pages with one script. Shoppers see furniture in their room at true scale, on iOS and Android. We generate the 3D model from a product photo — no app, no SDK, no per-SKU 3D bill.',
     );
   });
 
@@ -24,6 +24,7 @@ describe('layout.tsx metadata', () => {
     expect(keywords).toContain('AR ecommerce widget');
     expect(keywords).toContain('3D product visualization');
     expect(keywords).toContain('AR product visualization');
+    expect(keywords).toContain('AR furniture visualizer');
     // Buyer intent + platform
     expect(keywords).toContain('AR for Shopify');
     expect(keywords).toContain('view in your room widget');
@@ -34,7 +35,7 @@ describe('layout.tsx metadata', () => {
     expect(keywords).toContain('Threekit alternative');
     // Product differentiators
     expect(keywords).toContain('3D model generation from photo');
-    expect(keywords).toContain('object AR and surface AR');
+    expect(keywords).toContain('object AR for furniture');
     expect(keywords.length).toBeGreaterThanOrEqual(20);
   });
 });
@@ -54,7 +55,7 @@ describe('layout.tsx openGraph metadata', () => {
   it('should set a keyword-rich B2B OG description', () => {
     expect(metadata.openGraph).toHaveProperty(
       'description',
-      'Add embeddable AR to your product pages with one script. Shoppers see furniture and surfaces in their room at true scale — object AR plus preview-grade surface AR.',
+      'Add embeddable AR to your product pages with one script. Shoppers see furniture in their room at true scale — with the 3D model generated from a product photo.',
     );
   });
 
@@ -86,7 +87,7 @@ describe('layout.tsx twitter metadata', () => {
   it('should set a keyword-rich B2B Twitter description', () => {
     expect(metadata.twitter).toHaveProperty(
       'description',
-      'Add embeddable AR to your product pages with one script. Shoppers see furniture and surfaces in their room at true scale — object AR plus preview-grade surface AR.',
+      'Add embeddable AR to your product pages with one script. Shoppers see furniture in their room at true scale — with the 3D model generated from a product photo.',
     );
   });
 

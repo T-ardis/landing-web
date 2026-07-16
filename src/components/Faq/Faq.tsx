@@ -3,7 +3,7 @@ import styles from './Faq.module.css';
 const FAQS = [
   {
     q: 'What is TARDIS, exactly?',
-    a: 'An embeddable AR layer for your product pages. You add one script; shoppers tap “View in your room” and see the product at true scale in their space — a generated 3D model for furniture (object AR), or a live surface preview for wall coverings (surface AR). No app for shoppers, no SDK for you.',
+    a: 'An embeddable AR layer for your furniture product pages. You add one script; shoppers tap “View in your room” and see the piece at true scale in their space — a generated 3D model placed in the room with object AR. No app for shoppers, no SDK for you.',
   },
   {
     q: 'How hard is it to install?',
@@ -15,15 +15,15 @@ const FAQS = [
   },
   {
     q: 'How is this different from Roomvo, Cylindo, or Threekit?',
-    a: 'Roomvo focuses on surfaces; Cylindo and Threekit do furniture 3D by hand, per SKU. TARDIS is the only embed that covers both object and surface from one script, with the assets generated automatically from a photo.',
+    a: 'All three are strong, and all three build the 3D asset per SKU — a studio or a prepared pipeline for every product. That is the cost that makes AR stop at your hero SKUs. TARDIS generates the model from photography you already have, so AR reaches the whole catalogue in a day rather than a quarter. The trade is hand-finished polish: if you need art-directed 3D for a flagship product, a studio pipeline still beats us.',
   },
   {
     q: 'What does it cost?',
-    a: 'Pricing scales with catalogue size and traffic, and the two modes — object and surface — are the tiers: one integration, pay for the capability you use. Book a demo and we’ll scope a plan.',
+    a: 'Pricing scales with catalogue size and traffic — one integration, no per-SKU 3D bill. Book a demo and we’ll scope a plan.',
   },
   {
     q: 'How accurate is the AR, honestly?',
-    a: 'Object AR is high-fidelity and true-to-scale — built to each product’s listed dimensions, using native AR Quick Look on iOS and Scene Viewer on Android. Surface AR is preview-grade on the web (accurate colour and pattern, not a measured render), with native-grade fidelity via the iOS App Clip tier.',
+    a: 'Object AR is high-fidelity and true-to-scale — built to each product’s listed dimensions, using native AR Quick Look on iOS and Scene Viewer on Android. The model itself is generated from your product photos, so how closely it matches the real piece tracks the quality of the photography you already have.',
   },
   {
     q: 'Will it touch my shoppers’ data or slow my page?',

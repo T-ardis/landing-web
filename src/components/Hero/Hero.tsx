@@ -14,10 +14,9 @@ export default function Hero() {
             </h1>
             <p className={`lead ${styles.lead}`}>
               TARDIS adds true-to-scale AR to every product page with one
-              script. Shoppers tap, point their phone, and see your furniture —
-              or your wallpaper, live on their wall — in their own space. We
-              generate the 3D model from a photo. No app. No SDK. No per-SKU 3D
-              bill.
+              script. Shoppers tap, point their phone, and see your furniture
+              standing in their own space. We generate the 3D model from a
+              photo. No app. No SDK. No per-SKU 3D bill.
             </p>
 
             <div className={styles.ctaRow}>
@@ -31,14 +30,14 @@ export default function Hero() {
 
             <ul className={styles.facts} aria-label="Product highlights">
               <li>One script tag</li>
-              <li>Object + surface AR</li>
+              <li>3D from a photo</li>
               <li>No app to install</li>
             </ul>
           </div>
 
           <div className={styles.visual}>
             <div className={styles.glow} aria-hidden="true" />
-            <MockupAR variant="object" />
+            <MockupAR />
           </div>
         </div>
       </div>

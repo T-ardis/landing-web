@@ -6,8 +6,8 @@ const POINTS = [
     body: '3D from a photo, not a modelling studio — catalogue-wide, not just hero SKUs.',
   },
   {
-    title: 'Object + surface in one',
-    body: 'Furniture and wall coverings from a single embed and key.',
+    title: 'True to scale',
+    body: 'Placed at each product’s listed dimensions — AR Quick Look on iOS, Scene Viewer on Android.',
   },
   {
     title: 'No app, no SDK',
@@ -25,12 +25,11 @@ export default function Why() {
             The AR is easy. The <span className="au">assets</span> are the hard part.
           </h2>
           <p className={`lead ${styles.lead}`}>
-            Roomvo covers surfaces. Cylindo and Threekit make beautiful
-            furniture 3D — by hand, per SKU. That manual pipeline is why AR
-            usually stops at your hero products. TARDIS generates the asset
-            straight from a product photo, so AR reaches the whole catalogue —
-            and it&apos;s the only embed that does object <span className="au">and</span> surface
-            from one script.
+            Cylindo and Threekit make beautiful furniture 3D — by hand, per
+            SKU. That manual pipeline is why AR usually stops at your hero
+            products. TARDIS generates the asset straight from a product photo,
+            so AR reaches <span className="au">every piece you sell</span> — not
+            just the ten you can afford to model.
           </p>
         </div>
 
