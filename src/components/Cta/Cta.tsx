@@ -110,7 +110,7 @@ export default function Cta() {
               </form>
 
               <div className={styles.altRow}>
-                <a href={APP_URL} className={styles.altLink}>
+                <a href={`${APP_URL}demo`} className={styles.altLink}>
                   Or open the live demo →
                 </a>
               </div>

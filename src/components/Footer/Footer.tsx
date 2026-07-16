@@ -16,8 +16,8 @@ export default function Footer() {
             <p className={styles.tagline}>
               TARDIS is an embeddable AR furniture visualizer for retailers.
               Add one script to your product pages and shoppers see items in
-              their room at true scale — object AR for furniture, preview-grade
-              surface AR for wall coverings.
+              their room at true scale, from 3D models we generate out of your
+              product photos.
             </p>
             <a href={`mailto:${CONTACT_EMAIL}`} className={styles.email}>
               {CONTACT_EMAIL}
@@ -27,7 +27,7 @@ export default function Footer() {
           <div className={styles.col}>
             <h4 className={styles.h4}>Product</h4>
             <Link href="/#cta" className={styles.link}>Book a demo</Link>
-            <a href={APP_URL} className={styles.link}>See the live demo</a>
+            <a href={`${APP_URL}demo`} className={styles.link}>See the live demo</a>
             <Link href="/#how" className={styles.link}>How it works</Link>
             <Link href="/#faq" className={styles.link}>FAQ</Link>
           </div>
